@@ -20,7 +20,7 @@
         FROM
         data_club
     </select>
-    <select id="selectMaxId" resultType="int">
+    <select id="selectDataClubMaxId" resultType="int">
         SELECT
         MAX(id)
         FROM

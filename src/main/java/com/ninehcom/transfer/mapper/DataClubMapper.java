@@ -2,6 +2,7 @@ package com.ninehcom.transfer.mapper;
 
 import com.ninehcom.transfer.entity.DataClub;
 import com.ninehcom.common.entity.PageParam;
+import com.ninehcom.transfer.interfaces.IMax;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class DataClubMapper {
+public class DataClubMapper implements IMax{
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
@@ -38,8 +39,9 @@ public class DataClubMapper {
     public int deleteDataClubById(int Id){
 	return sqlSession.delete("deleteDataClubById", Id);
     }
-    
-    public int selectMaxId(){
-        return sqlSession.selectOne("selectMaxId");
+
+    @Override
+    public int getMax() {
+        return sqlSession.selectOne("selectDataClubMaxId");
     }
 }

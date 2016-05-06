@@ -21,6 +21,15 @@ club_history_id     |Long      |中超俱乐部历史ID
 @Entity
 public class ClubHistoryMapping implements Serializable{
 
+    public ClubHistoryMapping() {
+    }
+
+    public ClubHistoryMapping(Integer teamHistoryId, Long clubHistoryId) {
+        this.teamHistoryId = teamHistoryId;
+        this.clubHistoryId = clubHistoryId;
+    }
+
+    
     @Id
     private Integer teamHistoryId;
     public  Integer getTeamHistoryId() {

@@ -27,7 +27,6 @@ en_full_name        |String    |英文全名
 created_at          |Date      |创建时间
 updated_at          |Date      |最后修改时间
 court               |String    |主场场地
-color               |String    |俱乐部主体颜色
  */
 @Entity
 public class ClubHistory implements Serializable{
@@ -119,14 +118,6 @@ public class ClubHistory implements Serializable{
     }
     public void setCourt(String court) {
         this.court = court;
-    }
-
-    private String color;
-    public  String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
     }
 
 }

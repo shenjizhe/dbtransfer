@@ -122,12 +122,10 @@ public class Translog implements Serializable{
         this.destinationDiff = destinationDiff;
     }
 
-    private Boolean check;
     public  Boolean getCheck() {
-        return check;
-    }
-    public void setCheck(Boolean check) {
-        this.check = check;
+        int count = this.getDestinationCount() + this.getSourceCount()-this.getSameCount();
+        int diffCount = this.getSourceDiff()+this.getDestinationDiff()+this.getSameCount();
+        return count==diffCount;
     }
 
     private String err;
@@ -138,4 +136,7 @@ public class Translog implements Serializable{
         this.err = err;
     }
 
+    public void setLog(Translog log){
+        
+    }
 }

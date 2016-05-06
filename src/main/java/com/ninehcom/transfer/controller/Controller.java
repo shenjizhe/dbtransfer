@@ -6,6 +6,7 @@
 package com.ninehcom.transfer.controller;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.transfer.ClubHistoryTransfer;
 import com.ninehcom.transfer.transfer.ClubTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +23,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @Autowired
     ClubTransfer clubTransfer;
-    @RequestMapping(value = "/trans-team", method = RequestMethod.GET)
+    
+    @Autowired
+    ClubHistoryTransfer clubHistoryTransfer;
+    
+    @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
     @ResponseBody
     public Result transTeam() {
         return clubTransfer.trans();
+    }
+    
+    @RequestMapping(value = "/2.trans-team-history", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transTeamHistory() {
+        return clubHistoryTransfer.trans();
     }
 }
