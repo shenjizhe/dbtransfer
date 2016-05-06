@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.ClubCoachReClubMapper">
+    <resultMap type="com.ninehcom.transfer.entity.ClubCoachReClub" id="clubCoachReClubMap">
+        <id column="id" property="id"/>
+        <result column="cir_avatar" property="cirAvatar"/>
+        <result column="info_avatar" property="infoAvatar"/>
+        <result column="full_avatar" property="fullAvatar"/>
+    </resultMap>
+    <select id="selectAllClubCoachReClub" resultMap="clubCoachReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	club_coach_re_club
+    </select>
+    <select id="selectClubCoachReClubById" resultMap="clubCoachReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	club_coach_re_club
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertClubCoachReClub" parameterType="clubCoachReClub">
+        	INSERT INTO
+        	club_coach_re_club
+        	(
+        	club_coach_re_club.id , club_coach_re_club.cir_avatar , club_coach_re_club.info_avatar , club_coach_re_club.full_avatar
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ cirAvatar } , #{ infoAvatar } , #{ fullAvatar }
+        	)
+    </insert>
+    <update id="updateClubCoachReClub" parameterType="clubCoachReClub">
+        	UPDATE
+        	club_coach_re_club
+        	SET
+        	<if test="cirAvatar != null">
+        	club_coach_re_club.CirAvatar = #{ cirAvatar },
+        	</if>	<if test="infoAvatar != null">
+        	club_coach_re_club.InfoAvatar = #{ infoAvatar },
+        	</if>	<if test="fullAvatar != null">
+        	club_coach_re_club.FullAvatar = #{ fullAvatar }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteClubCoachReClubById">
+        	DELETE FROM
+        	club_coach_re_club
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

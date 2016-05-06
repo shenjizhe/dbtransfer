@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.MatchPositionMapper">
+    <resultMap type="com.ninehcom.transfer.entity.MatchPosition" id="matchPositionMap">
+        <id column="name" property="name"/>
+        <result column="x" property="x"/>
+        <result column="y" property="y"/>
+        <result column="club_type_id" property="clubTypeId"/>
+    </resultMap>
+    <select id="selectAllMatchPosition" resultMap="matchPositionMap">
+        	SELECT
+        	*
+        	FROM
+        	match_position
+    </select>
+    <select id="selectMatchPositionById" resultMap="matchPositionMap">
+        	SELECT
+        	*
+        	FROM
+        	match_position
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertMatchPosition" parameterType="matchPosition">
+        	INSERT INTO
+        	match_position
+        	(
+        	match_position.name , match_position.x , match_position.y , match_position.club_type_id
+        	)
+        	VALUES
+        	(
+        	#{ name } , #{ x } , #{ y } , #{ clubTypeId }
+        	)
+    </insert>
+    <update id="updateMatchPosition" parameterType="matchPosition">
+        	UPDATE
+        	match_position
+        	SET
+        	<if test="x != null">
+        	match_position.X = #{ x },
+        	</if>	<if test="y != null">
+        	match_position.Y = #{ y },
+        	</if>	<if test="clubTypeId != null">
+        	match_position.ClubTypeId = #{ clubTypeId }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteMatchPositionById">
+        	DELETE FROM
+        	match_position
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataMatchLineMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataMatchLine" id="dataMatchLineMap">
+        <id column="id" property="id"/>
+        <result column="match_id" property="matchId"/>
+        <result column="home_club_id" property="homeClubId"/>
+        <result column="guest_club_id" property="guestClubId"/>
+        <result column="line_url" property="lineUrl"/>
+        <result column="home_line_url" property="homeLineUrl"/>
+        <result column="guest_line_url" property="guestLineUrl"/>
+        <result column="home_line" property="homeLine"/>
+        <result column="guest_line" property="guestLine"/>
+        <result column="year" property="year"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataMatchLine" resultMap="dataMatchLineMap">
+        	SELECT
+        	*
+        	FROM
+        	data_match_line
+    </select>
+    <select id="selectDataMatchLineById" resultMap="dataMatchLineMap">
+        	SELECT
+        	*
+        	FROM
+        	data_match_line
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataMatchLine" parameterType="dataMatchLine">
+        	INSERT INTO
+        	data_match_line
+        	(
+        	data_match_line.id , data_match_line.match_id , data_match_line.home_club_id , data_match_line.guest_club_id , data_match_line.line_url , data_match_line.home_line_url , data_match_line.guest_line_url , data_match_line.home_line , data_match_line.guest_line , data_match_line.year , data_match_line.created_at , data_match_line.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ matchId } , #{ homeClubId } , #{ guestClubId } , #{ lineUrl } , #{ homeLineUrl } , #{ guestLineUrl } , #{ homeLine } , #{ guestLine } , #{ year } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataMatchLine" parameterType="dataMatchLine">
+        	UPDATE
+        	data_match_line
+        	SET
+        	<if test="matchId != null">
+        	data_match_line.MatchId = #{ matchId },
+        	</if>	<if test="homeClubId != null">
+        	data_match_line.HomeClubId = #{ homeClubId },
+        	</if>	<if test="guestClubId != null">
+        	data_match_line.GuestClubId = #{ guestClubId },
+        	</if>	<if test="lineUrl != null">
+        	data_match_line.LineUrl = #{ lineUrl },
+        	</if>	<if test="homeLineUrl != null">
+        	data_match_line.HomeLineUrl = #{ homeLineUrl },
+        	</if>	<if test="guestLineUrl != null">
+        	data_match_line.GuestLineUrl = #{ guestLineUrl },
+        	</if>	<if test="homeLine != null">
+        	data_match_line.HomeLine = #{ homeLine },
+        	</if>	<if test="guestLine != null">
+        	data_match_line.GuestLine = #{ guestLine },
+        	</if>	<if test="year != null">
+        	data_match_line.Year = #{ year },
+        	</if>	<if test="createdAt != null">
+        	data_match_line.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_match_line.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataMatchLineById">
+        	DELETE FROM
+        	data_match_line
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

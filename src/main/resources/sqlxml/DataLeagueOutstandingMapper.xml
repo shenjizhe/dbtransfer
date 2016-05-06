@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataLeagueOutstandingMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataLeagueOutstanding" id="dataLeagueOutstandingMap">
+        <id column="id" property="id"/>
+        <result column="content_url" property="contentUrl"/>
+        <result column="league_id" property="leagueId"/>
+        <result column="player_id" property="playerId"/>
+        <result column="judge_id" property="judgeId"/>
+        <result column="fish_id" property="fishId"/>
+        <result column="coach_id" property="coachId"/>
+        <result column="lineUp" property="lineUp"/>
+        <result column="league_name" property="leagueName"/>
+        <result column="player_name" property="playerName"/>
+        <result column="judge_name" property="judgeName"/>
+        <result column="judge_region" property="judgeRegion"/>
+        <result column="judge_birth" property="judgeBirth"/>
+        <result column="fish_name" property="fishName"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="year" property="year"/>
+        <result column="player_re_club_name" property="playerReClubName"/>
+        <result column="player_re_club_logo" property="playerReClubLogo"/>
+        <result column="player_number" property="playerNumber"/>
+        <result column="fish_re_club_name" property="fishReClubName"/>
+        <result column="fish_re_club_logo" property="fishReClubLogo"/>
+        <result column="fish_number" property="fishNumber"/>
+        <result column="coach_re_club_name" property="coachReClubName"/>
+        <result column="coach_re_club_logo" property="coachReClubLogo"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataLeagueOutstanding" resultMap="dataLeagueOutstandingMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_outstanding
+    </select>
+    <select id="selectDataLeagueOutstandingById" resultMap="dataLeagueOutstandingMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_outstanding
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataLeagueOutstanding" parameterType="dataLeagueOutstanding">
+        	INSERT INTO
+        	data_league_outstanding
+        	(
+        	data_league_outstanding.id , data_league_outstanding.content_url , data_league_outstanding.league_id , data_league_outstanding.player_id , data_league_outstanding.judge_id , data_league_outstanding.fish_id , data_league_outstanding.coach_id , data_league_outstanding.lineUp , data_league_outstanding.league_name , data_league_outstanding.player_name , data_league_outstanding.judge_name , data_league_outstanding.judge_region , data_league_outstanding.judge_birth , data_league_outstanding.fish_name , data_league_outstanding.coach_name , data_league_outstanding.year , data_league_outstanding.player_re_club_name , data_league_outstanding.player_re_club_logo , data_league_outstanding.player_number , data_league_outstanding.fish_re_club_name , data_league_outstanding.fish_re_club_logo , data_league_outstanding.fish_number , data_league_outstanding.coach_re_club_name , data_league_outstanding.coach_re_club_logo , data_league_outstanding.created_at , data_league_outstanding.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ contentUrl } , #{ leagueId } , #{ playerId } , #{ judgeId } , #{ fishId } , #{ coachId } , #{ lineUp } , #{ leagueName } , #{ playerName } , #{ judgeName } , #{ judgeRegion } , #{ judgeBirth } , #{ fishName } , #{ coachName } , #{ year } , #{ playerReClubName } , #{ playerReClubLogo } , #{ playerNumber } , #{ fishReClubName } , #{ fishReClubLogo } , #{ fishNumber } , #{ coachReClubName } , #{ coachReClubLogo } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataLeagueOutstanding" parameterType="dataLeagueOutstanding">
+        	UPDATE
+        	data_league_outstanding
+        	SET
+        	<if test="contentUrl != null">
+        	data_league_outstanding.ContentUrl = #{ contentUrl },
+        	</if>	<if test="leagueId != null">
+        	data_league_outstanding.LeagueId = #{ leagueId },
+        	</if>	<if test="playerId != null">
+        	data_league_outstanding.PlayerId = #{ playerId },
+        	</if>	<if test="judgeId != null">
+        	data_league_outstanding.JudgeId = #{ judgeId },
+        	</if>	<if test="fishId != null">
+        	data_league_outstanding.FishId = #{ fishId },
+        	</if>	<if test="coachId != null">
+        	data_league_outstanding.CoachId = #{ coachId },
+        	</if>	<if test="lineUp != null">
+        	data_league_outstanding.LineUp = #{ lineUp },
+        	</if>	<if test="leagueName != null">
+        	data_league_outstanding.LeagueName = #{ leagueName },
+        	</if>	<if test="playerName != null">
+        	data_league_outstanding.PlayerName = #{ playerName },
+        	</if>	<if test="judgeName != null">
+        	data_league_outstanding.JudgeName = #{ judgeName },
+        	</if>	<if test="judgeRegion != null">
+        	data_league_outstanding.JudgeRegion = #{ judgeRegion },
+        	</if>	<if test="judgeBirth != null">
+        	data_league_outstanding.JudgeBirth = #{ judgeBirth },
+        	</if>	<if test="fishName != null">
+        	data_league_outstanding.FishName = #{ fishName },
+        	</if>	<if test="coachName != null">
+        	data_league_outstanding.CoachName = #{ coachName },
+        	</if>	<if test="year != null">
+        	data_league_outstanding.Year = #{ year },
+        	</if>	<if test="playerReClubName != null">
+        	data_league_outstanding.PlayerReClubName = #{ playerReClubName },
+        	</if>	<if test="playerReClubLogo != null">
+        	data_league_outstanding.PlayerReClubLogo = #{ playerReClubLogo },
+        	</if>	<if test="playerNumber != null">
+        	data_league_outstanding.PlayerNumber = #{ playerNumber },
+        	</if>	<if test="fishReClubName != null">
+        	data_league_outstanding.FishReClubName = #{ fishReClubName },
+        	</if>	<if test="fishReClubLogo != null">
+        	data_league_outstanding.FishReClubLogo = #{ fishReClubLogo },
+        	</if>	<if test="fishNumber != null">
+        	data_league_outstanding.FishNumber = #{ fishNumber },
+        	</if>	<if test="coachReClubName != null">
+        	data_league_outstanding.CoachReClubName = #{ coachReClubName },
+        	</if>	<if test="coachReClubLogo != null">
+        	data_league_outstanding.CoachReClubLogo = #{ coachReClubLogo },
+        	</if>	<if test="createdAt != null">
+        	data_league_outstanding.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_league_outstanding.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataLeagueOutstandingById">
+        	DELETE FROM
+        	data_league_outstanding
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataMatchPlayerMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataMatchPlayer" id="dataMatchPlayerMap">
+        <id column="id" property="id"/>
+        <result column="match_id" property="matchId"/>
+        <result column="club_id" property="clubId"/>
+        <result column="player_id" property="playerId"/>
+        <result column="club_type" property="clubType"/>
+        <result column="player_name" property="playerName"/>
+        <result column="player_number" property="playerNumber"/>
+        <result column="position" property="position"/>
+        <result column="position_number" property="positionNumber"/>
+        <result column="player_type" property="playerType"/>
+        <result column="year" property="year"/>
+        <result column="coordinates" property="coordinates"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataMatchPlayer" resultMap="dataMatchPlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	data_match_player
+    </select>
+    <select id="selectDataMatchPlayerById" resultMap="dataMatchPlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	data_match_player
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataMatchPlayer" parameterType="dataMatchPlayer">
+        	INSERT INTO
+        	data_match_player
+        	(
+        	data_match_player.id , data_match_player.match_id , data_match_player.club_id , data_match_player.player_id , data_match_player.club_type , data_match_player.player_name , data_match_player.player_number , data_match_player.position , data_match_player.position_number , data_match_player.player_type , data_match_player.year , data_match_player.coordinates , data_match_player.created_at , data_match_player.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ matchId } , #{ clubId } , #{ playerId } , #{ clubType } , #{ playerName } , #{ playerNumber } , #{ position } , #{ positionNumber } , #{ playerType } , #{ year } , #{ coordinates } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataMatchPlayer" parameterType="dataMatchPlayer">
+        	UPDATE
+        	data_match_player
+        	SET
+        	<if test="matchId != null">
+        	data_match_player.MatchId = #{ matchId },
+        	</if>	<if test="clubId != null">
+        	data_match_player.ClubId = #{ clubId },
+        	</if>	<if test="playerId != null">
+        	data_match_player.PlayerId = #{ playerId },
+        	</if>	<if test="clubType != null">
+        	data_match_player.ClubType = #{ clubType },
+        	</if>	<if test="playerName != null">
+        	data_match_player.PlayerName = #{ playerName },
+        	</if>	<if test="playerNumber != null">
+        	data_match_player.PlayerNumber = #{ playerNumber },
+        	</if>	<if test="position != null">
+        	data_match_player.Position = #{ position },
+        	</if>	<if test="positionNumber != null">
+        	data_match_player.PositionNumber = #{ positionNumber },
+        	</if>	<if test="playerType != null">
+        	data_match_player.PlayerType = #{ playerType },
+        	</if>	<if test="year != null">
+        	data_match_player.Year = #{ year },
+        	</if>	<if test="coordinates != null">
+        	data_match_player.Coordinates = #{ coordinates },
+        	</if>	<if test="createdAt != null">
+        	data_match_player.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_match_player.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataMatchPlayerById">
+        	DELETE FROM
+        	data_match_player
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataLeagueUpdownMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataLeagueUpdown" id="dataLeagueUpdownMap">
+        <id column="id" property="id"/>
+        <result column="league_id" property="leagueId"/>
+        <result column="club_id" property="clubId"/>
+        <result column="updown_type" property="updownType"/>
+        <result column="year" property="year"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataLeagueUpdown" resultMap="dataLeagueUpdownMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_updown
+    </select>
+    <select id="selectDataLeagueUpdownById" resultMap="dataLeagueUpdownMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_updown
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataLeagueUpdown" parameterType="dataLeagueUpdown">
+        	INSERT INTO
+        	data_league_updown
+        	(
+        	data_league_updown.id , data_league_updown.league_id , data_league_updown.club_id , data_league_updown.updown_type , data_league_updown.year , data_league_updown.created_at , data_league_updown.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ leagueId } , #{ clubId } , #{ updownType } , #{ year } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataLeagueUpdown" parameterType="dataLeagueUpdown">
+        	UPDATE
+        	data_league_updown
+        	SET
+        	<if test="leagueId != null">
+        	data_league_updown.LeagueId = #{ leagueId },
+        	</if>	<if test="clubId != null">
+        	data_league_updown.ClubId = #{ clubId },
+        	</if>	<if test="updownType != null">
+        	data_league_updown.UpdownType = #{ updownType },
+        	</if>	<if test="year != null">
+        	data_league_updown.Year = #{ year },
+        	</if>	<if test="createdAt != null">
+        	data_league_updown.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_league_updown.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataLeagueUpdownById">
+        	DELETE FROM
+        	data_league_updown
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

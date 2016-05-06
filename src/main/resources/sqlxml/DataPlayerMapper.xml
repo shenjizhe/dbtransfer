@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataPlayerMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataPlayer" id="dataPlayerMap">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="english_name" property="englishName"/>
+        <result column="country" property="country"/>
+        <result column="native_place" property="nativePlace"/>
+        <result column="birth" property="birth"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataPlayer" resultMap="dataPlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	data_player
+    </select>
+    <select id="selectDataPlayerById" resultMap="dataPlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	data_player
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataPlayer" parameterType="dataPlayer">
+        	INSERT INTO
+        	data_player
+        	(
+        	data_player.id , data_player.name , data_player.english_name , data_player.country , data_player.native_place , data_player.birth , data_player.created_at , data_player.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ name } , #{ englishName } , #{ country } , #{ nativePlace } , #{ birth } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataPlayer" parameterType="dataPlayer">
+        	UPDATE
+        	data_player
+        	SET
+        	<if test="name != null">
+        	data_player.Name = #{ name },
+        	</if>	<if test="englishName != null">
+        	data_player.EnglishName = #{ englishName },
+        	</if>	<if test="country != null">
+        	data_player.Country = #{ country },
+        	</if>	<if test="nativePlace != null">
+        	data_player.NativePlace = #{ nativePlace },
+        	</if>	<if test="birth != null">
+        	data_player.Birth = #{ birth },
+        	</if>	<if test="createdAt != null">
+        	data_player.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_player.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataPlayerById">
+        	DELETE FROM
+        	data_player
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

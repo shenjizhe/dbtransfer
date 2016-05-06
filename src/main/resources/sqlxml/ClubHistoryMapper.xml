@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.ClubHistoryMapper">
+    <resultMap type="com.ninehcom.transfer.entity.ClubHistory" id="clubHistoryMap">
+        <id column="id" property="id"/>
+        <result column="club_id" property="clubId"/>
+        <result column="year" property="year"/>
+        <result column="logo" property="logo"/>
+        <result column="name" property="name"/>
+        <result column="en_name" property="enName"/>
+        <result column="full_name" property="fullName"/>
+        <result column="en_full_name" property="enFullName"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+        <result column="court" property="court"/>
+        <result column="color" property="color"/>
+    </resultMap>
+    <select id="selectAllClubHistory" resultMap="clubHistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	club_history
+    </select>
+    <select id="selectClubHistoryById" resultMap="clubHistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	club_history
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertClubHistory" parameterType="clubHistory">
+        	INSERT INTO
+        	club_history
+        	(
+        	club_history.id , club_history.club_id , club_history.year , club_history.logo , club_history.name , club_history.en_name , club_history.full_name , club_history.en_full_name , club_history.created_at , club_history.updated_at , club_history.court , club_history.color
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ clubId } , #{ year } , #{ logo } , #{ name } , #{ enName } , #{ fullName } , #{ enFullName } , #{ createdAt } , #{ updatedAt } , #{ court } , #{ color }
+        	)
+    </insert>
+    <update id="updateClubHistory" parameterType="clubHistory">
+        	UPDATE
+        	club_history
+        	SET
+        	<if test="clubId != null">
+        	club_history.ClubId = #{ clubId },
+        	</if>	<if test="year != null">
+        	club_history.Year = #{ year },
+        	</if>	<if test="logo != null">
+        	club_history.Logo = #{ logo },
+        	</if>	<if test="name != null">
+        	club_history.Name = #{ name },
+        	</if>	<if test="enName != null">
+        	club_history.EnName = #{ enName },
+        	</if>	<if test="fullName != null">
+        	club_history.FullName = #{ fullName },
+        	</if>	<if test="enFullName != null">
+        	club_history.EnFullName = #{ enFullName },
+        	</if>	<if test="createdAt != null">
+        	club_history.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	club_history.UpdatedAt = #{ updatedAt },
+        	</if>	<if test="court != null">
+        	club_history.Court = #{ court },
+        	</if>	<if test="color != null">
+        	club_history.Color = #{ color }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteClubHistoryById">
+        	DELETE FROM
+        	club_history
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

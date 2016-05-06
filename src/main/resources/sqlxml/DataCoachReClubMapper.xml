@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataCoachReClubMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataCoachReClub" id="dataCoachReClubMap">
+        <id column="id" property="id"/>
+        <result column="coach_id" property="coachId"/>
+        <result column="club_id" property="clubId"/>
+        <result column="type" property="type"/>
+        <result column="type_name" property="typeName"/>
+        <result column="club_history_id" property="clubHistoryId"/>
+        <result column="avatar" property="avatar"/>
+        <result column="is_last_served" property="isLastServed"/>
+        <result column="year" property="year"/>
+        <result column="end_year" property="endYear"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataCoachReClub" resultMap="dataCoachReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	data_coach_re_club
+    </select>
+    <select id="selectDataCoachReClubById" resultMap="dataCoachReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	data_coach_re_club
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataCoachReClub" parameterType="dataCoachReClub">
+        	INSERT INTO
+        	data_coach_re_club
+        	(
+        	data_coach_re_club.id , data_coach_re_club.coach_id , data_coach_re_club.club_id , data_coach_re_club.type , data_coach_re_club.type_name , data_coach_re_club.club_history_id , data_coach_re_club.avatar , data_coach_re_club.is_last_served , data_coach_re_club.year , data_coach_re_club.end_year , data_coach_re_club.created_at , data_coach_re_club.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ coachId } , #{ clubId } , #{ type } , #{ typeName } , #{ clubHistoryId } , #{ avatar } , #{ isLastServed } , #{ year } , #{ endYear } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataCoachReClub" parameterType="dataCoachReClub">
+        	UPDATE
+        	data_coach_re_club
+        	SET
+        	<if test="coachId != null">
+        	data_coach_re_club.CoachId = #{ coachId },
+        	</if>	<if test="clubId != null">
+        	data_coach_re_club.ClubId = #{ clubId },
+        	</if>	<if test="type != null">
+        	data_coach_re_club.Type = #{ type },
+        	</if>	<if test="typeName != null">
+        	data_coach_re_club.TypeName = #{ typeName },
+        	</if>	<if test="clubHistoryId != null">
+        	data_coach_re_club.ClubHistoryId = #{ clubHistoryId },
+        	</if>	<if test="avatar != null">
+        	data_coach_re_club.Avatar = #{ avatar },
+        	</if>	<if test="isLastServed != null">
+        	data_coach_re_club.IsLastServed = #{ isLastServed },
+        	</if>	<if test="year != null">
+        	data_coach_re_club.Year = #{ year },
+        	</if>	<if test="endYear != null">
+        	data_coach_re_club.EndYear = #{ endYear },
+        	</if>	<if test="createdAt != null">
+        	data_coach_re_club.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_coach_re_club.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataCoachReClubById">
+        	DELETE FROM
+        	data_coach_re_club
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

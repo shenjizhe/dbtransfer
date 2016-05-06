@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataLeagueRankClubHomeMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataLeagueRankClubHome" id="dataLeagueRankClubHomeMap">
+        <id column="id" property="id"/>
+        <result column="league_id" property="leagueId"/>
+        <result column="league_sub_id" property="leagueSubId"/>
+        <result column="club_id" property="clubId"/>
+        <result column="club_history_id" property="clubHistoryId"/>
+        <result column="round" property="round"/>
+        <result column="wins" property="wins"/>
+        <result column="ties" property="ties"/>
+        <result column="loses" property="loses"/>
+        <result column="goals" property="goals"/>
+        <result column="goals_a" property="goalsA"/>
+        <result column="goals_d" property="goalsD"/>
+        <result column="points" property="points"/>
+        <result column="year" property="year"/>
+        <result column="end_year" property="endYear"/>
+        <result column="display_order" property="displayOrder"/>
+        <result column="ranking_status" property="rankingStatus"/>
+        <result column="pre_ranking" property="preRanking"/>
+        <result column="ranking" property="ranking"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataLeagueRankClubHome" resultMap="dataLeagueRankClubHomeMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_rank_club_home
+    </select>
+    <select id="selectDataLeagueRankClubHomeById" resultMap="dataLeagueRankClubHomeMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_rank_club_home
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataLeagueRankClubHome" parameterType="dataLeagueRankClubHome">
+        	INSERT INTO
+        	data_league_rank_club_home
+        	(
+        	data_league_rank_club_home.id , data_league_rank_club_home.league_id , data_league_rank_club_home.league_sub_id , data_league_rank_club_home.club_id , data_league_rank_club_home.club_history_id , data_league_rank_club_home.round , data_league_rank_club_home.wins , data_league_rank_club_home.ties , data_league_rank_club_home.loses , data_league_rank_club_home.goals , data_league_rank_club_home.goals_a , data_league_rank_club_home.goals_d , data_league_rank_club_home.points , data_league_rank_club_home.year , data_league_rank_club_home.end_year , data_league_rank_club_home.display_order , data_league_rank_club_home.ranking_status , data_league_rank_club_home.pre_ranking , data_league_rank_club_home.ranking , data_league_rank_club_home.created_at , data_league_rank_club_home.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ leagueId } , #{ leagueSubId } , #{ clubId } , #{ clubHistoryId } , #{ round } , #{ wins } , #{ ties } , #{ loses } , #{ goals } , #{ goalsA } , #{ goalsD } , #{ points } , #{ year } , #{ endYear } , #{ displayOrder } , #{ rankingStatus } , #{ preRanking } , #{ ranking } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataLeagueRankClubHome" parameterType="dataLeagueRankClubHome">
+        	UPDATE
+        	data_league_rank_club_home
+        	SET
+        	<if test="leagueId != null">
+        	data_league_rank_club_home.LeagueId = #{ leagueId },
+        	</if>	<if test="leagueSubId != null">
+        	data_league_rank_club_home.LeagueSubId = #{ leagueSubId },
+        	</if>	<if test="clubId != null">
+        	data_league_rank_club_home.ClubId = #{ clubId },
+        	</if>	<if test="clubHistoryId != null">
+        	data_league_rank_club_home.ClubHistoryId = #{ clubHistoryId },
+        	</if>	<if test="round != null">
+        	data_league_rank_club_home.Round = #{ round },
+        	</if>	<if test="wins != null">
+        	data_league_rank_club_home.Wins = #{ wins },
+        	</if>	<if test="ties != null">
+        	data_league_rank_club_home.Ties = #{ ties },
+        	</if>	<if test="loses != null">
+        	data_league_rank_club_home.Loses = #{ loses },
+        	</if>	<if test="goals != null">
+        	data_league_rank_club_home.Goals = #{ goals },
+        	</if>	<if test="goalsA != null">
+        	data_league_rank_club_home.GoalsA = #{ goalsA },
+        	</if>	<if test="goalsD != null">
+        	data_league_rank_club_home.GoalsD = #{ goalsD },
+        	</if>	<if test="points != null">
+        	data_league_rank_club_home.Points = #{ points },
+        	</if>	<if test="year != null">
+        	data_league_rank_club_home.Year = #{ year },
+        	</if>	<if test="endYear != null">
+        	data_league_rank_club_home.EndYear = #{ endYear },
+        	</if>	<if test="displayOrder != null">
+        	data_league_rank_club_home.DisplayOrder = #{ displayOrder },
+        	</if>	<if test="rankingStatus != null">
+        	data_league_rank_club_home.RankingStatus = #{ rankingStatus },
+        	</if>	<if test="preRanking != null">
+        	data_league_rank_club_home.PreRanking = #{ preRanking },
+        	</if>	<if test="ranking != null">
+        	data_league_rank_club_home.Ranking = #{ ranking },
+        	</if>	<if test="createdAt != null">
+        	data_league_rank_club_home.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_league_rank_club_home.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataLeagueRankClubHomeById">
+        	DELETE FROM
+        	data_league_rank_club_home
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

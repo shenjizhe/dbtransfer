@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataLeagueReClubMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataLeagueReClub" id="dataLeagueReClubMap">
+        <id column="id" property="id"/>
+        <result column="club_id" property="clubId"/>
+        <result column="league_id" property="leagueId"/>
+        <result column="league_name" property="leagueName"/>
+        <result column="year" property="year"/>
+        <result column="honors" property="honors"/>
+        <result column="display_order" property="displayOrder"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataLeagueReClub" resultMap="dataLeagueReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_re_club
+    </select>
+    <select id="selectDataLeagueReClubById" resultMap="dataLeagueReClubMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_re_club
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataLeagueReClub" parameterType="dataLeagueReClub">
+        	INSERT INTO
+        	data_league_re_club
+        	(
+        	data_league_re_club.id , data_league_re_club.club_id , data_league_re_club.league_id , data_league_re_club.league_name , data_league_re_club.year , data_league_re_club.honors , data_league_re_club.display_order , data_league_re_club.created_at , data_league_re_club.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ clubId } , #{ leagueId } , #{ leagueName } , #{ year } , #{ honors } , #{ displayOrder } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataLeagueReClub" parameterType="dataLeagueReClub">
+        	UPDATE
+        	data_league_re_club
+        	SET
+        	<if test="clubId != null">
+        	data_league_re_club.ClubId = #{ clubId },
+        	</if>	<if test="leagueId != null">
+        	data_league_re_club.LeagueId = #{ leagueId },
+        	</if>	<if test="leagueName != null">
+        	data_league_re_club.LeagueName = #{ leagueName },
+        	</if>	<if test="year != null">
+        	data_league_re_club.Year = #{ year },
+        	</if>	<if test="honors != null">
+        	data_league_re_club.Honors = #{ honors },
+        	</if>	<if test="displayOrder != null">
+        	data_league_re_club.DisplayOrder = #{ displayOrder },
+        	</if>	<if test="createdAt != null">
+        	data_league_re_club.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_league_re_club.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataLeagueReClubById">
+        	DELETE FROM
+        	data_league_re_club
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

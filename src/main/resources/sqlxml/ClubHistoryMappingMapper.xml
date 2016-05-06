@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.ClubHistoryMappingMapper">
+    <resultMap type="com.ninehcom.transfer.entity.ClubHistoryMapping" id="clubHistoryMappingMap">
+        <id column="team_history_id" property="teamHistoryId"/>
+        <result column="club_history_id" property="clubHistoryId"/>
+    </resultMap>
+    <select id="selectAllClubHistoryMapping" resultMap="clubHistoryMappingMap">
+        	SELECT
+        	*
+        	FROM
+        	club_history_mapping
+    </select>
+    <select id="selectClubHistoryMappingById" resultMap="clubHistoryMappingMap">
+        	SELECT
+        	*
+        	FROM
+        	club_history_mapping
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertClubHistoryMapping" parameterType="clubHistoryMapping">
+        	INSERT INTO
+        	club_history_mapping
+        	(
+        	club_history_mapping.team_history_id , club_history_mapping.club_history_id
+        	)
+        	VALUES
+        	(
+        	#{ teamHistoryId } , #{ clubHistoryId }
+        	)
+    </insert>
+    <update id="updateClubHistoryMapping" parameterType="clubHistoryMapping">
+        	UPDATE
+        	club_history_mapping
+        	SET
+        	<if test="clubHistoryId != null">
+        	club_history_mapping.ClubHistoryId = #{ clubHistoryId }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteClubHistoryMappingById">
+        	DELETE FROM
+        	club_history_mapping
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

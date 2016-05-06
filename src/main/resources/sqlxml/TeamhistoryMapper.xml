@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.TeamhistoryMapper">
+    <resultMap type="com.ninehcom.transfer.entity.Teamhistory" id="teamhistoryMap">
+        <id column="Id" property="id"/>
+        <result column="TeamId" property="teamId"/>
+        <result column="Logo" property="logo"/>
+        <result column="Name" property="name"/>
+        <result column="EnglishName" property="englishName"/>
+        <result column="HomeCourt" property="homeCourt"/>
+        <result column="ColorValue" property="colorValue"/>
+        <result column="Years" property="years"/>
+        <result column="CreateTime" property="createTime"/>
+        <result column="UpdateTime" property="updateTime"/>
+    </resultMap>
+    <select id="selectAllTeamhistory" resultMap="teamhistoryMap">
+         SELECT
+         *
+         FROM
+         teamhistory
+    </select>
+    <select id="selectTeamhistoryById" resultMap="teamhistoryMap">
+         SELECT
+         *
+         FROM
+         teamhistory
+         WHERE
+         ID=#{0}
+    </select>
+</mapper>
+

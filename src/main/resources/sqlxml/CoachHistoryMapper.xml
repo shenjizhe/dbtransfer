@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.CoachHistoryMapper">
+    <resultMap type="com.ninehcom.transfer.entity.CoachHistory" id="coachHistoryMap">
+        <id column="id" property="id"/>
+        <result column="year" property="year"/>
+        <result column="end_year" property="endYear"/>
+        <result column="coach_id" property="coachId"/>
+        <result column="coach_name" property="coachName"/>
+        <result column="league_name" property="leagueName"/>
+        <result column="club_name" property="clubName"/>
+        <result column="honors" property="honors"/>
+        <result column="create_at" property="createAt"/>
+        <result column="update_at" property="updateAt"/>
+    </resultMap>
+    <select id="selectAllCoachHistory" resultMap="coachHistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	coach_history
+    </select>
+    <select id="selectCoachHistoryById" resultMap="coachHistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	coach_history
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertCoachHistory" parameterType="coachHistory">
+        	INSERT INTO
+        	coach_history
+        	(
+        	coach_history.id , coach_history.year , coach_history.end_year , coach_history.coach_id , coach_history.coach_name , coach_history.league_name , coach_history.club_name , coach_history.honors , coach_history.create_at , coach_history.update_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ year } , #{ endYear } , #{ coachId } , #{ coachName } , #{ leagueName } , #{ clubName } , #{ honors } , #{ createAt } , #{ updateAt }
+        	)
+    </insert>
+    <update id="updateCoachHistory" parameterType="coachHistory">
+        	UPDATE
+        	coach_history
+        	SET
+        	<if test="year != null">
+        	coach_history.Year = #{ year },
+        	</if>	<if test="endYear != null">
+        	coach_history.EndYear = #{ endYear },
+        	</if>	<if test="coachId != null">
+        	coach_history.CoachId = #{ coachId },
+        	</if>	<if test="coachName != null">
+        	coach_history.CoachName = #{ coachName },
+        	</if>	<if test="leagueName != null">
+        	coach_history.LeagueName = #{ leagueName },
+        	</if>	<if test="clubName != null">
+        	coach_history.ClubName = #{ clubName },
+        	</if>	<if test="honors != null">
+        	coach_history.Honors = #{ honors },
+        	</if>	<if test="createAt != null">
+        	coach_history.CreateAt = #{ createAt },
+        	</if>	<if test="updateAt != null">
+        	coach_history.UpdateAt = #{ updateAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteCoachHistoryById">
+        	DELETE FROM
+        	coach_history
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

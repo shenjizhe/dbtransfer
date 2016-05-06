@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.DataLeagueRankAssistantMapper">
+    <resultMap type="com.ninehcom.transfer.entity.DataLeagueRankAssistant" id="dataLeagueRankAssistantMap">
+        <id column="id" property="id"/>
+        <result column="league_id" property="leagueId"/>
+        <result column="player_id" property="playerId"/>
+        <result column="club_id" property="clubId"/>
+        <result column="club_history_id" property="clubHistoryId"/>
+        <result column="assistants" property="assistants"/>
+        <result column="home_assistants" property="homeAssistants"/>
+        <result column="guest_assistants" property="guestAssistants"/>
+        <result column="pre_ranking" property="preRanking"/>
+        <result column="ranking" property="ranking"/>
+        <result column="year" property="year"/>
+        <result column="end_year" property="endYear"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
+    </resultMap>
+    <select id="selectAllDataLeagueRankAssistant" resultMap="dataLeagueRankAssistantMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_rank_assistant
+    </select>
+    <select id="selectDataLeagueRankAssistantById" resultMap="dataLeagueRankAssistantMap">
+        	SELECT
+        	*
+        	FROM
+        	data_league_rank_assistant
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertDataLeagueRankAssistant" parameterType="dataLeagueRankAssistant">
+        	INSERT INTO
+        	data_league_rank_assistant
+        	(
+        	data_league_rank_assistant.id , data_league_rank_assistant.league_id , data_league_rank_assistant.player_id , data_league_rank_assistant.club_id , data_league_rank_assistant.club_history_id , data_league_rank_assistant.assistants , data_league_rank_assistant.home_assistants , data_league_rank_assistant.guest_assistants , data_league_rank_assistant.pre_ranking , data_league_rank_assistant.ranking , data_league_rank_assistant.year , data_league_rank_assistant.end_year , data_league_rank_assistant.created_at , data_league_rank_assistant.updated_at
+        	)
+        	VALUES
+        	(
+        	#{ id } , #{ leagueId } , #{ playerId } , #{ clubId } , #{ clubHistoryId } , #{ assistants } , #{ homeAssistants } , #{ guestAssistants } , #{ preRanking } , #{ ranking } , #{ year } , #{ endYear } , #{ createdAt } , #{ updatedAt }
+        	)
+    </insert>
+    <update id="updateDataLeagueRankAssistant" parameterType="dataLeagueRankAssistant">
+        	UPDATE
+        	data_league_rank_assistant
+        	SET
+        	<if test="leagueId != null">
+        	data_league_rank_assistant.LeagueId = #{ leagueId },
+        	</if>	<if test="playerId != null">
+        	data_league_rank_assistant.PlayerId = #{ playerId },
+        	</if>	<if test="clubId != null">
+        	data_league_rank_assistant.ClubId = #{ clubId },
+        	</if>	<if test="clubHistoryId != null">
+        	data_league_rank_assistant.ClubHistoryId = #{ clubHistoryId },
+        	</if>	<if test="assistants != null">
+        	data_league_rank_assistant.Assistants = #{ assistants },
+        	</if>	<if test="homeAssistants != null">
+        	data_league_rank_assistant.HomeAssistants = #{ homeAssistants },
+        	</if>	<if test="guestAssistants != null">
+        	data_league_rank_assistant.GuestAssistants = #{ guestAssistants },
+        	</if>	<if test="preRanking != null">
+        	data_league_rank_assistant.PreRanking = #{ preRanking },
+        	</if>	<if test="ranking != null">
+        	data_league_rank_assistant.Ranking = #{ ranking },
+        	</if>	<if test="year != null">
+        	data_league_rank_assistant.Year = #{ year },
+        	</if>	<if test="endYear != null">
+        	data_league_rank_assistant.EndYear = #{ endYear },
+        	</if>	<if test="createdAt != null">
+        	data_league_rank_assistant.CreatedAt = #{ createdAt },
+        	</if>	<if test="updatedAt != null">
+        	data_league_rank_assistant.UpdatedAt = #{ updatedAt }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteDataLeagueRankAssistantById">
+        	DELETE FROM
+        	data_league_rank_assistant
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+
