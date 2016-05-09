@@ -14,57 +14,69 @@
         <result column="updated_at" property="updatedAt"/>
     </resultMap>
     <select id="selectAllDataCoach" resultMap="dataCoachMap">
-        	SELECT
-        	*
-        	FROM
-        	data_coach
+        SELECT
+        *
+        FROM
+        data_coach
+    </select>
+    <select id="selectDataCoachMaxId" resultType="int">
+        SELECT
+        MAX(id)
+        FROM
+        data_coach
     </select>
     <select id="selectDataCoachById" resultMap="dataCoachMap">
-        	SELECT
-        	*
-        	FROM
-        	data_coach
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        data_coach
+        WHERE
+        ID=#{0}
     </select>
     <insert id="insertDataCoach" parameterType="dataCoach">
-        	INSERT INTO
-        	data_coach
-        	(
-        	data_coach.id , data_coach.name , data_coach.english_name , data_coach.country , data_coach.native_place , data_coach.birth , data_coach.created_at , data_coach.updated_at
-        	)
-        	VALUES
-        	(
-        	#{ id } , #{ name } , #{ englishName } , #{ country } , #{ nativePlace } , #{ birth } , #{ createdAt } , #{ updatedAt }
-        	)
+        INSERT INTO
+        data_coach
+        (
+        data_coach.id , data_coach.name , data_coach.english_name , data_coach.country , data_coach.native_place , data_coach.birth , data_coach.created_at , data_coach.updated_at
+        )
+        VALUES
+        (
+        #{ id } , #{ name } , #{ englishName } , #{ country } , #{ nativePlace } , #{ birth } , #{ createdAt } , #{ updatedAt }
+        )
     </insert>
     <update id="updateDataCoach" parameterType="dataCoach">
-        	UPDATE
-        	data_coach
-        	SET
-        	<if test="name != null">
-        	data_coach.Name = #{ name },
-        	</if>	<if test="englishName != null">
-        	data_coach.EnglishName = #{ englishName },
-        	</if>	<if test="country != null">
-        	data_coach.Country = #{ country },
-        	</if>	<if test="nativePlace != null">
-        	data_coach.NativePlace = #{ nativePlace },
-        	</if>	<if test="birth != null">
-        	data_coach.Birth = #{ birth },
-        	</if>	<if test="createdAt != null">
-        	data_coach.CreatedAt = #{ createdAt },
-        	</if>	<if test="updatedAt != null">
-        	data_coach.UpdatedAt = #{ updatedAt }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        data_coach
+        SET
+        <if test="name != null">
+            data_coach.Name = #{ name },
+        </if>	
+        <if test="englishName != null">
+            data_coach.EnglishName = #{ englishName },
+        </if>	
+        <if test="country != null">
+            data_coach.Country = #{ country },
+        </if>	
+        <if test="nativePlace != null">
+            data_coach.NativePlace = #{ nativePlace },
+        </if>	
+        <if test="birth != null">
+            data_coach.Birth = #{ birth },
+        </if>	
+        <if test="createdAt != null">
+            data_coach.CreatedAt = #{ createdAt },
+        </if>	
+        <if test="updatedAt != null">
+            data_coach.UpdatedAt = #{ updatedAt }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deleteDataCoachById">
-        	DELETE FROM
-        	data_coach
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        data_coach
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

@@ -6,13 +6,16 @@
 id                  |Integer   |唯一主键
 time                |Date      |操作时间
 operator            |String    |操作
-tables              |String    |表明
+source              |String    |源表
+destination         |String    |目标表
 sourceCount         |Integer   |源表数量
 destinationCount    |Integer   |目标数量
 sameCount           |Integer   |相同数量
+mappingCount        |Integer   |映射数量
 sourceDiff          |Integer   |源表不同数量
 destinationDiff     |Integer   |目的表不同数量
 check               |Boolean   |数量检查
+err                 |String    |错误
 
 ### 1.获取所有转换日志：（GET） ###
 [https://localhost/translog](https://localhost/translog)

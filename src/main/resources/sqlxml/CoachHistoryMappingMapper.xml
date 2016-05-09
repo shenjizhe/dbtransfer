@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.CoachHistoryMappingMapper">
+    <resultMap type="com.ninehcom.transfer.entity.CoachHistoryMapping" id="coachHistoryMappingMap">
+        <id column="coach_history_id" property="coachHistoryId"/>
+        <result column="coach_re_club_id" property="coachReClubId"/>
+    </resultMap>
+    <select id="selectAllCoachHistoryMapping" resultMap="coachHistoryMappingMap">
+        	SELECT
+        	*
+        	FROM
+        	coach_history_mapping
+    </select>
+    <select id="selectCoachHistoryMappingById" resultMap="coachHistoryMappingMap">
+        	SELECT
+        	*
+        	FROM
+        	coach_history_mapping
+        	WHERE
+        	ID=#{0}
+    </select>
+    <insert id="insertCoachHistoryMapping" parameterType="coachHistoryMapping">
+        	INSERT INTO
+        	coach_history_mapping
+        	(
+        	coach_history_mapping.coach_history_id , coach_history_mapping.coach_re_club_id
+        	)
+        	VALUES
+        	(
+        	#{ coachHistoryId } , #{ coachReClubId }
+        	)
+    </insert>
+    <update id="updateCoachHistoryMapping" parameterType="coachHistoryMapping">
+        	UPDATE
+        	coach_history_mapping
+        	SET
+        	<if test="coachReClubId != null">
+        	coach_history_mapping.CoachReClubId = #{ coachReClubId }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteCoachHistoryMappingById">
+        	DELETE FROM
+        	coach_history_mapping
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

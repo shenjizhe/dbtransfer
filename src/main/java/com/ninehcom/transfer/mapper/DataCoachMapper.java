@@ -2,6 +2,7 @@ package com.ninehcom.transfer.mapper;
 
 import com.ninehcom.transfer.entity.DataCoach;
 import com.ninehcom.common.entity.PageParam;
+import com.ninehcom.transfer.interfaces.IMax;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class DataCoachMapper {
+public class DataCoachMapper implements IMax{
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
@@ -37,5 +38,10 @@ public class DataCoachMapper {
 
     public int deleteDataCoachById(int Id){
 	return sqlSession.delete("deleteDataCoachById", Id);
+    }
+    
+    @Override
+    public int getMax() {
+        return sqlSession.selectOne("selectDataCoachMaxId");
     }
 }

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.PlayerhistoryMapper">
+    <resultMap type="com.ninehcom.transfer.entity.Playerhistory" id="playerhistoryMap">
+        <id column="Id" property="id"/>
+        <result column="TeamId" property="teamId"/>
+        <result column="TeamHistoryId" property="teamHistoryId"/>
+        <result column="TeamLogo" property="teamLogo"/>
+        <result column="TeamName" property="teamName"/>
+        <result column="PlayerId" property="playerId"/>
+        <result column="HalfLogo" property="halfLogo"/>
+        <result column="Logo" property="logo"/>
+        <result column="InfoLogo" property="infoLogo"/>
+        <result column="Name" property="name"/>
+        <result column="EnglishName" property="englishName"/>
+        <result column="Age" property="age"/>
+        <result column="Height" property="height"/>
+        <result column="Weight" property="weight"/>
+        <result column="JerseyNum" property="jerseyNum"/>
+        <result column="PositionId" property="positionId"/>
+        <result column="PositionName" property="positionName"/>
+        <result column="EnterTimes" property="enterTimes"/>
+        <result column="EnterTime" property="enterTime"/>
+        <result column="ShootTimes" property="shootTimes"/>
+        <result column="AssistTimes" property="assistTimes"/>
+        <result column="YellowTimes" property="yellowTimes"/>
+        <result column="RedTimes" property="redTimes"/>
+        <result column="Years" property="years"/>
+        <result column="CreateTime" property="createTime"/>
+        <result column="UpdateTime" property="updateTime"/>
+    </resultMap>
+    <select id="selectAllPlayerhistory" resultMap="playerhistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	playerhistory
+    </select>
+    <select id="selectPlayerhistoryById" resultMap="playerhistoryMap">
+        	SELECT
+        	*
+        	FROM
+        	playerhistory
+        	WHERE
+        	ID=#{0}
+    </select>
+</mapper>
+

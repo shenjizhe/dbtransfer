@@ -25,11 +25,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClubTransfer extends TransferBase<Team, DataClub> implements ITransfer {
-
-    @Autowired
-    private DataClubMapper dataClubMapper;
     @Autowired
     private TeamMapper teamMapper;
+    @Autowired
+    private DataClubMapper dataClubMapper;
     @Autowired
     private ClubMappingMapper clubMappingMapper;
     @Autowired
