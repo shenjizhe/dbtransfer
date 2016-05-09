@@ -17,11 +17,13 @@ import com.ninehcom.transfer.mapper.DataCoachMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Shenjizhe
  */
+@Service
 public class CoachTransfer extends TransferBase<Coach, DataCoach> implements ITransfer {
 
     @Autowired
