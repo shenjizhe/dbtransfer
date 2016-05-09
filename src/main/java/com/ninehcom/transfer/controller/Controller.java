@@ -58,7 +58,7 @@ public class Controller {
     
     @RequestMapping(value = "/5.trans-coach", method = RequestMethod.GET)
     @ResponseBody
-    public Result coachPlayer() {
+    public Result transCoach() {
         return coachTransfer.trans();
     }
 }
