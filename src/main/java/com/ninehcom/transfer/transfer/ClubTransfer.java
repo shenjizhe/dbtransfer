@@ -77,6 +77,6 @@ public class ClubTransfer extends TransferBase<Team, DataClub> implements ITrans
 
     @Override
     public IMapper getReseter() {
-        return clubMappingMapper;
+        return null;
     }
 }

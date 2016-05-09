@@ -12,6 +12,7 @@ import com.ninehcom.transfer.entity.ClubHistory;
 import com.ninehcom.transfer.entity.ClubHistoryMapping;
 import com.ninehcom.transfer.entity.Teamhistory;
 import com.ninehcom.transfer.entity.Translog;
+import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMapper;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
@@ -30,7 +31,7 @@ import org.springframework.stereotype.Service;
  * @author Shenjizhe
  */
 @Service
-public class ClubHistoryTransfer implements ITransfer{
+public class ClubHistoryTransfer extends TransferBase<Teamhistory, ClubHistory> implements ITransfer {
 
     @Autowired
     private ClubHistoryMapper clubHistoryMapper;
@@ -47,53 +48,51 @@ public class ClubHistoryTransfer implements ITransfer{
     public Result trans() {
         List<Teamhistory> teamList = teamhistoryMapper.selectAllTeamhistory();
         List<ClubHistory> clubList = clubHistoryMapper.selectAllClubHistory();
-        
-        clubMappingMapper.reset(teamList);
-        Translog log = new Translog();
-        
-        try {
-            ListComparator<Teamhistory, ClubHistory> comparator = new ListComparator(Teamhistory.class, ClubHistory.class, "getTeamId,getYears", "getClubId,getYear");
-            ListComparator.Result result = comparator.compare(teamList, clubList);
-            
-            log = result.getLog(teamList, clubList, "teamhistory", "club_history");
-            Map<Teamhistory, ClubHistory> same = result.getSame();
-            int mappingCount = 0;
-            for (Teamhistory team : same.keySet()) {
-                ClubHistory club = same.get(team);
-                ClubHistoryMapping mapping = new ClubHistoryMapping(team.getId(), club.getId());
-                clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
-                mappingCount++;
-            }
-            
-            int id = clubHistoryMapper.getMax();
-            List<Teamhistory> diff1 = result.getDiff1();
-            for (Teamhistory team : diff1) {
-                ClubHistory club = new ClubHistory();
-                id++;
-                club.setId((long) id);
-                club.setClubId(team.getTeamId().longValue());
-                club.setName(team.getName());
-                club.setEnName(team.getEnglishName());
-                club.setCourt(team.getHomeCourt());
-                club.setLogo(team.getLogo());
-                club.setYear(team.getYears().toString());
-                club.setCreatedAt(team.getCreateTime());
-                club.setUpdatedAt(team.getUpdateTime());
 
-                clubHistoryMapper.insertClubHistory(club);
-                ClubHistoryMapping mapping = new ClubHistoryMapping(team.getId(), club.getId());
-                clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
-                mappingCount++;
-            }
-            log.setMappingCount(mappingCount);
-        }  catch (Exception ex) {
-            log.setErr(ex.getMessage() + "\t" + ex.getStackTrace());
-            Logger.getLogger(ClubHistoryTransfer.class.getName()).log(Level.SEVERE, null, ex);
-            translogMapper.insertTranslog(log);
-            return Result.Fail(ErrorCode.Fail, ex);
-        }
-            
-        translogMapper.insertTranslog(log);
-        return Result.Success();
+        return trans(Teamhistory.class, ClubHistory.class, teamList, clubList, "teamHistory", "club_history", "getTeamId,getYears", "getClubId,getYear");
+    }
+
+    @Override
+    public ClubHistory CreateDestination(Teamhistory team, int id) {
+        ClubHistory club = new ClubHistory();
+        id++;
+        club.setId((long) id);
+        club.setClubId(team.getTeamId().longValue());
+        club.setName(team.getName());
+        club.setEnName(team.getEnglishName());
+        club.setCourt(team.getHomeCourt());
+        club.setLogo(team.getLogo());
+        club.setYear(team.getYears().toString());
+        club.setCreatedAt(team.getCreateTime());
+        club.setUpdatedAt(team.getUpdateTime());
+        return club;
+    }
+
+    @Override
+    public void AddSameDataMapping(Teamhistory obj1, ClubHistory obj2) {
+        ClubHistoryMapping mapping = new ClubHistoryMapping(obj1.getId(), obj2.getId());
+        clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
+    }
+
+    @Override
+    public void AddDiffDataMapping(Teamhistory obj1, ClubHistory obj2) {
+        clubHistoryMapper.insertClubHistory(obj2);
+        ClubHistoryMapping mapping = new ClubHistoryMapping(obj1.getId(), obj2.getId());
+        clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
+    }
+
+    @Override
+    public int getDestinationMaxId() {
+        return clubHistoryMapper.getMax();
+    }
+
+    @Override
+    public TranslogMapper getTranslogger() {
+        return translogMapper;
+    }
+
+    @Override
+    public IMapper getReseter() {
+        return clubMappingMapper;
     }
 }
