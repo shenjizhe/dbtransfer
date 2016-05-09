@@ -24,9 +24,14 @@ public class CoachMapping implements Serializable{
     @Id
     private Integer clubCoachId;
 
-    public CoachMapping(Integer id, Long id0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CoachMapping() {
     }
+
+    public CoachMapping(Integer clubCoachId, Long dataCoachId) {
+        this.clubCoachId = clubCoachId;
+        this.dataCoachId = dataCoachId;
+    }
+
     public  Integer getClubCoachId() {
         return clubCoachId;
     }

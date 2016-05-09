@@ -64,6 +64,7 @@ public abstract class TransferBase<T1, T2> {
             }
 
             int id = getDestinationMaxId();
+            log.setOldMaxId((long)id);
 
             List<T1> diff1 = result.getDiff1();
             for (T1 obj1 : diff1) {

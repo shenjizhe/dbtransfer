@@ -139,4 +139,12 @@ public class Translog implements Serializable{
     public void setLog(Translog log){
         
     }
+    
+    private Long oldMaxId;
+    public  Long getOldMaxId() {
+        return oldMaxId;
+    }
+    public void setOldMaxId(Long oldMaxId) {
+        this.oldMaxId = oldMaxId;
+    }
 }
