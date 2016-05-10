@@ -133,8 +133,12 @@ public class ListComparator<T1, T2> {
         List<String> vlist = new ArrayList();
 
         for (int i = 0; i < method1.size(); i++) {
-            String v = method1.get(i).invoke(obj, null).toString();
-            vlist.add(v);
+            Object vo = method1.get(i).invoke(obj, null);
+            if (vo != null) {
+                vlist.add(vo.toString());
+            } else {
+                vlist.add(null);
+            }
         }
 
         return vlist;
@@ -144,8 +148,13 @@ public class ListComparator<T1, T2> {
         List<String> vlist = new ArrayList();
 
         for (int i = 0; i < method2.size(); i++) {
-            String v = method2.get(i).invoke(obj, null).toString();
-            vlist.add(v);
+            Object vo = method2.get(i).invoke(obj, null);
+            if (vo != null) {
+                vlist.add(vo.toString());
+            } else {
+                vlist.add(null);
+            }
+
         }
 
         return vlist;
@@ -153,7 +162,11 @@ public class ListComparator<T1, T2> {
 
     private boolean equal(List<String> v1, List<String> v2) {
         for (int i = 0; i < v1.size(); i++) {
-            if (!v1.get(i).equals(v2.get(i))) {
+            if (v1 == null || v2 == null) {
+                if (v1 != v2) {
+                    return false;
+                }
+            } else if (!v1.get(i).equals(v2.get(i))) {
                 return false;
             }
         }
@@ -167,6 +180,7 @@ public class ListComparator<T1, T2> {
 
         diffList1.addAll(list1);
         diffList2.addAll(list2);
+
         for (T1 obj1 : list1) {
             List<String> v1 = GetValue1(obj1);
             for (T2 obj2 : list2) {
@@ -177,10 +191,6 @@ public class ListComparator<T1, T2> {
                     diffList2.remove(obj2);
                 }
             }
-
-//            if (!contains) {
-//                diffList1.add(obj1);
-//            }
         }
         return new Result(same, diffList1, diffList2);
     }

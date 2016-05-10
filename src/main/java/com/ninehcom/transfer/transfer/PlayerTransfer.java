@@ -79,6 +79,6 @@ public class PlayerTransfer extends TransferBase<Player, DataPlayer> implements 
     public Result trans() {
         List<Player> playerList = playerMapper.selectAllPlayer();
         List<DataPlayer> dataPlayerList = dataPlayerMapper.selectAllDataPlayer();
-        return trans(Player.class, DataPlayer.class, playerList, dataPlayerList, "player", "data_player", "getName", "getName");
+        return trans(Player.class, DataPlayer.class, playerList, dataPlayerList, "player", "data_player", "getName,getBirthday", "getName,getBirth");
     }
 }
