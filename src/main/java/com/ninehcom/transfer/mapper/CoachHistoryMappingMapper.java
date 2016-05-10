@@ -19,6 +19,13 @@ public class CoachHistoryMappingMapper {
     @Qualifier("jdbc_league_data_template")
     SqlSession sqlSession;
 
+    public CoachHistoryMappingMapper() {
+    }
+
+    public CoachHistoryMappingMapper(SqlSession sqlSession) {
+        this.sqlSession = sqlSession;
+    }
+
     public List<CoachHistoryMapping> selectAllCoachHistoryMapping(){
 	return sqlSession.selectList("selectAllCoachHistoryMapping", null);
     }

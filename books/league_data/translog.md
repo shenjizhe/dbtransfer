@@ -16,6 +16,7 @@ sourceDiff          |Integer   |源表不同数量
 destinationDiff     |Integer   |目的表不同数量
 check               |Boolean   |数量检查
 err                 |String    |错误
+oldMaxId            |Long      |老数据最大ID
 
 ### 1.获取所有转换日志：（GET） ###
 [https://localhost/translog](https://localhost/translog)

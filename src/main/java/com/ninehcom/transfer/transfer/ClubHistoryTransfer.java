@@ -5,13 +5,10 @@
  */
 package com.ninehcom.transfer.transfer;
 
-import com.ninehcom.common.enums.ErrorCode;
-import com.ninehcom.common.util.ListComparator;
 import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.entity.ClubHistory;
 import com.ninehcom.transfer.entity.ClubHistoryMapping;
 import com.ninehcom.transfer.entity.Teamhistory;
-import com.ninehcom.transfer.entity.Translog;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMapper;
@@ -20,9 +17,6 @@ import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.TeamhistoryMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

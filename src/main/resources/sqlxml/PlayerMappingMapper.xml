@@ -8,45 +8,45 @@
         <result column="data_player_id" property="dataPlayerId"/>
     </resultMap>
     <select id="selectAllPlayerMapping" resultMap="playerMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	player_mapping
+        SELECT
+        *
+        FROM
+        player_mapping
     </select>
     <select id="selectPlayerMappingById" resultMap="playerMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	player_mapping
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        player_mapping
+        WHERE
+        club_player_id=#{0}
     </select>
     <insert id="insertPlayerMapping" parameterType="playerMapping">
-        	INSERT INTO
-        	player_mapping
-        	(
-        	player_mapping.club_player_id , player_mapping.data_player_id
-        	)
-        	VALUES
-        	(
-        	#{ clubPlayerId } , #{ dataPlayerId }
-        	)
+        INSERT INTO
+        player_mapping
+        (
+        player_mapping.club_player_id , player_mapping.data_player_id
+        )
+        VALUES
+        (
+        #{ clubPlayerId } , #{ dataPlayerId }
+        )
     </insert>
     <update id="updatePlayerMapping" parameterType="playerMapping">
-        	UPDATE
-        	player_mapping
-        	SET
-        	<if test="dataPlayerId != null">
-        	player_mapping.DataPlayerId = #{ dataPlayerId }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        player_mapping
+        SET
+        <if test="dataPlayerId != null">
+            player_mapping.DataPlayerId = #{ dataPlayerId }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deletePlayerMappingById">
-        	DELETE FROM
-        	player_mapping
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        player_mapping
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

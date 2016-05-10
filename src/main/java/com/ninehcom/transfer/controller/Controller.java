@@ -9,6 +9,7 @@ import com.ninehcom.common.enums.ErrorCode;
 import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.transfer.ClubHistoryTransfer;
 import com.ninehcom.transfer.transfer.ClubTransfer;
+import com.ninehcom.transfer.transfer.CoachHistoryTransfer;
 import com.ninehcom.transfer.transfer.CoachTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,28 +27,27 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
     @Autowired
     ClubTransfer clubTransfer;
-    
     @Autowired
     ClubHistoryTransfer clubHistoryTransfer;
-    
     @Autowired
     PlayerTransfer playerTransfer;
-    
     @Autowired
     CoachTransfer coachTransfer;
-    
+    @Autowired
+    CoachHistoryTransfer coachHistoryTransfer;
+
     @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
     @ResponseBody
     public Result transTeam() {
         return clubTransfer.trans();
     }
-    
+
     @RequestMapping(value = "/2.trans-team-history", method = RequestMethod.GET)
     @ResponseBody
     public Result transTeamHistory() {
         return clubHistoryTransfer.trans();
     }
-    
+
     @RequestMapping(value = "/3.trans-player", method = RequestMethod.GET)
     @ResponseBody
     public Result transPlayer() {
@@ -55,10 +55,16 @@ public class Controller {
         //return Result.Fail(ErrorCode.Fail);
         return playerTransfer.trans();
     }
-    
+
     @RequestMapping(value = "/5.trans-coach", method = RequestMethod.GET)
     @ResponseBody
     public Result transCoach() {
         return coachTransfer.trans();
+    }
+
+    @RequestMapping(value = "/6.trans-coach-history", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transCoachHistory() {
+        return coachHistoryTransfer.trans();
     }
 }

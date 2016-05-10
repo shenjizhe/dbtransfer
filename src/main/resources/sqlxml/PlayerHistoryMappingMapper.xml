@@ -8,45 +8,45 @@
         <result column="player_re_club_id" property="playerReClubId"/>
     </resultMap>
     <select id="selectAllPlayerHistoryMapping" resultMap="playerHistoryMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	player_history_mapping
+        SELECT
+        *
+        FROM
+        player_history_mapping
     </select>
     <select id="selectPlayerHistoryMappingById" resultMap="playerHistoryMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	player_history_mapping
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        player_history_mapping
+        WHERE
+        player_history_id=#{0}
     </select>
     <insert id="insertPlayerHistoryMapping" parameterType="playerHistoryMapping">
-        	INSERT INTO
-        	player_history_mapping
-        	(
-        	player_history_mapping.player_history_id , player_history_mapping.player_re_club_id
-        	)
-        	VALUES
-        	(
-        	#{ playerHistoryId } , #{ playerReClubId }
-        	)
+        INSERT INTO
+        player_history_mapping
+        (
+        player_history_mapping.player_history_id , player_history_mapping.player_re_club_id
+        )
+        VALUES
+        (
+        #{ playerHistoryId } , #{ playerReClubId }
+        )
     </insert>
     <update id="updatePlayerHistoryMapping" parameterType="playerHistoryMapping">
-        	UPDATE
-        	player_history_mapping
-        	SET
-        	<if test="playerReClubId != null">
-        	player_history_mapping.PlayerReClubId = #{ playerReClubId }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        player_history_mapping
+        SET
+        <if test="playerReClubId != null">
+            player_history_mapping.PlayerReClubId = #{ playerReClubId }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deletePlayerHistoryMappingById">
-        	DELETE FROM
-        	player_history_mapping
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        player_history_mapping
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

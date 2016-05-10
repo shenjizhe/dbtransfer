@@ -8,45 +8,45 @@
         <result column="club_history_id" property="clubHistoryId"/>
     </resultMap>
     <select id="selectAllClubHistoryMapping" resultMap="clubHistoryMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	club_history_mapping
+        SELECT
+        *
+        FROM
+        club_history_mapping
     </select>
     <select id="selectClubHistoryMappingById" resultMap="clubHistoryMappingMap">
-        	SELECT
-        	*
-        	FROM
-        	club_history_mapping
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        club_history_mapping
+        WHERE
+        team_history_id=#{0}
     </select>
     <insert id="insertClubHistoryMapping" parameterType="clubHistoryMapping">
-        	INSERT INTO
-        	club_history_mapping
-        	(
-        	club_history_mapping.team_history_id , club_history_mapping.club_history_id
-        	)
-        	VALUES
-        	(
-        	#{ teamHistoryId } , #{ clubHistoryId }
-        	)
+        INSERT INTO
+        club_history_mapping
+        (
+        club_history_mapping.team_history_id , club_history_mapping.club_history_id
+        )
+        VALUES
+        (
+        #{ teamHistoryId } , #{ clubHistoryId }
+        )
     </insert>
     <update id="updateClubHistoryMapping" parameterType="clubHistoryMapping">
-        	UPDATE
-        	club_history_mapping
-        	SET
-        	<if test="clubHistoryId != null">
-        	club_history_mapping.ClubHistoryId = #{ clubHistoryId }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        club_history_mapping
+        SET
+        <if test="clubHistoryId != null">
+            club_history_mapping.ClubHistoryId = #{ clubHistoryId }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deleteClubHistoryMappingById">
-        	DELETE FROM
-        	club_history_mapping
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        club_history_mapping
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

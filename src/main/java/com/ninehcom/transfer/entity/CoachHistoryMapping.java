@@ -21,6 +21,15 @@ coach_re_club_id    |Long      |
 @Entity
 public class CoachHistoryMapping implements Serializable{
 
+    public CoachHistoryMapping() {
+    }
+
+    public CoachHistoryMapping(Integer coachHistoryId, Long coachReClubId) {
+        this.coachHistoryId = coachHistoryId;
+        this.coachReClubId = coachReClubId;
+    }
+
+    
     @Id
     private Integer coachHistoryId;
     public  Integer getCoachHistoryId() {
