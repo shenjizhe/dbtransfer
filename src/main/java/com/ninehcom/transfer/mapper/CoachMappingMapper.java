@@ -44,6 +44,7 @@ public class CoachMappingMapper implements IMapper {
         return sqlSession.delete("deleteCoachMappingById", Id);
     }
 
+    @Override
     public void reset(List list) {
         Map<Integer, Long> map = getMap();
         for (int i = 0; i < list.size(); i++) {
@@ -52,6 +53,7 @@ public class CoachMappingMapper implements IMapper {
         }
     }
 
+    @Override
     public Map<Integer, Long> getMap() {
         List<CoachMapping> list = selectAllCoachMapping();
         Map<Integer, Long> map = new HashMap();

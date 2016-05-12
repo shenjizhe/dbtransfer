@@ -32,11 +32,11 @@ public abstract class TransferBase<T1, T2> {
 //ClubHistoryMapping mapping = new ClubHistoryMapping(team.getId(), club.getId());
 //clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
     public abstract void AddDiffDataMapping(T1 obj1, T2 obj2);
-    
+
     public abstract int getDestinationMaxId();
-    
+
     public abstract TranslogMapper getTranslogger();
-    
+
     public abstract IMapper getReseter();
 
     public Result trans(Class<T1> cls1, Class<T2> cls2, List<T1> list1, List<T2> list2, String tabl1, String table2, String key1, String key2) {
@@ -44,33 +44,48 @@ public abstract class TransferBase<T1, T2> {
         TranslogMapper logger = getTranslogger();
         IMapper reseter = getReseter();
         if (reseter != null) {
-            reseter.reset(list1);
+            try {
+                reseter.reset(list1);
+            } catch (Exception ex) {
+                return Result.Fail(ErrorCode.Fail);
+            }
         }
 
         Translog log = new Translog();
-
+        int mappingCount = 0;
+        ListComparator.Result result;
         try {
             ListComparator<T1, T2> comparator = new ListComparator(cls1, cls2, key1, key2);
-            ListComparator.Result result = comparator.compare(list1, list2);
+            result = comparator.compare(list1, list2);
 
             log = result.getLog(list1, list2, tabl1, table2);
             Map<T1, T2> same = result.getSame();
 
-            int mappingCount = 0;
             for (T1 obj1 : same.keySet()) {
                 T2 obj2 = same.get(obj1);
                 AddSameDataMapping(obj1, obj2);
                 mappingCount++;
             }
+        } catch (Exception ex) {
+            log.setErr(ex.getMessage() + "\t" + ex.getStackTrace());
+            Logger.getLogger(ClubHistoryTransfer.class.getName()).log(Level.SEVERE, null, ex);
+            logger.insertTranslog(log);
+            return Result.Fail(ErrorCode.Fail, ex);
+        }
 
-            int id = getDestinationMaxId();
-            log.setOldMaxId((long)id);
-
+        int id = getDestinationMaxId();
+        log.setOldMaxId((long) id);
+        try {
             List<T1> diff1 = result.getDiff1();
             for (T1 obj1 : diff1) {
                 id++;
-                T2 obj2 = CreateDestination(obj1, id);
-                AddDiffDataMapping(obj1, obj2);
+                T2 obj2 = null;
+                try {
+                    obj2 = CreateDestination(obj1, id);
+                    AddDiffDataMapping(obj1, obj2);
+                } catch (Exception ex) {
+                    throw ex;
+                }
                 mappingCount++;
             }
             log.setMappingCount(mappingCount);
@@ -82,6 +97,7 @@ public abstract class TransferBase<T1, T2> {
         }
 
         logger.insertTranslog(log);
+
         return Result.Success();
     }
 }

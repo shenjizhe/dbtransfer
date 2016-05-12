@@ -31,91 +31,120 @@
         <result column="updated_at" property="updatedAt"/>
     </resultMap>
     <select id="selectAllDataPlayerReClub" resultMap="dataPlayerReClubMap">
-        	SELECT
-        	*
-        	FROM
-        	data_player_re_club
+        SELECT
+        *
+        FROM
+        data_player_re_club
+    </select>
+    <select id="selectPlayerHistoryMaxId" resultType="int">
+        SELECT
+        MAX(id)
+        FROM
+        data_player_re_club
     </select>
     <select id="selectDataPlayerReClubById" resultMap="dataPlayerReClubMap">
-        	SELECT
-        	*
-        	FROM
-        	data_player_re_club
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        data_player_re_club
+        WHERE
+        ID=#{0}
     </select>
     <insert id="insertDataPlayerReClub" parameterType="dataPlayerReClub">
-        	INSERT INTO
-        	data_player_re_club
-        	(
-        	data_player_re_club.id , data_player_re_club.club_id , data_player_re_club.club_history_id , data_player_re_club.player_id , data_player_re_club.league_type , data_player_re_club.player_number , data_player_re_club.player_number_icon , data_player_re_club.position , data_player_re_club.position_number , data_player_re_club.avatar , data_player_re_club.weight , data_player_re_club.height , data_player_re_club.year , data_player_re_club.end_year , data_player_re_club.is_last_served , data_player_re_club.onfield , data_player_re_club.onfield_last , data_player_re_club.goals , data_player_re_club.shoot_times , data_player_re_club.assist_times , data_player_re_club.yellow_times , data_player_re_club.red_times , data_player_re_club.serial_number , data_player_re_club.created_at , data_player_re_club.updated_at
-        	)
-        	VALUES
-        	(
-        	#{ id } , #{ clubId } , #{ clubHistoryId } , #{ playerId } , #{ leagueType } , #{ playerNumber } , #{ playerNumberIcon } , #{ position } , #{ positionNumber } , #{ avatar } , #{ weight } , #{ height } , #{ year } , #{ endYear } , #{ isLastServed } , #{ onfield } , #{ onfieldLast } , #{ goals } , #{ shootTimes } , #{ assistTimes } , #{ yellowTimes } , #{ redTimes } , #{ serialNumber } , #{ createdAt } , #{ updatedAt }
-        	)
+        INSERT INTO
+        data_player_re_club
+        (
+        data_player_re_club.id , data_player_re_club.club_id , data_player_re_club.club_history_id , data_player_re_club.player_id , data_player_re_club.league_type , data_player_re_club.player_number , data_player_re_club.player_number_icon , data_player_re_club.position , data_player_re_club.position_number , data_player_re_club.avatar , data_player_re_club.weight , data_player_re_club.height , data_player_re_club.year , data_player_re_club.end_year , data_player_re_club.is_last_served , data_player_re_club.onfield , data_player_re_club.onfield_last , data_player_re_club.goals , data_player_re_club.shoot_times , data_player_re_club.assist_times , data_player_re_club.yellow_times , data_player_re_club.red_times , data_player_re_club.serial_number , data_player_re_club.created_at , data_player_re_club.updated_at
+        )
+        VALUES
+        (
+        #{ id } , #{ clubId } , #{ clubHistoryId } , #{ playerId } , #{ leagueType } , #{ playerNumber } , #{ playerNumberIcon } , #{ position } , #{ positionNumber } , #{ avatar } , #{ weight } , #{ height } , #{ year } , #{ endYear } , #{ isLastServed } , #{ onfield } , #{ onfieldLast } , #{ goals } , #{ shootTimes } , #{ assistTimes } , #{ yellowTimes } , #{ redTimes } , #{ serialNumber } , #{ createdAt } , #{ updatedAt }
+        )
     </insert>
     <update id="updateDataPlayerReClub" parameterType="dataPlayerReClub">
-        	UPDATE
-        	data_player_re_club
-        	SET
-        	<if test="clubId != null">
-        	data_player_re_club.ClubId = #{ clubId },
-        	</if>	<if test="clubHistoryId != null">
-        	data_player_re_club.ClubHistoryId = #{ clubHistoryId },
-        	</if>	<if test="playerId != null">
-        	data_player_re_club.PlayerId = #{ playerId },
-        	</if>	<if test="leagueType != null">
-        	data_player_re_club.LeagueType = #{ leagueType },
-        	</if>	<if test="playerNumber != null">
-        	data_player_re_club.PlayerNumber = #{ playerNumber },
-        	</if>	<if test="playerNumberIcon != null">
-        	data_player_re_club.PlayerNumberIcon = #{ playerNumberIcon },
-        	</if>	<if test="position != null">
-        	data_player_re_club.Position = #{ position },
-        	</if>	<if test="positionNumber != null">
-        	data_player_re_club.PositionNumber = #{ positionNumber },
-        	</if>	<if test="avatar != null">
-        	data_player_re_club.Avatar = #{ avatar },
-        	</if>	<if test="weight != null">
-        	data_player_re_club.Weight = #{ weight },
-        	</if>	<if test="height != null">
-        	data_player_re_club.Height = #{ height },
-        	</if>	<if test="year != null">
-        	data_player_re_club.Year = #{ year },
-        	</if>	<if test="endYear != null">
-        	data_player_re_club.EndYear = #{ endYear },
-        	</if>	<if test="isLastServed != null">
-        	data_player_re_club.IsLastServed = #{ isLastServed },
-        	</if>	<if test="onfield != null">
-        	data_player_re_club.Onfield = #{ onfield },
-        	</if>	<if test="onfieldLast != null">
-        	data_player_re_club.OnfieldLast = #{ onfieldLast },
-        	</if>	<if test="goals != null">
-        	data_player_re_club.Goals = #{ goals },
-        	</if>	<if test="shootTimes != null">
-        	data_player_re_club.ShootTimes = #{ shootTimes },
-        	</if>	<if test="assistTimes != null">
-        	data_player_re_club.AssistTimes = #{ assistTimes },
-        	</if>	<if test="yellowTimes != null">
-        	data_player_re_club.YellowTimes = #{ yellowTimes },
-        	</if>	<if test="redTimes != null">
-        	data_player_re_club.RedTimes = #{ redTimes },
-        	</if>	<if test="serialNumber != null">
-        	data_player_re_club.SerialNumber = #{ serialNumber },
-        	</if>	<if test="createdAt != null">
-        	data_player_re_club.CreatedAt = #{ createdAt },
-        	</if>	<if test="updatedAt != null">
-        	data_player_re_club.UpdatedAt = #{ updatedAt }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        data_player_re_club
+        SET
+        <if test="clubId != null">
+            data_player_re_club.ClubId = #{ clubId },
+        </if>	
+        <if test="clubHistoryId != null">
+            data_player_re_club.ClubHistoryId = #{ clubHistoryId },
+        </if>	
+        <if test="playerId != null">
+            data_player_re_club.PlayerId = #{ playerId },
+        </if>	
+        <if test="leagueType != null">
+            data_player_re_club.LeagueType = #{ leagueType },
+        </if>	
+        <if test="playerNumber != null">
+            data_player_re_club.PlayerNumber = #{ playerNumber },
+        </if>	
+        <if test="playerNumberIcon != null">
+            data_player_re_club.PlayerNumberIcon = #{ playerNumberIcon },
+        </if>	
+        <if test="position != null">
+            data_player_re_club.Position = #{ position },
+        </if>	
+        <if test="positionNumber != null">
+            data_player_re_club.PositionNumber = #{ positionNumber },
+        </if>	
+        <if test="avatar != null">
+            data_player_re_club.Avatar = #{ avatar },
+        </if>	
+        <if test="weight != null">
+            data_player_re_club.Weight = #{ weight },
+        </if>	
+        <if test="height != null">
+            data_player_re_club.Height = #{ height },
+        </if>	
+        <if test="year != null">
+            data_player_re_club.Year = #{ year },
+        </if>	
+        <if test="endYear != null">
+            data_player_re_club.EndYear = #{ endYear },
+        </if>	
+        <if test="isLastServed != null">
+            data_player_re_club.IsLastServed = #{ isLastServed },
+        </if>	
+        <if test="onfield != null">
+            data_player_re_club.Onfield = #{ onfield },
+        </if>	
+        <if test="onfieldLast != null">
+            data_player_re_club.OnfieldLast = #{ onfieldLast },
+        </if>	
+        <if test="goals != null">
+            data_player_re_club.Goals = #{ goals },
+        </if>	
+        <if test="shootTimes != null">
+            data_player_re_club.ShootTimes = #{ shootTimes },
+        </if>	
+        <if test="assistTimes != null">
+            data_player_re_club.AssistTimes = #{ assistTimes },
+        </if>	
+        <if test="yellowTimes != null">
+            data_player_re_club.YellowTimes = #{ yellowTimes },
+        </if>	
+        <if test="redTimes != null">
+            data_player_re_club.RedTimes = #{ redTimes },
+        </if>	
+        <if test="serialNumber != null">
+            data_player_re_club.SerialNumber = #{ serialNumber },
+        </if>	
+        <if test="createdAt != null">
+            data_player_re_club.CreatedAt = #{ createdAt },
+        </if>	
+        <if test="updatedAt != null">
+            data_player_re_club.UpdatedAt = #{ updatedAt }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deleteDataPlayerReClubById">
-        	DELETE FROM
-        	data_player_re_club
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        data_player_re_club
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

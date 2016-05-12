@@ -1,5 +1,6 @@
 package com.ninehcom.transfer.entity;
 
+import com.ninehcom.transfer.interfaces.IReset;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ CreateTime          |Date      |创建时间
 UpdateTime          |Date      |更新时间
  */
 @Entity
-public class Playerhistory implements Serializable{
+public class Playerhistory implements Serializable,IReset{
 
     @Id
     private Integer id;
@@ -253,6 +254,16 @@ public class Playerhistory implements Serializable{
     }
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    @Override
+    public Integer get() {
+        return playerId;
+    }
+
+    @Override
+    public void set(Integer v) {
+        playerId = v;
     }
 
 }

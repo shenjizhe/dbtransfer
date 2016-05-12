@@ -23,6 +23,15 @@ public class PlayerHistoryMapping implements Serializable{
 
     @Id
     private Integer playerHistoryId;
+
+    public PlayerHistoryMapping() {
+    }
+
+    public PlayerHistoryMapping(Integer playerHistoryId, Long playerReClubId) {
+        this.playerHistoryId = playerHistoryId;
+        this.playerReClubId = playerReClubId;
+    }
+
     public  Integer getPlayerHistoryId() {
         return playerHistoryId;
     }

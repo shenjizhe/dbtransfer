@@ -9,14 +9,18 @@ import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.entity.ClubHistoryMapping;
 import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.DataPlayerReClub;
+import com.ninehcom.transfer.entity.PlayerHistoryMapping;
 import com.ninehcom.transfer.entity.Playerhistory;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataPlayerReClubMapper;
+import com.ninehcom.transfer.mapper.PlayerHistoryMappingMapper;
+import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.PlayerhistoryMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +31,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlayerReClub> implements ITransfer {
 
-    int[] POINT_IDS=new int[]{1,2,3,3,3,4,3,2};
-    String[] POINT_NAMES=new String[]{"门将","后卫","中场","中场","中场","前锋","中场","后卫"};
-    
+    int[] POINT_IDS = new int[]{1, 2, 3, 3, 3, 4, 3, 2};
+    String[] POINT_NAMES = new String[]{"门将", "后卫", "中场", "中场", "中场", "前锋", "中场", "后卫"};
+
     @Autowired
     PlayerhistoryMapper playerhistoryMapper;
     @Autowired
@@ -38,14 +42,20 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
     ClubMappingMapper clubMappingMapper;
     @Autowired
     ClubHistoryMappingMapper clubHistoryMappingMapper;
+    @Autowired
+    PlayerMappingMapper playerMappingMapper;
+    @Autowired
+    PlayerHistoryMappingMapper playerHistoryMappingMapper;
+    @Autowired
+    private TranslogMapper translogMapper;
 
-    private void changePosition(Playerhistory source,DataPlayerReClub destination){
+    private void changePosition(Playerhistory source, DataPlayerReClub destination) {
         // bitmap
-        int index = source.getPositionId()-1;
+        int index = source.getPositionId() - 1;
         destination.setPositionNumber(POINT_IDS[index]);
         destination.setPosition(POINT_NAMES[index]);
     }
-    
+
     @Override
     public DataPlayerReClub CreateDestination(Playerhistory source, int id) {
         DataPlayerReClub player = new DataPlayerReClub();
@@ -56,19 +66,26 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         player.setClubId(clubId);
         ClubHistoryMapping clubHistoryMapping = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getTeamHistoryId().intValue());
         long clubHistoryId = clubHistoryMapping.getClubHistoryId();
-        player.setClubId(clubHistoryId);
-        changePosition(source,player);
+        player.setClubHistoryId(clubHistoryId);
+        changePosition(source, player);
 
+        player.setPlayerId(source.getPlayerId().longValue());
         player.setAvatar(source.getLogo());
         player.setYear(source.getYears());
         player.setHeight(source.getHeight());
         player.setWeight(source.getWeight());
-        
-        //TODO:
+
+        player.setOnfield(source.getEnterTimes());
+        player.setOnfieldLast(source.getEnterTime());
+        player.setGoals(source.getShootTimes());
+        player.setAssistTimes(source.getAssistTimes());
+        player.setRedTimes(source.getRedTimes());
+        player.setYellowTimes(source.getYellowTimes());
+        player.setPlayerNumber(source.getJerseyNum());
 
         player.setCreatedAt(source.getCreateTime());
         player.setUpdatedAt(source.getUpdateTime());
-        
+
         player.setIsLastServed(true);
         player.setLeagueType(1);
         return player;
@@ -76,32 +93,38 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
 
     @Override
     public void AddSameDataMapping(Playerhistory obj1, DataPlayerReClub obj2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PlayerHistoryMapping mapping = new PlayerHistoryMapping(obj1.getId(), obj2.getId());
+        playerHistoryMappingMapper.insertPlayerHistoryMapping(mapping);
     }
 
     @Override
     public void AddDiffDataMapping(Playerhistory obj1, DataPlayerReClub obj2) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        dataPlayerReClubMapper.insertDataPlayerReClub(obj2);
+        PlayerHistoryMapping mapping = new PlayerHistoryMapping(obj1.getId(), obj2.getId());
+        playerHistoryMappingMapper.insertPlayerHistoryMapping(mapping);
     }
 
     @Override
     public int getDestinationMaxId() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return dataPlayerReClubMapper.getMax();
     }
 
     @Override
     public TranslogMapper getTranslogger() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return translogMapper;
     }
 
     @Override
     public IMapper getReseter() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return playerMappingMapper;
     }
 
     @Override
     public Result trans() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Playerhistory> playerList = playerhistoryMapper.selectAllPlayerhistory();
+        List<DataPlayerReClub> dataPlayerList = dataPlayerReClubMapper.selectAllDataPlayerReClub();
+
+        return trans(Playerhistory.class, DataPlayerReClub.class, playerList, dataPlayerList, "playerHistory", "data_player_re_club", "getPlayerId,getYears", "getPlayerId,getYear");
     }
 
 }
