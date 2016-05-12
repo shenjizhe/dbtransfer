@@ -10,7 +10,7 @@ coachId             |Long      |教练主键
 coachName           |String    |教练姓名
 leagueName          |String    |联赛名称
 clubName            |String    |俱乐部名称
-honors              |Integer   |荣誉
+honors              |String    |荣誉
 createAt            |Date      |
 updateAt            |Date      |
 

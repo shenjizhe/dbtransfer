@@ -178,11 +178,11 @@ public class DataLeagueMatch implements Serializable{
         this.videoUrl = videoUrl;
     }
 
-    private String year;
-    public  String getYear() {
+    private Integer year;
+    public  Integer getYear() {
         return year;
     }
-    public void setYear(String year) {
+    public void setYear(Integer year) {
         this.year = year;
     }
 

@@ -31,8 +31,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlayerReClub> implements ITransfer {
 
-    int[] POINT_IDS = new int[]{1, 2, 3, 3, 3, 4, 3, 2};
-    String[] POINT_NAMES = new String[]{"门将", "后卫", "中场", "中场", "中场", "前锋", "中场", "后卫"};
+    final int[] POINT_IDS = new int[]{1, 2, 3, 3, 3, 4, 3, 2};
+    final String[] POINT_NAMES = new String[]{"门将", "后卫", "中场", "中场", "中场", "前锋", "中场", "后卫"};
 
     @Autowired
     PlayerhistoryMapper playerhistoryMapper;

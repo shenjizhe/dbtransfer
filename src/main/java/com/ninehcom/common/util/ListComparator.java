@@ -105,7 +105,11 @@ public class ListComparator<T1, T2> {
     List<Method> method2;
 
     private String[] getKeys(String key) {
-        return key.split(",");
+        if (key == null) {
+            return null;
+        } else {
+            return key.split(",");
+        }
     }
 
     private List<Method> getMethods(Class cls, String[] keys) throws NoSuchMethodException {
@@ -180,6 +184,10 @@ public class ListComparator<T1, T2> {
 
         diffList1.addAll(list1);
         diffList2.addAll(list2);
+        
+        if( key1 == null && key2 == null ){
+            return new Result(same, diffList1, diffList2);
+        }
 
         for (T1 obj1 : list1) {
             List<String> v1 = GetValue1(obj1);
