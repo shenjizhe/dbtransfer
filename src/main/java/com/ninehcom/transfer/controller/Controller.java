@@ -9,6 +9,7 @@ import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.transfer.ClubHistoryTransfer;
 import com.ninehcom.transfer.transfer.ClubTransfer;
 import com.ninehcom.transfer.transfer.CoachHistoryTransfer;
+import com.ninehcom.transfer.transfer.CoachResumeTransfer;
 import com.ninehcom.transfer.transfer.CoachTransfer;
 import com.ninehcom.transfer.transfer.PlayerHistoryTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
@@ -20,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Administrator
+ * @author Shenjizhe
  */
 @RestController
 @RequestMapping(value = "/transfer")
@@ -38,6 +39,8 @@ public class Controller {
     CoachTransfer coachTransfer;
     @Autowired
     CoachHistoryTransfer coachHistoryTransfer;
+    @Autowired
+    CoachResumeTransfer coachResumeTransfer;
 
     @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
     @ResponseBody
@@ -75,5 +78,11 @@ public class Controller {
     @ResponseBody
     public Result transCoachHistory() {
         return coachHistoryTransfer.trans();
+    }
+
+    @RequestMapping(value = "/7.trans-coach-resume", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transCoachResume() {
+        return coachResumeTransfer.trans();
     }
 }

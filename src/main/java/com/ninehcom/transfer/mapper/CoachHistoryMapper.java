@@ -1,7 +1,7 @@
 package com.ninehcom.transfer.mapper;
 
 import com.ninehcom.transfer.entity.CoachHistory;
-import com.ninehcom.common.entity.PageParam;
+import com.ninehcom.transfer.interfaces.IMax;
 import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class CoachHistoryMapper {
+public class CoachHistoryMapper implements IMax{
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
@@ -37,5 +37,10 @@ public class CoachHistoryMapper {
 
     public int deleteCoachHistoryById(int Id){
 	return sqlSession.delete("deleteCoachHistoryById", Id);
+    }
+
+    @Override
+    public int getMax() {
+        return sqlSession.selectOne("selectCoachResumeMaxId");
     }
 }

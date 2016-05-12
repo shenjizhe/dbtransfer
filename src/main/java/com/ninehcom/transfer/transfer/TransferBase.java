@@ -73,7 +73,13 @@ public abstract class TransferBase<T1, T2> {
             return Result.Fail(ErrorCode.Fail, ex);
         }
 
-        int id = getDestinationMaxId();
+        int id = 0;
+        try{
+            id = getDestinationMaxId();
+        }catch(Exception ex){
+            
+        }
+        
         log.setOldMaxId((long) id);
         try {
             List<T1> diff1 = result.getDiff1();

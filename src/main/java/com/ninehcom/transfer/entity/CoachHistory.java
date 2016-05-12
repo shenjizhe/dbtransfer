@@ -23,7 +23,7 @@ coach_id            |Long      |教练主键
 coach_name          |String    |教练姓名
 league_name         |String    |联赛名称
 club_name           |String    |俱乐部名称
-honors              |Integer   |荣誉
+honors              |String    |荣誉
 create_at           |Date      |
 update_at           |Date      |
  */
@@ -87,11 +87,11 @@ public class CoachHistory implements Serializable{
         this.clubName = clubName;
     }
 
-    private Integer honors;
-    public  Integer getHonors() {
+    private String honors;
+    public  String getHonors() {
         return honors;
     }
-    public void setHonors(Integer honors) {
+    public void setHonors(String honors) {
         this.honors = honors;
     }
 

@@ -17,18 +17,17 @@
         <result column="UpdateTime" property="updateTime"/>
     </resultMap>
     <select id="selectAllCoachresume" resultMap="coachresumeMap">
-        	SELECT
-        	*
-        	FROM
-        	coachresume
+        SELECT
+        *
+        FROM
+        coachresume
     </select>
     <select id="selectCoachresumeById" resultMap="coachresumeMap">
-        	SELECT
-        	*
-        	FROM
-        	coachresume
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        coachresume
+        WHERE
+        id=#{0}
     </select>
 </mapper>
-
