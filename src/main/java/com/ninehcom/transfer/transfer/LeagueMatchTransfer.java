@@ -17,6 +17,7 @@ import com.ninehcom.transfer.mapper.DataLeagueMatchMapper;
 import com.ninehcom.transfer.mapper.LeaguecalendarMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,7 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
 
     final long[] LEAGUE_TYPE_IDS = new long[]{1, 4, 5, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     final int[] LEAGUE_STATUS_IDS = new int[]{3, 2, 1, 4};
+    final String[] DAY_OF_WEEK_NAMES = new String[]{"星期日","星期一","星期二","星期三","星期四","星期五","星期六"};
 
     @Autowired
     LeaguecalendarMapper leaguecalendarMapper;
@@ -73,8 +75,11 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
         match.setHomeClubHistoryId(homeHistoryClubId);
         long guestHistoryClubId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getGuestTeamHistoryId()).getClubHistoryId();
         match.setGuestClubHistoryId(guestHistoryClubId);
-
-        match.setKickAt(source.getLeagueTime());
+        
+        Date time = source.getLeagueTime();
+        match.setKickAt(time);
+        match.setWeekday(DAY_OF_WEEK_NAMES[time.getDay()]);
+        
         match.setYear(source.getYears());
         match.setStadium(source.getLeagueCourt());
         match.setCreatedAt(source.getCreateTime());

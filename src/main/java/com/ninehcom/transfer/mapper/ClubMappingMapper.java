@@ -24,6 +24,7 @@ public class ClubMappingMapper implements IMapper {
     @Qualifier("jdbc_league_data_template")
     SqlSession sqlSession;
 
+    @Override
     public void reset(List list) {
         Map<Integer, Long> map = getMap();
         for (int i = 0; i < list.size(); i++) {
@@ -32,6 +33,7 @@ public class ClubMappingMapper implements IMapper {
         }
     }
 
+    @Override
     public Map<Integer, Long> getMap() {
         List<ClubMapping> list = selectAllClubMapping();
         Map<Integer, Long> map = new HashMap();

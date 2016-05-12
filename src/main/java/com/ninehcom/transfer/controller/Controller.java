@@ -12,6 +12,7 @@ import com.ninehcom.transfer.transfer.CoachHistoryTransfer;
 import com.ninehcom.transfer.transfer.CoachResumeTransfer;
 import com.ninehcom.transfer.transfer.CoachTransfer;
 import com.ninehcom.transfer.transfer.LeagueMatchTransfer;
+import com.ninehcom.transfer.transfer.MatchEventTransfer;
 import com.ninehcom.transfer.transfer.PlayerHistoryTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,8 @@ public class Controller {
     CoachResumeTransfer coachResumeTransfer;
     @Autowired
     LeagueMatchTransfer leagueMatchTransfer;
+    @Autowired
+    MatchEventTransfer matchEventTransfer;
 
     @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
     @ResponseBody
@@ -95,4 +98,9 @@ public class Controller {
         return leagueMatchTransfer.trans();
     }
 
+    @RequestMapping(value = "/9.trans-match-event", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transMatchEvent() {
+        return matchEventTransfer.trans();
+    }
 }
