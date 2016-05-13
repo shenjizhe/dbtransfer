@@ -7,7 +7,10 @@ package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.entity.Assist;
+import com.ninehcom.transfer.entity.ClubHistoryMapping;
+import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.DataLeagueRankAssistant;
+import com.ninehcom.transfer.entity.PlayerMapping;
 
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
@@ -18,6 +21,7 @@ import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.AssistMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,11 +52,11 @@ public class AssistRankTransfer extends TransferBase<Assist, DataLeagueRankAssis
 
         int index = source.getLeagueTypeId() - 1;
         assistant.setLeagueId(LeagueMatchTransfer.LEAGUE_TYPE_IDS[index]);
-        long clubId = clubMappingMapper.selectClubMappingById(source.getTeamId()).getClubId();
+        long clubId = teamMap.get(source.getTeamId()).getClubId();
         assistant.setClubId(clubId);
-        long clubHistoryId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getTeamHistoryId()).getClubHistoryId();
+        long clubHistoryId = teamHistoryMap.get(source.getTeamHistoryId()).getClubHistoryId();
         assistant.setClubHistoryId(clubHistoryId);
-        long playerId = playerMappingMapper.selectPlayerMappingById(source.getPlayerId()).getDataPlayerId();
+        long playerId = playerMap.get(source.getPlayerId()).getDataPlayerId();
         assistant.setPlayerId(playerId);
 
         assistant.setPreRanking(source.getPreRank());
@@ -90,8 +94,16 @@ public class AssistRankTransfer extends TransferBase<Assist, DataLeagueRankAssis
         return null;
     }
 
+    Map<Integer, ClubMapping> teamMap = null;
+    Map<Integer, ClubHistoryMapping> teamHistoryMap = null;
+    Map<Integer, PlayerMapping> playerMap = null;
+
     @Override
     public Result trans() {
+        teamMap = clubMappingMapper.selectMapClubMapping();
+        teamHistoryMap = clubHistoryMappingMapper.selectMapClubHistoryMapping();
+        playerMap = playerMappingMapper.selectMapPlayerMapping();
+
         List<Assist> assistList = assistMapper.selectFilterAssist();
         List<DataLeagueRankAssistant> rankAssistList = dataLeagueRankAssistantMapper.selectAllDataLeagueRankAssistant();
 

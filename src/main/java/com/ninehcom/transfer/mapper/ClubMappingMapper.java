@@ -48,6 +48,10 @@ public class ClubMappingMapper implements IMapper {
         return sqlSession.selectList("selectAllClubMapping", null);
     }
 
+    public Map<Integer, ClubMapping> selectMapClubMapping() {
+        return sqlSession.selectMap("selectAllClubMapping", null, "teamId");
+    }
+
     public ClubMapping selectClubMappingById(int Id) {
         return sqlSession.selectOne("selectClubMappingById", Id);
     }

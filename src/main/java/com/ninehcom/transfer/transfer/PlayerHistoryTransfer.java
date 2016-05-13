@@ -23,6 +23,7 @@ import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.PlayerhistoryMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,10 +66,10 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         DataPlayerReClub player = new DataPlayerReClub();
         player.setId((long) id);
 
-        ClubMapping clubMapping = clubMappingMapper.selectClubMappingById(source.getTeamId().intValue());
+        ClubMapping clubMapping = clubMap.get(source.getTeamId().intValue());
         long clubId = clubMapping.getClubId();
         player.setClubId(clubId);
-        ClubHistoryMapping clubHistoryMapping = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getTeamHistoryId().intValue());
+        ClubHistoryMapping clubHistoryMapping = clubHistoryMap.get(source.getTeamHistoryId().intValue());
         long clubHistoryId = clubHistoryMapping.getClubHistoryId();
         player.setClubHistoryId(clubHistoryId);
         changePosition(source, player);
@@ -138,8 +139,14 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         return playerMappingMapper;
     }
 
+    Map<Integer, ClubMapping> clubMap = null;
+    Map<Integer, ClubHistoryMapping> clubHistoryMap = null;
+
     @Override
     public Result trans() {
+        clubMap = clubMappingMapper.selectMapClubMapping();
+        clubHistoryMap = clubHistoryMappingMapper.selectMapClubHistoryMapping();
+
         List<Playerhistory> playerList = playerhistoryMapper.selectAllPlayerhistory();
         List<DataPlayerReClub> dataPlayerList = dataPlayerReClubMapper.selectAllDataPlayerReClub();
 

@@ -6,7 +6,10 @@
 package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.entity.ClubHistoryMapping;
+import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.DataLeagueRankGoal;
+import com.ninehcom.transfer.entity.PlayerMapping;
 import com.ninehcom.transfer.entity.Shooter;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
@@ -17,6 +20,7 @@ import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.ShooterMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,11 +51,11 @@ public class ShooterRankTransfer extends TransferBase<Shooter, DataLeagueRankGoa
 
         int index = source.getLeagueTypeId() - 1;
         goal.setLeagueId(LeagueMatchTransfer.LEAGUE_TYPE_IDS[index]);
-        long clubId = clubMappingMapper.selectClubMappingById(source.getTeamId()).getClubId();
+        long clubId = teamMap.get(source.getTeamId()).getClubId();
         goal.setClubId(clubId);
-        long clubHistoryId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getTeamHistoryId()).getClubHistoryId();
+        long clubHistoryId = teamHistoryMap.get(source.getTeamHistoryId()).getClubHistoryId();
         goal.setClubHistoryId(clubHistoryId);
-        long playerId = playerMappingMapper.selectPlayerMappingById(source.getPlayerId()).getDataPlayerId();
+        long playerId = playerMap.get(source.getPlayerId()).getDataPlayerId();
         goal.setPlayerId(playerId);
 
         goal.setPreRanking(source.getPreRank());
@@ -89,8 +93,16 @@ public class ShooterRankTransfer extends TransferBase<Shooter, DataLeagueRankGoa
         return null;
     }
 
+    Map<Integer, ClubMapping> teamMap = null;
+    Map<Integer, ClubHistoryMapping> teamHistoryMap = null;
+    Map<Integer, PlayerMapping> playerMap = null;
+
     @Override
     public Result trans() {
+        teamMap = clubMappingMapper.selectMapClubMapping();
+        teamHistoryMap = clubHistoryMappingMapper.selectMapClubHistoryMapping();
+        playerMap = playerMappingMapper.selectMapPlayerMapping();
+
         List<Shooter> shooterList = shooterMapper.selectFilterShooter();
         List<DataLeagueRankGoal> rankGoalList = dataLeagueRankGoalMapper.selectAllDataLeagueRankGoal();
 

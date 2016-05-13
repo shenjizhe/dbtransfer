@@ -6,6 +6,7 @@
 package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.DataMatchEvent;
 import com.ninehcom.transfer.entity.Leagueevent;
 import com.ninehcom.transfer.interfaces.IMapper;
@@ -16,6 +17,7 @@ import com.ninehcom.transfer.mapper.LeagueeventMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,7 +54,7 @@ public class MatchEventTransfer extends TransferBase<Leagueevent, DataMatchEvent
         DataMatchEvent event = new DataMatchEvent();
         event.setId((long) id);
 
-        long clubId = clubMappingMapper.selectClubMappingById(source.getTeamId()).getClubId();
+        long clubId = clubMap.get(source.getTeamId()).getClubId();
         event.setClubId(clubId);
         event.setClubType(source.getLeagueTeamTypeId());
         event.setEventPoint(source.getLeagueEventTime());
@@ -90,8 +92,12 @@ public class MatchEventTransfer extends TransferBase<Leagueevent, DataMatchEvent
         return matchMappingMapper;
     }
 
+    Map<Integer, ClubMapping> clubMap = null;
+
     @Override
     public Result trans() {
+        clubMap = clubMappingMapper.selectMapClubMapping();
+
         List<Leagueevent> clubEventList = leagueeventMapper.selectFilterLeagueevent();
         List<DataMatchEvent> dataEventList = dataMatchEventMapper.selectAllDataMatchEvent();
 

@@ -6,6 +6,8 @@
 package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.entity.ClubHistoryMapping;
+import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.DataLeagueMatch;
 import com.ninehcom.transfer.entity.Leaguecalendar;
 import com.ninehcom.transfer.entity.MatchMapping;
@@ -19,6 +21,7 @@ import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,14 +69,14 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
         match.setHomeScore(source.getMasterScore());
         match.setGuestScore(source.getGuestScore());
 
-        long homeClubId = clubMappingMapper.selectClubMappingById(source.getHomeTeamId()).getClubId();
+        long homeClubId = teamMap.get(source.getHomeTeamId()).getClubId();
         match.setHomeClubId(homeClubId);
-        long guestClubId = clubMappingMapper.selectClubMappingById(source.getGuestTeamId()).getClubId();
+        long guestClubId = teamMap.get(source.getGuestTeamId()).getClubId();
         match.setGuestClubId(guestClubId);
 
-        long homeHistoryClubId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getHomeTeamHistoryId()).getClubHistoryId();
+        long homeHistoryClubId = teamHistoryMap.get(source.getHomeTeamHistoryId()).getClubHistoryId();
         match.setHomeClubHistoryId(homeHistoryClubId);
-        long guestHistoryClubId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getGuestTeamHistoryId()).getClubHistoryId();
+        long guestHistoryClubId = teamHistoryMap.get(source.getGuestTeamHistoryId()).getClubHistoryId();
         match.setGuestClubHistoryId(guestHistoryClubId);
 
         Date time = source.getLeagueTime();
@@ -116,8 +119,14 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
         return null;
     }
 
+    Map<Integer, ClubMapping> teamMap = null;
+    Map<Integer, ClubHistoryMapping> teamHistoryMap = null;
+
     @Override
     public Result trans() {
+        teamMap = clubMappingMapper.selectMapClubMapping();
+        teamHistoryMap = clubHistoryMappingMapper.selectMapClubHistoryMapping();
+
         List<Leaguecalendar> clubMatchList = leaguecalendarMapper.selectFilterLeaguecalendar();
         List<DataLeagueMatch> dataMatchList = dataLeagueMatchMapper.selectAllDataLeagueMatch();
 

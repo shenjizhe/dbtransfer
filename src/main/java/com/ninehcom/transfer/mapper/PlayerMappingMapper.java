@@ -28,6 +28,10 @@ public class PlayerMappingMapper implements IMapper {
         return sqlSession.selectList("selectAllPlayerMapping", null);
     }
 
+    public Map<Integer, PlayerMapping> selectMapPlayerMapping() {
+        return sqlSession.selectMap("selectAllPlayerMapping", null, "clubPlayerId");
+    }
+
     public PlayerMapping selectPlayerMappingById(int Id) {
         return sqlSession.selectOne("selectPlayerMappingById", Id);
     }
