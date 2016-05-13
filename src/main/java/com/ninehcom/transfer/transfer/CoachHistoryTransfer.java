@@ -6,6 +6,7 @@
 package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.entity.ClubCoachReClub;
 import com.ninehcom.transfer.entity.ClubHistoryMapping;
 import com.ninehcom.transfer.entity.ClubMapping;
 import com.ninehcom.transfer.entity.CoachHistoryData;
@@ -13,6 +14,7 @@ import com.ninehcom.transfer.entity.CoachHistoryMapping;
 import com.ninehcom.transfer.entity.DataCoachReClub;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
+import com.ninehcom.transfer.mapper.ClubCoachReClubMapper;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.CoachHistoryDataMapper;
@@ -35,6 +37,8 @@ public class CoachHistoryTransfer extends TransferBase<CoachHistoryData, DataCoa
     CoachHistoryDataMapper coachHistoryDataMapper;
     @Autowired
     DataCoachReClubMapper dataCoachReClubMapper;
+    @Autowired
+    ClubCoachReClubMapper clubCoachReClubMapper;
     @Autowired
     ClubMappingMapper clubMappingMapper;
     @Autowired
@@ -66,11 +70,23 @@ public class CoachHistoryTransfer extends TransferBase<CoachHistoryData, DataCoa
         coach.setIsLastServed("1");
         return coach;
     }
+    
+    private ClubCoachReClub createObj(CoachHistoryData obj1, DataCoachReClub obj2){
+        ClubCoachReClub data = new ClubCoachReClub();
+        data.setId(obj2.getId());
+        data.setCirAvatar(obj1.getHalfLogo());
+        data.setFullAvatar(obj1.getLogo());
+        data.setInfoAvatar(obj1.getInfoLogo());
+        return data;
+    }
 
     @Override
     public void AddSameDataMapping(CoachHistoryData obj1, DataCoachReClub obj2) {
         CoachHistoryMapping mapping = new CoachHistoryMapping(obj1.getId(), obj2.getId());
         coachHistoryMappingMapper.insertCoachHistoryMapping(mapping);
+        
+        ClubCoachReClub clubCoachReClub = createObj(obj1, obj2);
+        clubCoachReClubMapper.insertClubCoachReClub(clubCoachReClub);
     }
 
     @Override
@@ -78,6 +94,9 @@ public class CoachHistoryTransfer extends TransferBase<CoachHistoryData, DataCoa
         dataCoachReClubMapper.insertDataCoachReClub(obj2);
         CoachHistoryMapping mapping = new CoachHistoryMapping(obj1.getId(), obj2.getId());
         coachHistoryMappingMapper.insertCoachHistoryMapping(mapping);
+        
+        ClubCoachReClub clubCoachReClub = createObj(obj1, obj2);
+        clubCoachReClubMapper.insertClubCoachReClub(clubCoachReClub);
     }
 
     @Override

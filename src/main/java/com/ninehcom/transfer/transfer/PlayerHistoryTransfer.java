@@ -8,6 +8,7 @@ package com.ninehcom.transfer.transfer;
 import com.ninehcom.common.util.Result;
 import com.ninehcom.transfer.entity.ClubHistoryMapping;
 import com.ninehcom.transfer.entity.ClubMapping;
+import com.ninehcom.transfer.entity.ClubPlayerReClub;
 import com.ninehcom.transfer.entity.DataPlayerReClub;
 import com.ninehcom.transfer.entity.PlayerHistoryMapping;
 import com.ninehcom.transfer.entity.Playerhistory;
@@ -15,6 +16,7 @@ import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
+import com.ninehcom.transfer.mapper.ClubPlayerReClubMapper;
 import com.ninehcom.transfer.mapper.DataPlayerReClubMapper;
 import com.ninehcom.transfer.mapper.PlayerHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
@@ -38,6 +40,8 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
     PlayerhistoryMapper playerhistoryMapper;
     @Autowired
     DataPlayerReClubMapper dataPlayerReClubMapper;
+    @Autowired
+    ClubPlayerReClubMapper clubPlayerReClubMapper;
     @Autowired
     ClubMappingMapper clubMappingMapper;
     @Autowired
@@ -91,10 +95,22 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         return player;
     }
 
+    private ClubPlayerReClub createObj(Playerhistory obj1, DataPlayerReClub obj2) {
+        ClubPlayerReClub data = new ClubPlayerReClub();
+        data.setId(obj2.getId());
+        data.setCirAvatar(obj1.getHalfLogo());
+        data.setFullAvatar(obj1.getLogo());
+        data.setInfoAvatar(obj1.getInfoLogo());
+        return data;
+    }
+
     @Override
     public void AddSameDataMapping(Playerhistory obj1, DataPlayerReClub obj2) {
         PlayerHistoryMapping mapping = new PlayerHistoryMapping(obj1.getId(), obj2.getId());
         playerHistoryMappingMapper.insertPlayerHistoryMapping(mapping);
+
+        ClubPlayerReClub data = createObj(obj1, obj2);
+        clubPlayerReClubMapper.insertClubPlayerReClub(data);
     }
 
     @Override
@@ -102,6 +118,9 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         dataPlayerReClubMapper.insertDataPlayerReClub(obj2);
         PlayerHistoryMapping mapping = new PlayerHistoryMapping(obj1.getId(), obj2.getId());
         playerHistoryMappingMapper.insertPlayerHistoryMapping(mapping);
+
+        ClubPlayerReClub data = createObj(obj1, obj2);
+        clubPlayerReClubMapper.insertClubPlayerReClub(data);
     }
 
     @Override
