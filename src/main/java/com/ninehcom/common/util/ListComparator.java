@@ -197,6 +197,7 @@ public class ListComparator<T1, T2> {
                     same.put(obj1, obj2);
                     diffList1.remove(obj1);
                     diffList2.remove(obj2);
+                    break;
                 }
             }
         }

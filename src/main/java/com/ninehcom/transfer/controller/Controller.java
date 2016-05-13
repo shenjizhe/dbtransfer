@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Shenjizhe
  */
 @RestController
-@RequestMapping(value = "/transfer")
+@RequestMapping(value = "/1.trans-all-data")
 public class Controller {
 
     @Autowired
@@ -54,19 +54,19 @@ public class Controller {
     @Autowired
     AssistRankTransfer assistRankTransfer;
 
-    @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
+    @RequestMapping(value = "/01.trans-team", method = RequestMethod.GET)
     @ResponseBody
     public Result transTeam() {
         return clubTransfer.trans();
     }
 
-    @RequestMapping(value = "/2.trans-team-history", method = RequestMethod.GET)
+    @RequestMapping(value = "/02.trans-team-history", method = RequestMethod.GET)
     @ResponseBody
     public Result transTeamHistory() {
         return clubHistoryTransfer.trans();
     }
 
-    @RequestMapping(value = "/3.trans-player", method = RequestMethod.GET)
+    @RequestMapping(value = "/03.trans-player", method = RequestMethod.GET)
     @ResponseBody
     public Result transPlayer() {
         //因为球员重名现象严重，无法映射两个系统的球员数据，因此留下1863个数据的中超数据，补录俱乐部相关球员信息（422总-244重复=178个球员数据）
@@ -74,37 +74,37 @@ public class Controller {
         return playerTransfer.trans();
     }
 
-    @RequestMapping(value = "/4.trans-player-history", method = RequestMethod.GET)
+    @RequestMapping(value = "/04.trans-player-history", method = RequestMethod.GET)
     @ResponseBody
     public Result transPlayerHistory() {
         return playerHistoryTransfer.trans();
     }
 
-    @RequestMapping(value = "/5.trans-coach", method = RequestMethod.GET)
+    @RequestMapping(value = "/05.trans-coach", method = RequestMethod.GET)
     @ResponseBody
     public Result transCoach() {
         return coachTransfer.trans();
     }
 
-    @RequestMapping(value = "/6.trans-coach-history", method = RequestMethod.GET)
+    @RequestMapping(value = "/06.trans-coach-history", method = RequestMethod.GET)
     @ResponseBody
     public Result transCoachHistory() {
         return coachHistoryTransfer.trans();
     }
 
-    @RequestMapping(value = "/7.trans-coach-resume", method = RequestMethod.GET)
+    @RequestMapping(value = "/07.trans-coach-resume", method = RequestMethod.GET)
     @ResponseBody
     public Result transCoachResume() {
         return coachResumeTransfer.trans();
     }
 
-    @RequestMapping(value = "/8.trans-match", method = RequestMethod.GET)
+    @RequestMapping(value = "/08.trans-match", method = RequestMethod.GET)
     @ResponseBody
     public Result transMatch() {
         return leagueMatchTransfer.trans();
     }
 
-    @RequestMapping(value = "/9.trans-match-event", method = RequestMethod.GET)
+    @RequestMapping(value = "/09.trans-match-event", method = RequestMethod.GET)
     @ResponseBody
     public Result transMatchEvent() {
         return matchEventTransfer.trans();
