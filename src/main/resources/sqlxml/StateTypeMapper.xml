@@ -8,45 +8,45 @@
         <result column="name" property="name"/>
     </resultMap>
     <select id="selectAllStateType" resultMap="stateTypeMap">
-        	SELECT
-        	*
-        	FROM
-        	state_type
+        SELECT
+        *
+        FROM
+        state_type
     </select>
     <select id="selectStateTypeById" resultMap="stateTypeMap">
-        	SELECT
-        	*
-        	FROM
-        	state_type
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        state_type
+        WHERE
+        ID=#{0}
     </select>
     <insert id="insertStateType" parameterType="stateType">
-        	INSERT INTO
-        	state_type
-        	(
-        	state_type.id , state_type.name
-        	)
-        	VALUES
-        	(
-        	#{ id } , #{ name }
-        	)
+        INSERT INTO
+        state_type
+        (
+        state_type.id , state_type.name
+        )
+        VALUES
+        (
+        #{ id } , #{ name }
+        )
     </insert>
     <update id="updateStateType" parameterType="stateType">
-        	UPDATE
-        	state_type
-        	SET
-        	<if test="name != null">
-        	state_type.Name = #{ name }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        state_type
+        SET
+        <if test="name != null">
+            state_type.Name = #{ name }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deleteStateTypeById">
-        	DELETE FROM
-        	state_type
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        state_type
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

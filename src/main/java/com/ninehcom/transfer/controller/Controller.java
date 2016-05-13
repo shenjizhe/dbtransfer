@@ -6,6 +6,7 @@
 package com.ninehcom.transfer.controller;
 
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.transfer.AssistRankTransfer;
 import com.ninehcom.transfer.transfer.ClubHistoryTransfer;
 import com.ninehcom.transfer.transfer.ClubTransfer;
 import com.ninehcom.transfer.transfer.CoachHistoryTransfer;
@@ -15,6 +16,7 @@ import com.ninehcom.transfer.transfer.LeagueMatchTransfer;
 import com.ninehcom.transfer.transfer.MatchEventTransfer;
 import com.ninehcom.transfer.transfer.PlayerHistoryTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
+import com.ninehcom.transfer.transfer.ShooterRankTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,6 +49,10 @@ public class Controller {
     LeagueMatchTransfer leagueMatchTransfer;
     @Autowired
     MatchEventTransfer matchEventTransfer;
+    @Autowired
+    ShooterRankTransfer shooterRankTransfer;
+    @Autowired
+    AssistRankTransfer assistRankTransfer;
 
     @RequestMapping(value = "/1.trans-team", method = RequestMethod.GET)
     @ResponseBody
@@ -102,5 +108,17 @@ public class Controller {
     @ResponseBody
     public Result transMatchEvent() {
         return matchEventTransfer.trans();
+    }
+
+    @RequestMapping(value = "/10.trans-match-rank-goal", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transRankGoal() {
+        return shooterRankTransfer.trans();
+    }
+
+    @RequestMapping(value = "/11.trans-match-rank-assist", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transRankAssist() {
+        return assistRankTransfer.trans();
     }
 }

@@ -15,8 +15,8 @@ playerId            |Long      |球员ID
 playerSecondaryId   |Long      |次要球员ID
 playerName          |String    |球员名称
 playerSecondaryName |String    |次要球员名称
-createdAt           |Timestamp |数据记录创建时间
-updatedAt           |Timestamp |数据记录更新时间
+createdAt           |Date      |数据记录创建时间
+updatedAt           |Date      |数据记录更新时间
 
 ### 1.获取所有赛事事件：（GET） ###
 [https://localhost/data-match-event](https://localhost/data-match-event)

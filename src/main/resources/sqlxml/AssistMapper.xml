@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.AssistMapper">
+    <resultMap type="com.ninehcom.transfer.entity.Assist" id="assistMap">
+        <id column="Id" property="id"/>
+        <result column="LeagueTypeId" property="leagueTypeId"/>
+        <result column="LeagueTypeName" property="leagueTypeName"/>
+        <result column="TeamId" property="teamId"/>
+        <result column="TeamHistoryId" property="teamHistoryId"/>
+        <result column="TeamLogo" property="teamLogo"/>
+        <result column="TeamName" property="teamName"/>
+        <result column="PlayerId" property="playerId"/>
+        <result column="PlayerHistoryId" property="playerHistoryId"/>
+        <result column="PlayerHalfLogo" property="playerHalfLogo"/>
+        <result column="PlayerLogo" property="playerLogo"/>
+        <result column="PlayerInfoLogo" property="playerInfoLogo"/>
+        <result column="PlayerName" property="playerName"/>
+        <result column="JerseyNum" property="jerseyNum"/>
+        <result column="Times" property="times"/>
+        <result column="PreRank" property="preRank"/>
+        <result column="Rank" property="rank"/>
+        <result column="Years" property="years"/>
+        <result column="CreateTime" property="createTime"/>
+        <result column="UpdateTime" property="updateTime"/>
+    </resultMap>
+    <select id="selectAllAssist" resultMap="assistMap">
+        SELECT
+        *
+        FROM
+        assist
+    </select>
+    <select id="selectFilterAssist" resultMap="assistMap">
+        SELECT
+        *
+        FROM
+        assist
+        WHERE
+        Years &lt; 2010
+        OR LeagueTypeId != 1
+        ORDER BY
+        LeagueTypeId,Years,Times
+    </select>
+    <select id="selectAssistById" resultMap="assistMap">
+        SELECT
+        *
+        FROM
+        assist
+        WHERE
+        id=#{0}
+    </select>
+</mapper>
+

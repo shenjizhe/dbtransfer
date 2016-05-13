@@ -24,77 +24,93 @@
         <result column="birth" property="birth"/>
     </resultMap>
     <select id="selectAllAssistRank" resultMap="assistRankMap">
-        	SELECT
-        	*
-        	FROM
-        	assist_rank
+        SELECT
+        *
+        FROM
+        assist_rank
     </select>
     <select id="selectAssistRankById" resultMap="assistRankMap">
-        	SELECT
-        	*
-        	FROM
-        	assist_rank
-        	WHERE
-        	ID=#{0}
+        SELECT
+        *
+        FROM
+        assist_rank
+        WHERE
+        ID=#{0}
     </select>
     <insert id="insertAssistRank" parameterType="assistRank">
-        	INSERT INTO
-        	assist_rank
-        	(
-        	assist_rank.id , assist_rank.assistants , assist_rank.player_id , assist_rank.pre_ranking , assist_rank.ranking , assist_rank.year , assist_rank.end_year , assist_rank.club_id , assist_rank.club_logo , assist_rank.club_name , assist_rank.club_english_name , assist_rank.club_full_name , assist_rank.club_english_full_name , assist_rank.player_name , assist_rank.player_english_name , assist_rank.country , assist_rank.native_place , assist_rank.birth
-        	)
-        	VALUES
-        	(
-        	#{ id } , #{ assistants } , #{ playerId } , #{ preRanking } , #{ ranking } , #{ year } , #{ endYear } , #{ clubId } , #{ clubLogo } , #{ clubName } , #{ clubEnglishName } , #{ clubFullName } , #{ clubEnglishFullName } , #{ playerName } , #{ playerEnglishName } , #{ country } , #{ nativePlace } , #{ birth }
-        	)
+        INSERT INTO
+        assist_rank
+        (
+        assist_rank.id , assist_rank.assistants , assist_rank.player_id , assist_rank.pre_ranking , assist_rank.ranking , assist_rank.year , assist_rank.end_year , assist_rank.club_id , assist_rank.club_logo , assist_rank.club_name , assist_rank.club_english_name , assist_rank.club_full_name , assist_rank.club_english_full_name , assist_rank.player_name , assist_rank.player_english_name , assist_rank.country , assist_rank.native_place , assist_rank.birth
+        )
+        VALUES
+        (
+        #{ id } , #{ assistants } , #{ playerId } , #{ preRanking } , #{ ranking } , #{ year } , #{ endYear } , #{ clubId } , #{ clubLogo } , #{ clubName } , #{ clubEnglishName } , #{ clubFullName } , #{ clubEnglishFullName } , #{ playerName } , #{ playerEnglishName } , #{ country } , #{ nativePlace } , #{ birth }
+        )
     </insert>
     <update id="updateAssistRank" parameterType="assistRank">
-        	UPDATE
-        	assist_rank
-        	SET
-        	<if test="assistants != null">
-        	assist_rank.Assistants = #{ assistants },
-        	</if>	<if test="playerId != null">
-        	assist_rank.PlayerId = #{ playerId },
-        	</if>	<if test="preRanking != null">
-        	assist_rank.PreRanking = #{ preRanking },
-        	</if>	<if test="ranking != null">
-        	assist_rank.Ranking = #{ ranking },
-        	</if>	<if test="year != null">
-        	assist_rank.Year = #{ year },
-        	</if>	<if test="endYear != null">
-        	assist_rank.EndYear = #{ endYear },
-        	</if>	<if test="clubId != null">
-        	assist_rank.ClubId = #{ clubId },
-        	</if>	<if test="clubLogo != null">
-        	assist_rank.ClubLogo = #{ clubLogo },
-        	</if>	<if test="clubName != null">
-        	assist_rank.ClubName = #{ clubName },
-        	</if>	<if test="clubEnglishName != null">
-        	assist_rank.ClubEnglishName = #{ clubEnglishName },
-        	</if>	<if test="clubFullName != null">
-        	assist_rank.ClubFullName = #{ clubFullName },
-        	</if>	<if test="clubEnglishFullName != null">
-        	assist_rank.ClubEnglishFullName = #{ clubEnglishFullName },
-        	</if>	<if test="playerName != null">
-        	assist_rank.PlayerName = #{ playerName },
-        	</if>	<if test="playerEnglishName != null">
-        	assist_rank.PlayerEnglishName = #{ playerEnglishName },
-        	</if>	<if test="country != null">
-        	assist_rank.Country = #{ country },
-        	</if>	<if test="nativePlace != null">
-        	assist_rank.NativePlace = #{ nativePlace },
-        	</if>	<if test="birth != null">
-        	assist_rank.Birth = #{ birth }
-        	</if>
-        	WHERE
-        	id= #{id}
+        UPDATE
+        assist_rank
+        SET
+        <if test="assistants != null">
+            assist_rank.Assistants = #{ assistants },
+        </if>	
+        <if test="playerId != null">
+            assist_rank.PlayerId = #{ playerId },
+        </if>	
+        <if test="preRanking != null">
+            assist_rank.PreRanking = #{ preRanking },
+        </if>	
+        <if test="ranking != null">
+            assist_rank.Ranking = #{ ranking },
+        </if>	
+        <if test="year != null">
+            assist_rank.Year = #{ year },
+        </if>	
+        <if test="endYear != null">
+            assist_rank.EndYear = #{ endYear },
+        </if>	
+        <if test="clubId != null">
+            assist_rank.ClubId = #{ clubId },
+        </if>	
+        <if test="clubLogo != null">
+            assist_rank.ClubLogo = #{ clubLogo },
+        </if>	
+        <if test="clubName != null">
+            assist_rank.ClubName = #{ clubName },
+        </if>	
+        <if test="clubEnglishName != null">
+            assist_rank.ClubEnglishName = #{ clubEnglishName },
+        </if>	
+        <if test="clubFullName != null">
+            assist_rank.ClubFullName = #{ clubFullName },
+        </if>	
+        <if test="clubEnglishFullName != null">
+            assist_rank.ClubEnglishFullName = #{ clubEnglishFullName },
+        </if>	
+        <if test="playerName != null">
+            assist_rank.PlayerName = #{ playerName },
+        </if>	
+        <if test="playerEnglishName != null">
+            assist_rank.PlayerEnglishName = #{ playerEnglishName },
+        </if>	
+        <if test="country != null">
+            assist_rank.Country = #{ country },
+        </if>	
+        <if test="nativePlace != null">
+            assist_rank.NativePlace = #{ nativePlace },
+        </if>	
+        <if test="birth != null">
+            assist_rank.Birth = #{ birth }
+        </if>
+        WHERE
+        id= #{id}
     </update>
     <delete id="deleteAssistRankById">
-        	DELETE FROM
-        	assist_rank
-        	WHERE
-        	id=#{0}
+        DELETE FROM
+        assist_rank
+        WHERE
+        id=#{0}
     </delete>
 </mapper>
 

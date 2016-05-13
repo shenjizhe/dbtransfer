@@ -29,9 +29,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeagueMatch> implements ITransfer {
 
-    final long[] LEAGUE_TYPE_IDS = new long[]{1, 4, 5, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
-    final int[] LEAGUE_STATUS_IDS = new int[]{3, 2, 1, 4};
-    final String[] DAY_OF_WEEK_NAMES = new String[]{"星期日","星期一","星期二","星期三","星期四","星期五","星期六"};
+    public final static long[] LEAGUE_TYPE_IDS = new long[]{1, 4, 5, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
+    public final static int[] LEAGUE_STATUS_IDS = new int[]{3, 2, 1, 4};
+    public final static String[] DAY_OF_WEEK_NAMES = new String[]{"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
 
     @Autowired
     LeaguecalendarMapper leaguecalendarMapper;
@@ -75,11 +75,11 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
         match.setHomeClubHistoryId(homeHistoryClubId);
         long guestHistoryClubId = clubHistoryMappingMapper.selectClubHistoryMappingById(source.getGuestTeamHistoryId()).getClubHistoryId();
         match.setGuestClubHistoryId(guestHistoryClubId);
-        
+
         Date time = source.getLeagueTime();
         match.setKickAt(time);
         match.setWeekday(DAY_OF_WEEK_NAMES[time.getDay()]);
-        
+
         match.setYear(source.getYears());
         match.setStadium(source.getLeagueCourt());
         match.setCreatedAt(source.getCreateTime());
