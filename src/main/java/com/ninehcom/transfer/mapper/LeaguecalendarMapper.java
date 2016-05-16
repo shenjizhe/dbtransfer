@@ -23,6 +23,10 @@ public class LeaguecalendarMapper {
 	return sqlSession.selectList("selectAllLeaguecalendar", null);
     }
     
+    public List<Leaguecalendar> selectLineLeaguecalendar(){
+	return sqlSession.selectList("selectLineLeaguecalendar", null);
+    }
+    
     public List<Leaguecalendar> selectFilterLeaguecalendar(){
 	return sqlSession.selectList("selectFilterLeaguecalendar", null);
     }

@@ -33,12 +33,21 @@
         <result column="Years" property="years"/>
         <result column="CreateTime" property="createTime"/>
         <result column="UpdateTime" property="updateTime"/>
+        <result column="ClubTeamType" property="clubTeamType"/>
     </resultMap>
     <select id="selectAllLeaguecalendar" resultMap="leaguecalendarMap">
         SELECT
         *
         FROM
         leaguecalendar
+    </select>
+    <select id="selectLineLeaguecalendar" resultMap="leaguecalendarMap">
+        SELECT
+        *
+        FROM
+        leaguecalendar
+        WHERE
+        LineupLogo != ''
     </select>
     <select id="selectFilterLeaguecalendar" resultMap="leaguecalendarMap">
         SELECT

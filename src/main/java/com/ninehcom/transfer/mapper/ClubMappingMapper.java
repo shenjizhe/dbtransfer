@@ -18,20 +18,11 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class ClubMappingMapper implements IMapper {
+public class ClubMappingMapper extends MapperBase {
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
     SqlSession sqlSession;
-
-    @Override
-    public void reset(List list) {
-        Map<Integer, Long> map = getMap();
-        for (int i = 0; i < list.size(); i++) {
-            IReset item = (IReset) list.get(i);
-            item.set(map.get(item.get()).intValue());
-        }
-    }
 
     @Override
     public Map<Integer, Long> getMap() {

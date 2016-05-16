@@ -1,5 +1,6 @@
 package com.ninehcom.transfer.mapper;
 
+import com.ninehcom.transfer.entity.Errlog;
 import com.ninehcom.transfer.entity.MatchMapping;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.IReset;
@@ -18,11 +19,13 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class MatchMappingMapper implements IMapper {
+public class MatchMappingMapper extends MapperBase {
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
     SqlSession sqlSession;
+    @Autowired
+    ErrlogMapper errlogMapper;
 
     public List<MatchMapping> selectAllMatchMapping() {
         return sqlSession.selectList("selectAllMatchMapping", null);
@@ -42,15 +45,6 @@ public class MatchMappingMapper implements IMapper {
 
     public int deleteMatchMappingById(int Id) {
         return sqlSession.delete("deleteMatchMappingById", Id);
-    }
-
-    @Override
-    public void reset(List list) {
-        Map<Integer, Long> map = getMap();
-        for (int i = 0; i < list.size(); i++) {
-            IReset item = (IReset) list.get(i);
-            item.set(map.get(item.get()).intValue());
-        }
     }
 
     @Override

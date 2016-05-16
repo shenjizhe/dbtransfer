@@ -2,7 +2,6 @@ package com.ninehcom.transfer.service;
 
 import com.ninehcom.transfer.entity.DataMatchPlayer;
 import com.ninehcom.transfer.mapper.DataMatchPlayerMapper;
-import com.ninehcom.common.entity.PageParam;
 import com.ninehcom.common.util.Result;
 import java.util.ArrayList;
 import java.util.List;

@@ -32,6 +32,7 @@ existLeagueVideo    |Boolean   |是否存在赛事视频
 years               |Integer   |
 createTime          |Date      |
 updateTime          |Date      |
+clubTeamType        |Integer   |俱乐部主客 1主 2客
 
 ### 1.获取所有赛事：（GET） ###
 [https://localhost/leaguecalendar](https://localhost/leaguecalendar)

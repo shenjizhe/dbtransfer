@@ -13,6 +13,6 @@ import java.util.Map;
  * @author Administrator
  */
 public interface IMapper {
-    void reset(List list);
+    void reset(String table,List list);
     Map<Integer,Long> getMap();
 }

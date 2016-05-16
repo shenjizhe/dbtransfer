@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.ErrlogMapper">
+    <resultMap type="com.ninehcom.transfer.entity.Errlog" id="errlogMap">
+        <id column="title" property="title"/>
+        <result column="key" property="key"/>
+        <result column="table" property="table"/>
+        <result column="time" property="time"/>
+        <result column="data" property="data"/>
+    </resultMap>
+    <select id="selectAllErrlog" resultMap="errlogMap">
+        SELECT
+        *
+        FROM
+        errlog
+    </select>
+    <select id="selectErrlogById" resultMap="errlogMap">
+        SELECT
+        *
+        FROM
+        errlog
+        WHERE
+        title=#{0}
+    </select>
+    <insert id="insertErrlog" parameterType="errlog">
+        INSERT INTO
+        errlog
+        (
+        errlog.title , errlog.key , errlog.table , errlog.time , errlog.data
+        )
+        VALUES
+        (
+        #{ title } , #{ key } , #{ table } , #{ time } , #{ data }
+        )
+    </insert>
+    <update id="updateErrlog" parameterType="errlog">
+        UPDATE
+        errlog
+        SET
+        <if test="key != null">
+            errlog.Key = #{ key },
+        </if>	
+        <if test="table != null">
+            errlog.Table = #{ table },
+        </if>	
+        <if test="time != null">
+            errlog.Time = #{ time },
+        </if>	
+        <if test="data != null">
+            errlog.Data = #{ data }
+        </if>
+        WHERE
+        id= #{id}
+    </update>
+    <delete id="deleteErrlogById">
+        DELETE FROM
+        errlog
+        WHERE
+        id=#{0}
+    </delete>
+</mapper>

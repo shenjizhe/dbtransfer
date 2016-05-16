@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  */
 @Component
-public class CoachMappingMapper implements IMapper {
+public class CoachMappingMapper extends MapperBase {
 
     @Autowired
     @Qualifier("jdbc_league_data_template")
@@ -42,15 +42,6 @@ public class CoachMappingMapper implements IMapper {
 
     public int deleteCoachMappingById(int Id) {
         return sqlSession.delete("deleteCoachMappingById", Id);
-    }
-
-    @Override
-    public void reset(List list) {
-        Map<Integer, Long> map = getMap();
-        for (int i = 0; i < list.size(); i++) {
-            IReset item = (IReset) list.get(i);
-            item.set(map.get(item.get()).intValue());
-        }
     }
 
     @Override

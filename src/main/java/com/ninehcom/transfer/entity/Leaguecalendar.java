@@ -1,5 +1,6 @@
 package com.ninehcom.transfer.entity;
 
+import com.ninehcom.transfer.interfaces.IReset;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import javax.persistence.Id;
@@ -45,9 +46,10 @@ ExistLeagueVideo    |Boolean   |是否存在赛事视频
 Years               |Integer   |
 CreateTime          |Date      |
 UpdateTime          |Date      |
+ClubTeamType        |Integer   |俱乐部主客 1主 2客
  */
 @Entity
-public class Leaguecalendar implements Serializable{
+public class Leaguecalendar implements Serializable,IReset{
 
     @Id
     private Integer id;
@@ -280,6 +282,24 @@ public class Leaguecalendar implements Serializable{
     }
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    private Integer clubTeamType;
+    public  Integer getClubTeamType() {
+        return clubTeamType;
+    }
+    public void setClubTeamType(Integer clubTeamType) {
+        this.clubTeamType = clubTeamType;
+    }
+
+    @Override
+    public Integer get() {
+        return id; 
+    }
+
+    @Override
+    public void set(Integer v) {
+        id = v;
     }
 
 }

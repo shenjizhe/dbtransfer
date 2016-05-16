@@ -45,7 +45,7 @@ public abstract class TransferBase<T1, T2> {
         IMapper reseter = getReseter();
         if (reseter != null) {
             try {
-                reseter.reset(list1);
+                reseter.reset(tabl1,list1);
             } catch (Exception ex) {
                 return Result.Fail(ErrorCode.Fail);
             }

@@ -13,6 +13,8 @@ import com.ninehcom.transfer.transfer.CoachHistoryTransfer;
 import com.ninehcom.transfer.transfer.CoachResumeTransfer;
 import com.ninehcom.transfer.transfer.CoachTransfer;
 import com.ninehcom.transfer.transfer.LeagueMatchTransfer;
+import com.ninehcom.transfer.transfer.LineupTransfer;
+import com.ninehcom.transfer.transfer.MatchDataTransfer;
 import com.ninehcom.transfer.transfer.MatchEventTransfer;
 import com.ninehcom.transfer.transfer.PlayerHistoryTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
@@ -53,6 +55,10 @@ public class Controller {
     ShooterRankTransfer shooterRankTransfer;
     @Autowired
     AssistRankTransfer assistRankTransfer;
+    @Autowired
+    LineupTransfer lineupTransfer;
+    @Autowired
+    MatchDataTransfer matchDataTransfer;
 
     @RequestMapping(value = "/01.trans-team", method = RequestMethod.GET)
     @ResponseBody
@@ -121,4 +127,17 @@ public class Controller {
     public Result transRankAssist() {
         return assistRankTransfer.trans();
     }
+
+    @RequestMapping(value = "/12.trans-match-data", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transMatchData() {
+        return matchDataTransfer.trans();
+    }
+
+//    @RequestMapping(value = "/12.trans-match-line", method = RequestMethod.GET)
+//    @ResponseBody
+//    public Result transLineup() {
+//    假数据不需要导入
+//        return lineupTransfer.trans();
+//    }
 }
