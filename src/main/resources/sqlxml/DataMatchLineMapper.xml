@@ -83,7 +83,7 @@
             data_match_line.UpdatedAt = #{ updatedAt }
         </if>
         WHERE
-        data_match_line.MatchId= #{matchId}
+        data_match_line.match_id= #{matchId}
     </update>
     <delete id="deleteDataMatchLineById">
         DELETE FROM

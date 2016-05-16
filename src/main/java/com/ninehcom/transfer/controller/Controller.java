@@ -134,10 +134,9 @@ public class Controller {
         return matchDataTransfer.trans();
     }
 
-//    @RequestMapping(value = "/12.trans-match-line", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Result transLineup() {
-//    假数据不需要导入
-//        return lineupTransfer.trans();
-//    }
+    @RequestMapping(value = "/13.trans-match-line", method = RequestMethod.GET)
+    @ResponseBody
+    public Result transLineup() {
+        return lineupTransfer.trans();
+    }
 }
