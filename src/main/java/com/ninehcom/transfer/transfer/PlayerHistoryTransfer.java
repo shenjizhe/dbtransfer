@@ -150,7 +150,6 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
         List<Playerhistory> playerList = playerhistoryMapper.selectAllPlayerhistory();
         List<DataPlayerReClub> dataPlayerList = dataPlayerReClubMapper.selectAllDataPlayerReClub();
 
-        return trans(Playerhistory.class, DataPlayerReClub.class, playerList, dataPlayerList, "playerHistory", "data_player_re_club", "getPlayerId,getYears", "getPlayerId,getYear");
+        return trans(Playerhistory.class, DataPlayerReClub.class, playerList, dataPlayerList, "playerHistory", "data_player_re_club", "getPlayerId,getYears,getEnterTimes", "getPlayerId,getYear,getOnfield");
     }
-
 }
