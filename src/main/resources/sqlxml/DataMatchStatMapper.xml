@@ -42,12 +42,6 @@
         FROM
         data_match_stat
     </select>
-    <select id="selectMatchDataMaxId" resultType="int">
-        SELECT
-        MAX(id)
-        FROM
-        data_match_stat
-    </select>
     <select id="selectDataMatchStatById" resultMap="dataMatchStatMap">
         SELECT
         *
@@ -72,94 +66,94 @@
         data_match_stat
         SET
         <if test="matchId != null">
-            data_match_stat.MatchId = #{ matchId },
+            data_match_stat.match_id = #{ matchId },
         </if>	
         <if test="clubId != null">
-            data_match_stat.ClubId = #{ clubId },
+            data_match_stat.club_id = #{ clubId },
         </if>	
         <if test="clubType != null">
-            data_match_stat.ClubType = #{ clubType },
+            data_match_stat.club_type = #{ clubType },
         </if>	
         <if test="toShoot != null">
-            data_match_stat.ToShoot = #{ toShoot },
+            data_match_stat.to_shoot = #{ toShoot },
         </if>	
         <if test="inTarget != null">
-            data_match_stat.InTarget = #{ inTarget },
+            data_match_stat.in_target = #{ inTarget },
         </if>	
         <if test="missGoals != null">
-            data_match_stat.MissGoals = #{ missGoals },
+            data_match_stat.miss_goals = #{ missGoals },
         </if>	
         <if test="hitWoodwork != null">
-            data_match_stat.HitWoodwork = #{ hitWoodwork },
+            data_match_stat.hit_woodwork = #{ hitWoodwork },
         </if>	
         <if test="spotKick != null">
-            data_match_stat.SpotKick = #{ spotKick },
+            data_match_stat.spot_kick = #{ spotKick },
         </if>	
         <if test="passTimes != null">
-            data_match_stat.PassTimes = #{ passTimes },
+            data_match_stat.pass_times = #{ passTimes },
         </if>	
         <if test="throughPass != null">
-            data_match_stat.ThroughPass = #{ throughPass },
+            data_match_stat.through_pass = #{ throughPass },
         </if>	
         <if test="offside != null">
-            data_match_stat.Offside = #{ offside },
+            data_match_stat.offside = #{ offside },
         </if>	
         <if test="steal != null">
-            data_match_stat.Steal = #{ steal },
+            data_match_stat.steal = #{ steal },
         </if>	
         <if test="freeKick != null">
-            data_match_stat.FreeKick = #{ freeKick },
+            data_match_stat.free_kick = #{ freeKick },
         </if>	
         <if test="corner != null">
-            data_match_stat.Corner = #{ corner },
+            data_match_stat.corner = #{ corner },
         </if>	
         <if test="outOfBounds != null">
-            data_match_stat.OutOfBounds = #{ outOfBounds },
+            data_match_stat.out_of_bounds = #{ outOfBounds },
         </if>	
         <if test="passCompl != null">
-            data_match_stat.PassCompl = #{ passCompl },
+            data_match_stat.pass_compl = #{ passCompl },
         </if>	
         <if test="passMiddle != null">
-            data_match_stat.PassMiddle = #{ passMiddle },
+            data_match_stat.pass_middle = #{ passMiddle },
         </if>	
         <if test="stealRate != null">
-            data_match_stat.StealRate = #{ stealRate },
+            data_match_stat.steal_rate = #{ stealRate },
         </if>	
         <if test="possession != null">
-            data_match_stat.Possession = #{ possession },
+            data_match_stat.possession = #{ possession },
         </if>	
         <if test="fouls != null">
-            data_match_stat.Fouls = #{ fouls },
+            data_match_stat.fouls = #{ fouls },
         </if>	
         <if test="redCards != null">
-            data_match_stat.RedCards = #{ redCards },
+            data_match_stat.red_cards = #{ redCards },
         </if>	
         <if test="yellowCards != null">
-            data_match_stat.YellowCards = #{ yellowCards },
+            data_match_stat.yellow_cards = #{ yellowCards },
         </if>	
         <if test="injury != null">
-            data_match_stat.Injury = #{ injury },
+            data_match_stat.injury = #{ injury },
         </if>	
         <if test="year != null">
-            data_match_stat.Year = #{ year },
+            data_match_stat.year = #{ year },
         </if>	
         <if test="createdAt != null">
-            data_match_stat.CreatedAt = #{ createdAt },
+            data_match_stat.created_at = #{ createdAt },
         </if>	
         <if test="updatedAt != null">
-            data_match_stat.UpdatedAt = #{ updatedAt },
+            data_match_stat.updated_at = #{ updatedAt },
         </if>	
         <if test="pauses != null">
-            data_match_stat.Pauses = #{ pauses },
+            data_match_stat.pauses = #{ pauses },
         </if>	
         <if test="realMatchAt != null">
-            data_match_stat.RealMatchAt = #{ realMatchAt },
+            data_match_stat.real_match_at = #{ realMatchAt },
         </if>	
         <if test="runningDis != null">
-            data_match_stat.RunningDis = #{ runningDis },
+            data_match_stat.running_dis = #{ runningDis },
         </if>	
         <if test="doubleYCards != null">
-            data_match_stat.DoubleYCards = #{ doubleYCards }
+            data_match_stat.double_y_cards = #{ doubleYCards }
         </if>
         WHERE
         id= #{id}
@@ -171,4 +165,3 @@
         id=#{0}
     </delete>
 </mapper>
-

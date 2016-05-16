@@ -16,6 +16,7 @@ import com.ninehcom.transfer.mapper.DataMatchLineMapper;
 import com.ninehcom.transfer.mapper.LeaguecalendarMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,7 @@ public class LineupTransfer extends TransferBase<Leaguecalendar, DataMatchLine> 
         temp.setMatchId(obj2.getMatchId());
         temp.setHomeLineUrl(obj2.getHomeLineUrl());
         temp.setGuestLineUrl(obj2.getGuestLineUrl());
+        temp.setUpdatedAt(new Date());
         dataMatchLineMapper.updateDataMatchLine(temp);
     }
     
