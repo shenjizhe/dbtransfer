@@ -19,6 +19,7 @@ import com.ninehcom.transfer.transfer.MatchEventTransfer;
 import com.ninehcom.transfer.transfer.PlayerHistoryTransfer;
 import com.ninehcom.transfer.transfer.PlayerTransfer;
 import com.ninehcom.transfer.transfer.ShooterRankTransfer;
+import com.ninehcom.transfer.transfer.UserPlayerReleationTransfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,6 +60,8 @@ public class Controller {
     LineupTransfer lineupTransfer;
     @Autowired
     MatchDataTransfer matchDataTransfer;
+    @Autowired
+    UserPlayerReleationTransfer userPlayerReleationTransfer;
 
     @RequestMapping(value = "/01.trans-team", method = RequestMethod.GET)
     @ResponseBody
@@ -138,5 +141,11 @@ public class Controller {
     @ResponseBody
     public Result transLineup() {
         return lineupTransfer.trans();
+    }
+
+    @RequestMapping(value = "/14.trans-user-player", method = RequestMethod.GET)
+    @ResponseBody
+    public Result userPlayerReleasion() {
+        return userPlayerReleationTransfer.trans();
     }
 }

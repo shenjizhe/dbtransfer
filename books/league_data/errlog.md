@@ -4,9 +4,9 @@
 名称|类型|描述
 -|-|-
 title               |String    |错误标题
-description         |String    |错误描述
-time                |Date      |出错时间
+key                 |String    |字典主键
 table               |String    |出错表格
+time                |Date      |出错时间
 data                |String    |出错记录
 
 ### 1.获取所有错误日志：（GET） ###
