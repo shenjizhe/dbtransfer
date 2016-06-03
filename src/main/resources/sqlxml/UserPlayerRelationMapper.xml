@@ -23,37 +23,6 @@
         	WHERE
         	userid=#{0}
     </select>
-    <insert id="insertUserPlayerRelation" parameterType="userPlayerRelation">
-        	INSERT INTO
-        	user_player_relation
-        	(
-        	user_player_relation.UserId , user_player_relation.PlayID , user_player_relation.Type , user_player_relation.Time
-        	)
-        	VALUES
-        	(
-        	#{ userId } , #{ playID } , #{ type } , #{ time }
-        	)
-    </insert>
-    <update id="updateUserPlayerRelation" parameterType="userPlayerRelation">
-        	UPDATE
-        	user_player_relation
-        	SET
-        	<if test="playID != null">
-        	user_player_relation.PlayID = #{ playID },
-        	</if>	<if test="type != null">
-        	user_player_relation.Type = #{ type },
-        	</if>	<if test="time != null">
-        	user_player_relation.Time = #{ time }
-        	</if>
-        	WHERE
-        	id= #{id}
-    </update>
-    <delete id="deleteUserPlayerRelationById">
-        	DELETE FROM
-        	user_player_relation
-        	WHERE
-        	id=#{0}
-    </delete>
     <update id="updateUserPlayerRelation" parameterType="userPlayerRelation">
         	UPDATE
         	user_player_relation

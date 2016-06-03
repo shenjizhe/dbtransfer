@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninehcom.transfer.mapper.UserRePlayerMapper">
+    <resultMap type="com.ninehcom.transfer.entity.UserRePlayer" id="userRePlayerMap">
+        <id column="UserId" property="userId"/>
+        <result column="PlayID" property="playID"/>
+        <result column="Type" property="type"/>
+        <result column="Time" property="time"/>
+    </resultMap>
+    <select id="selectAllUserRePlayer" resultMap="userRePlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	user_re_player
+    </select>
+    <select id="selectUserRePlayerById" resultMap="userRePlayerMap">
+        	SELECT
+        	*
+        	FROM
+        	user_re_player
+        	WHERE
+        	userid=#{0}
+    </select>
+    <insert id="insertUserRePlayer" parameterType="userRePlayer">
+        	INSERT INTO
+        	user_re_player
+        	(
+        	user_re_player.UserId , user_re_player.PlayID , user_re_player.Type , user_re_player.Time
+        	)
+        	VALUES
+        	(
+        	#{ userId } , #{ playID } , #{ type } , #{ time }
+        	)
+    </insert>
+    <update id="updateUserRePlayer" parameterType="userRePlayer">
+        	UPDATE
+        	user_re_player
+        	SET
+        	<if test="playID != null">
+        	user_re_player.PlayID = #{ playID },
+        	</if>	<if test="type != null">
+        	user_re_player.Type = #{ type },
+        	</if>	<if test="time != null">
+        	user_re_player.Time = #{ time }
+        	</if>
+        	WHERE
+        	id= #{id}
+    </update>
+    <delete id="deleteUserRePlayerById">
+        	DELETE FROM
+        	user_re_player
+        	WHERE
+        	id=#{0}
+    </delete>
+</mapper>
+

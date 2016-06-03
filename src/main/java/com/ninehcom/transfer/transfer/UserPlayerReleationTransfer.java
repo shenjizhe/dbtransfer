@@ -6,68 +6,77 @@
 package com.ninehcom.transfer.transfer;
 
 import com.ninehcom.common.util.Result;
-import com.ninehcom.transfer.entity.PlayerMapping;
-import com.ninehcom.transfer.entity.Translog;
 import com.ninehcom.transfer.entity.UserPlayerRelation;
+import com.ninehcom.transfer.entity.UserRePlayer;
+import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import com.ninehcom.transfer.mapper.UserPlayerRelationMapper;
-import java.util.Date;
+import com.ninehcom.transfer.mapper.UserRePlayerMapper;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Shenjizhe
  */
-public class UserPlayerReleationTransfer implements ITransfer {
+@Service
+public class UserPlayerReleationTransfer extends
+        TransferBase<UserPlayerRelation, UserRePlayer> implements ITransfer {
 
     @Autowired
     PlayerMappingMapper playerMappingMapper;
     @Autowired
     UserPlayerRelationMapper userPlayerRelationMapper;
     @Autowired
+    UserRePlayerMapper userRePlayerMapper;
+    @Autowired
     private TranslogMapper translogMapper;
 
     @Override
+    public UserRePlayer CreateDestination(UserPlayerRelation source, int id) {
+        UserRePlayer relation = new UserRePlayer();
+        relation.setUserId(source.getUserId());
+        relation.setPlayID(source.getPlayID());
+        relation.setType(source.getType());
+        relation.setTime(source.getTime());
+        return relation;
+    }
+
+    @Override
+    public void AddSameDataMapping(UserPlayerRelation obj1, UserRePlayer obj2) {
+
+    }
+
+    @Override
+    public void AddDiffDataMapping(UserPlayerRelation obj1, UserRePlayer obj2) {
+        userRePlayerMapper.insertUserRePlayer(obj2);
+    }
+
+    @Override
+    public int getDestinationMaxId() {
+        return 0;
+    }
+
+    @Override
+    public TranslogMapper getTranslogger() {
+        return translogMapper;
+    }
+
+    @Override
+    public IMapper getReseter() {
+        return playerMappingMapper;
+    }
+
+    @Override
     public Result trans() {
+        List<UserPlayerRelation> userplayerReList = userPlayerRelationMapper.selectAllUserPlayerRelation();
+        List<UserRePlayer> userRePlayerList = userRePlayerMapper.selectAllUserRePlayer();
 
-        List<UserPlayerRelation> list = userPlayerRelationMapper.selectAllUserPlayerRelation();
-        int sourceCount = 0;
-        int sameSource = 0;
-
-        for (UserPlayerRelation relation : list) {
-            Integer oldPlayerId = relation.getPlayID();
-            PlayerMapping player = playerMappingMapper.selectPlayerMappingById(oldPlayerId);
-            if (player != null) {
-                sourceCount++;
-                Long newPlayerId = player.getDataPlayerId();
-                relation.setPlayID(newPlayerId.intValue());
-                int result = userPlayerRelationMapper.updateUserPlayerRelation(relation);
-                if (result == 1) {
-                    sameSource++;
-                }
-            }
-        }
-        Translog log = createLogger("user_player_relation", "user_player_relation", sourceCount, sameSource);
-        translogMapper.insertTranslog(log);
-
-        return Result.Success();
+        return trans(UserPlayerRelation.class, UserRePlayer.class, userplayerReList, userRePlayerList, "user_player_relation", "user_re_player", "getUserId,getPlayID", "getUserId,getPlayID");
     }
 
-    private Translog createLogger(String source, String destination, int sourceSize, int sameCount) {
-        Translog log = new Translog();
-        log.setOperator(source + ">>" + destination);
-        log.setSource(source);
-        log.setDestination(destination);
-        log.setSourceCount(sourceSize);
-        log.setDestinationCount(sameCount);
-        log.setSameCount(sameCount);
-        log.setSourceDiff(0);
-        log.setDestinationDiff(0);
-        log.setTime(new Date());
-        return log;
-    }
 }
