@@ -45,7 +45,7 @@ public abstract class TransferBase<T1, T2> {
         IMapper reseter = getReseter();
         if (reseter != null) {
             try {
-                reseter.reset(tabl1,list1);
+                reseter.reset(tabl1, list1);
             } catch (Exception ex) {
                 return Result.Fail(ErrorCode.Fail);
             }
@@ -74,12 +74,12 @@ public abstract class TransferBase<T1, T2> {
         }
 
         int id = 0;
-        try{
+        try {
             id = getDestinationMaxId();
-        }catch(Exception ex){
-            
+        } catch (Exception ex) {
+
         }
-        
+
         log.setOldMaxId((long) id);
         try {
             List<T1> diff1 = result.getDiff1();

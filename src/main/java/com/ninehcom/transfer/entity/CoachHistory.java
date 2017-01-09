@@ -95,20 +95,20 @@ public class CoachHistory implements Serializable{
         this.honors = honors;
     }
 
-    private Date createAt;
-    public  Date getCreateAt() {
-        return createAt;
+    private Date createdAt;
+    public  Date getCreatedAt() {
+        return createdAt;
     }
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public void setCreateAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
-    private Date updateAt;
-    public  Date getUpdateAt() {
-        return updateAt;
+    private Date updatedAt;
+    public  Date getUpdatedAt() {
+        return updatedAt;
     }
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
+    public void setUpdateAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

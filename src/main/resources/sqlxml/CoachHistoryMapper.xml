@@ -12,8 +12,8 @@
         <result column="league_name" property="leagueName"/>
         <result column="club_name" property="clubName"/>
         <result column="honors" property="honors"/>
-        <result column="create_at" property="createAt"/>
-        <result column="update_at" property="updateAt"/>
+        <result column="created_at" property="createdAt"/>
+        <result column="updated_at" property="updatedAt"/>
     </resultMap>
     <select id="selectCoachResumeMaxId" resultType="int">
         SELECT
@@ -39,11 +39,11 @@
         INSERT INTO
         coach_history
         (
-        coach_history.id , coach_history.year , coach_history.end_year , coach_history.coach_id , coach_history.coach_name , coach_history.league_name , coach_history.club_name , coach_history.honors , coach_history.create_at , coach_history.update_at
+        coach_history.id , coach_history.year , coach_history.end_year , coach_history.coach_id , coach_history.coach_name , coach_history.league_name , coach_history.club_name , coach_history.honors , coach_history.created_at , coach_history.updated_at
         )
         VALUES
         (
-        #{ id } , #{ year } , #{ endYear } , #{ coachId } , #{ coachName } , #{ leagueName } , #{ clubName } , #{ honors } , #{ createAt } , #{ updateAt }
+        #{ id } , #{ year } , #{ endYear } , #{ coachId } , #{ coachName } , #{ leagueName } , #{ clubName } , #{ honors } , #{ createdAt } , #{ updatedAt }
         )
     </insert>
     <update id="updateCoachHistory" parameterType="coachHistory">
@@ -71,11 +71,11 @@
         <if test="honors != null">
             coach_history.Honors = #{ honors },
         </if>	
-        <if test="createAt != null">
-            coach_history.CreateAt = #{ createAt },
+        <if test="createdAt != null">
+            coach_history.CreatedAt = #{ createdAt },
         </if>	
-        <if test="updateAt != null">
-            coach_history.UpdateAt = #{ updateAt }
+        <if test="updatedAt != null">
+            coach_history.UpdatedAt = #{ updatedAt }
         </if>
         WHERE
         id= #{id}
