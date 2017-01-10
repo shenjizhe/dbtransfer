@@ -61,25 +61,19 @@
         <if test="lineUrl != null">
             data_match_line.line_url = #{ lineUrl },
         </if>	
-        <!--        <if test="homeLineUrl != null">
-            data_match_line.HomeLineUrl = #{ homeLineUrl },
-        </if>	
-        <if test="guestLineUrl != null">
-            data_match_line.GuestLineUrl = #{ guestLineUrl },
-        </if>	-->
-        <if test="home_line != null">
+        <if test="homeLine != null">
             data_match_line.home_line = #{ homeLine },
         </if>	
-        <if test="guest_line != null">
+        <if test="guestLine != null">
             data_match_line.guest_line = #{ guestLine },
         </if>	
         <if test="year != null">
             data_match_line.year = #{ year },
         </if>	
-        <if test="created_at != null">
+        <if test="createdAt != null">
             data_match_line.created_at = #{ createdAt },
         </if>	
-        <if test="updated_at != null">
+        <if test="updatedAt != null">
             data_match_line.updated_at = #{ updatedAt }
         </if>
         WHERE
