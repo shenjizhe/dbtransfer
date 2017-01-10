@@ -74,26 +74,6 @@ public class DataMatchLine implements Serializable {
         this.lineUrl = lineUrl;
     }
 
-    private String homeLineUrl;
-
-    public String getHomeLineUrl() {
-        return homeLineUrl;
-    }
-
-    public void setHomeLineUrl(String homeLineUrl) {
-        this.homeLineUrl = homeLineUrl;
-    }
-
-    private String guestLineUrl;
-
-    public String getGuestLineUrl() {
-        return guestLineUrl;
-    }
-
-    public void setGuestLineUrl(String guestLineUrl) {
-        this.guestLineUrl = guestLineUrl;
-    }
-
     private String homeLine;
 
     public String getHomeLine() {

@@ -19,6 +19,7 @@ import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,35 +44,40 @@ public class LineupTransfer extends TransferBase<Leaguecalendar, DataMatchLine> 
     @Override
     public DataMatchLine CreateDestination(Leaguecalendar source, int id) {
         DataMatchLine line = new DataMatchLine();
-        line.setId((long) id);
-        line.setMatchId(source.getId().longValue());
-        long homeClubId = clubMap.get(source.getHomeTeamId()).getClubId();
-        line.setHomeClubId(homeClubId);
-        long guestClubId = clubMap.get(source.getGuestTeamId()).getClubId();
-        line.setGuestClubId(guestClubId);
-        
-        int clubTeamType = source.getClubTeamType();
-        if (clubTeamType == 1) {
-            line.setHomeLineUrl(source.getLineupLogo());
-        } else if (clubTeamType == 2) {
-            line.setGuestLineUrl(source.getLineupLogo());
-        } else {
+        try {
+            line.setId((long) id);
+            line.setMatchId(source.getId().longValue());
+            long homeClubId = clubMap.get(source.getHomeTeamId()).getClubId();
+            line.setHomeClubId(homeClubId);
+            long guestClubId = clubMap.get(source.getGuestTeamId()).getClubId();
+            line.setGuestClubId(guestClubId);
             
+//            int clubTeamType = source.getClubTeamType();
+//            if (clubTeamType == 1) {
+//                line.setHomeLineUrl(source.getLineupLogo());
+//            } else if (clubTeamType == 2) {
+//                line.setGuestLineUrl(source.getLineupLogo());
+//            } else {
+//                
+//            }
+            
+            line.setYear(source.getYears());
+            line.setCreatedAt(source.getCreateTime());
+            line.setUpdatedAt(source.getUpdateTime());
+        } catch (Exception ex) {
+            LOG.info(ex.getMessage());
         }
-        
-        line.setYear(source.getYears());
-        line.setCreatedAt(source.getCreateTime());
-        line.setUpdatedAt(source.getUpdateTime());
         
         return line;
     }
+    private static final Logger LOG = Logger.getLogger(LineupTransfer.class.getName());
     
     @Override
     public void AddSameDataMapping(Leaguecalendar obj1, DataMatchLine obj2) {
         DataMatchLine temp = new DataMatchLine();
         temp.setMatchId(obj2.getMatchId());
-        temp.setHomeLineUrl(obj2.getHomeLineUrl());
-        temp.setGuestLineUrl(obj2.getGuestLineUrl());
+//        temp.setHomeLineUrl(obj2.getHomeLineUrl());
+//        temp.setGuestLineUrl(obj2.getGuestLineUrl());
         temp.setUpdatedAt(new Date());
         dataMatchLineMapper.updateDataMatchLine(temp);
     }
@@ -79,10 +85,10 @@ public class LineupTransfer extends TransferBase<Leaguecalendar, DataMatchLine> 
     @Override
     public void AddDiffDataMapping(Leaguecalendar obj1, DataMatchLine obj2) {
         DataMatchLine line = dataMatchLineMapper.selectDataMatchLineById(obj2.getMatchId().intValue());
-        if(line != null){
+        if (line != null) {
             AddSameDataMapping(obj1, obj2);
-        }else{
-           dataMatchLineMapper.insertDataMatchLine(obj2); 
+        } else {
+            dataMatchLineMapper.insertDataMatchLine(obj2);
         }
     }
     
