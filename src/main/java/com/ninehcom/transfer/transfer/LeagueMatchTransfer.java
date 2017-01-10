@@ -140,4 +140,14 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
         return trans(Leaguecalendar.class, DataLeagueMatch.class, clubMatchList, dataMatchList, "leaguecalendar", "data_league_match", null, null);
     }
 
+    @Override
+    public String getT1Key(Leaguecalendar obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataLeagueMatch obj2) {
+        return obj2.getId().toString();
+    }
+
 }

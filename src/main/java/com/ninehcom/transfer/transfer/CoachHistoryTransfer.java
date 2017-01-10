@@ -136,4 +136,14 @@ public class CoachHistoryTransfer extends TransferBase<CoachHistoryData, DataCoa
         return trans(CoachHistoryData.class, DataCoachReClub.class, coachList, dataCoachList, "coachHistory", "data_coach_re_club", "getCoachId,getYears", "getCoachId,getYear");
     }
 
+    @Override
+    public String getT1Key(CoachHistoryData obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataCoachReClub obj2) {
+        return obj2.getId().toString();
+    }
+
 }

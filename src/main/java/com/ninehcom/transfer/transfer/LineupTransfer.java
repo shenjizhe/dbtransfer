@@ -124,5 +124,15 @@ public class LineupTransfer extends TransferBase<Leaguecalendar, DataMatchLine> 
         
         return trans(Leaguecalendar.class, DataMatchLine.class, club_line, data_line, "leaguecalendar", "data_match_line", "getId", "getMatchId");
     }
+
+    @Override
+    public String getT1Key(Leaguecalendar obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataMatchLine obj2) {
+        return obj2.getId().toString();
+    }
     
 }

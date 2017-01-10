@@ -120,4 +120,14 @@ public class MatchDataTransfer extends TransferBase<Leaguedata, DataMatchStat> i
         return trans(Leaguedata.class, DataMatchStat.class, club_data, data_data, "leaguedata", "data_match_stat", "getLeagueCalendarId,getLeagueTeamTypeId", "getMatchId,getClubType");
     }
 
+    @Override
+    public String getT1Key(Leaguedata obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataMatchStat obj2) {
+        return obj2.getId().toString();
+    }
+
 }

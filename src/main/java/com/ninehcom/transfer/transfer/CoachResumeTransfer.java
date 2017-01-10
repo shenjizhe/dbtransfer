@@ -91,4 +91,14 @@ public class CoachResumeTransfer extends TransferBase<Coachresume, CoachHistory>
         return trans(Coachresume.class, CoachHistory.class, coachResumeList, coachHistoryList, "coachresume", "coach_history", "getCoachId,getStartYear", "getCoachId,getYear");
     }
 
+    @Override
+    public String getT1Key(Coachresume obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(CoachHistory obj2) {
+        return obj2.getId().toString();
+    }
+
 }

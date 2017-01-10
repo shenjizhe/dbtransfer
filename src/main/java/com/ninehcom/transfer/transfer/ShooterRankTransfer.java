@@ -117,4 +117,14 @@ public class ShooterRankTransfer extends TransferBase<Shooter, DataLeagueRankGoa
         return trans(Shooter.class, DataLeagueRankGoal.class, shooterList, rankGoalList, "shooter", "data_league_rank_goal", null, null);
     }
 
+    @Override
+    public String getT1Key(Shooter obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataLeagueRankGoal obj2) {
+        return obj2.getId().toString();
+    }
+
 }

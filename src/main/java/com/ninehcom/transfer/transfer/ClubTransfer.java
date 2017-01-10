@@ -87,4 +87,14 @@ public class ClubTransfer extends TransferBase<Team, DataClub> implements ITrans
     public ErrlogMapper getErrlogMapper() {
         return errlogMapper;
     }
+
+    @Override
+    public String getT1Key(Team obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataClub obj2) {
+        return obj2.getId().toString();
+    }
 }

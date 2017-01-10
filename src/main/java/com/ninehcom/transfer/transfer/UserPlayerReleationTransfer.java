@@ -87,4 +87,14 @@ public class UserPlayerReleationTransfer extends
         return trans(UserPlayerRelation.class, UserRePlayer.class, userplayerReList, userRePlayerList, "user_player_relation", "user_re_player", "getUserId,getPlayID", "getUserId,getPlayID");
     }
 
+    @Override
+    public String getT1Key(UserPlayerRelation obj1) {
+        return obj1.getUserId() + "-" + obj1.getPlayID().toString();
+    }
+
+    @Override
+    public String getT2Key(UserRePlayer obj2) {
+        return obj2.getUserId() + "-" + obj2.getPlayID().toString();
+    }
+
 }

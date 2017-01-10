@@ -160,4 +160,14 @@ public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlaye
 
         return trans(Playerhistory.class, DataPlayerReClub.class, playerList, dataPlayerList, "playerHistory", "data_player_re_club", "getPlayerId,getYears,getEnterTimes", "getPlayerId,getYear,getOnfield");
     }
+
+    @Override
+    public String getT1Key(Playerhistory obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataPlayerReClub obj2) {
+        return obj2.getId().toString();
+    }
 }

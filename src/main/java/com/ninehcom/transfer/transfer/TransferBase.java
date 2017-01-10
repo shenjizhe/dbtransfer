@@ -39,6 +39,10 @@ public abstract class TransferBase<T1, T2> {
 //clubHistoryMappingMapper.insertClubHistoryMapping(mapping);
     public abstract void AddDiffDataMapping(T1 obj1, T2 obj2);
 
+    public abstract String getT1Key(T1 obj1);
+
+    public abstract String getT2Key(T2 obj2);
+
     public abstract int getDestinationMaxId();
 
     public abstract TranslogMapper getTranslogger();
@@ -74,8 +78,7 @@ public abstract class TransferBase<T1, T2> {
                     AddSameDataMapping(obj1, obj2);
                 } catch (Exception exx) {
                     Errlog err = new Errlog();
-
-                    err.setKey("");
+                    err.setKey(getT1Key(obj1));
                     err.setTable(table2);
                     err.setTime(new Date());
                     err.setTitle("相同数据建立映射失败");
@@ -111,7 +114,7 @@ public abstract class TransferBase<T1, T2> {
                     AddDiffDataMapping(obj1, obj2);
                 } catch (Exception ex) {
                     Errlog err = new Errlog();
-                    err.setKey("");
+                    err.setKey(getT1Key(obj1));
                     err.setTable(table2);
                     err.setTime(new Date());
                     err.setTitle("导入不同数据插入新值失败");

@@ -91,4 +91,14 @@ public class CoachTransfer extends TransferBase<Coach, DataCoach> implements ITr
         return trans(Coach.class, DataCoach.class, coachList, dataCoachList, "coach", "data_coach", "getName", "getName");
     }
 
+    @Override
+    public String getT1Key(Coach obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataCoach obj2) {
+        return obj2.getId().toString();
+    }
+
 }

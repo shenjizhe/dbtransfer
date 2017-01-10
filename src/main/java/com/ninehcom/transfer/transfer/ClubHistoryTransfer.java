@@ -97,4 +97,14 @@ public class ClubHistoryTransfer extends TransferBase<Teamhistory, ClubHistory> 
     public IMapper getReseter() {
         return clubMappingMapper;
     }
+
+    @Override
+    public String getT1Key(Teamhistory obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(ClubHistory obj2) {
+        return obj2.getId().toString();
+    }
 }

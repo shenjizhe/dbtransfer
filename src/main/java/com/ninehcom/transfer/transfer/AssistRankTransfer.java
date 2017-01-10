@@ -118,4 +118,14 @@ public class AssistRankTransfer extends TransferBase<Assist, DataLeagueRankAssis
         return trans(Assist.class, DataLeagueRankAssistant.class, assistList, rankAssistList, "assist", "data_league_rank_assistant", null, null);
     }
 
+    @Override
+    public String getT1Key(Assist obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataLeagueRankAssistant obj2) {
+        return obj2.getId().toString();
+    }
+
 }

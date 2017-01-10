@@ -89,4 +89,14 @@ public class PlayerTransfer extends TransferBase<Player, DataPlayer> implements 
         List<DataPlayer> dataPlayerList = dataPlayerMapper.selectAllDataPlayer();
         return trans(Player.class, DataPlayer.class, playerList, dataPlayerList, "player", "data_player", "getName,getBirthday", "getName,getBirth");
     }
+
+    @Override
+    public String getT1Key(Player obj1) {
+        return obj1.getId().toString();
+    }
+
+    @Override
+    public String getT2Key(DataPlayer obj2) {
+        return obj2.getId().toString();
+    }
 }
