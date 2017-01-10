@@ -9,7 +9,7 @@
         <result column="home_club_id" property="homeClubId"/>
         <result column="guest_club_id" property="guestClubId"/>
         <result column="line_url" property="lineUrl"/>
-<!--        <result column="home_line_url" property="homeLineUrl"/>
+        <!--        <result column="home_line_url" property="homeLineUrl"/>
         <result column="guest_line_url" property="guestLineUrl"/>-->
         <result column="home_line" property="homeLine"/>
         <result column="guest_line" property="guestLine"/>
@@ -53,34 +53,34 @@
         data_match_line
         SET
         <if test="homeClubId != null">
-            data_match_line.HomeClubId = #{ homeClubId },
+            data_match_line.home_club_id = #{ homeClubId },
         </if>	
         <if test="guestClubId != null">
-            data_match_line.GuestClubId = #{ guestClubId },
+            data_match_line.guest_club_id = #{ guestClubId },
         </if>	
         <if test="lineUrl != null">
-            data_match_line.LineUrl = #{ lineUrl },
+            data_match_line.line_url = #{ lineUrl },
         </if>	
-<!--        <if test="homeLineUrl != null">
+        <!--        <if test="homeLineUrl != null">
             data_match_line.HomeLineUrl = #{ homeLineUrl },
         </if>	
         <if test="guestLineUrl != null">
             data_match_line.GuestLineUrl = #{ guestLineUrl },
         </if>	-->
-        <if test="homeLine != null">
-            data_match_line.HomeLine = #{ homeLine },
+        <if test="home_line != null">
+            data_match_line.home_line = #{ homeLine },
         </if>	
-        <if test="guestLine != null">
-            data_match_line.GuestLine = #{ guestLine },
+        <if test="guest_line != null">
+            data_match_line.guest_line = #{ guestLine },
         </if>	
         <if test="year != null">
-            data_match_line.Year = #{ year },
+            data_match_line.year = #{ year },
         </if>	
-        <if test="createdAt != null">
-            data_match_line.CreatedAt = #{ createdAt },
+        <if test="created_at != null">
+            data_match_line.created_at = #{ createdAt },
         </if>	
-        <if test="updatedAt != null">
-            data_match_line.UpdatedAt = #{ updatedAt }
+        <if test="updated_at != null">
+            data_match_line.updated_at = #{ updatedAt }
         </if>
         WHERE
         data_match_line.match_id= #{matchId}

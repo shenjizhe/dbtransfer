@@ -14,6 +14,7 @@ import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.CoachMapper;
 import com.ninehcom.transfer.mapper.CoachMappingMapper;
 import com.ninehcom.transfer.mapper.DataCoachMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class CoachTransfer extends TransferBase<Coach, DataCoach> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     CoachMapper coachMapper;
     @Autowired

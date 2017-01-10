@@ -18,6 +18,7 @@ import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.ClubPlayerReClubMapper;
 import com.ninehcom.transfer.mapper.DataPlayerReClubMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.PlayerHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.PlayerhistoryMapper;
@@ -34,6 +35,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerHistoryTransfer extends TransferBase<Playerhistory, DataPlayerReClub> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     final int[] POINT_IDS = new int[]{1, 2, 3, 3, 3, 4, 3, 2};
     final String[] POINT_NAMES = new String[]{"门将", "后卫", "中场", "中场", "中场", "前锋", "中场", "后卫"};
 

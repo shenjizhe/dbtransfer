@@ -8,19 +8,25 @@ package com.ninehcom.transfer.transfer;
 import com.ninehcom.common.enums.ErrorCode;
 import com.ninehcom.common.util.ListComparator;
 import com.ninehcom.common.util.Result;
+import com.ninehcom.transfer.entity.Errlog;
 import com.ninehcom.transfer.entity.Translog;
 import com.ninehcom.transfer.interfaces.IMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.json.JSONObject;
 
 /**
  *
  * @author Administrator
  */
 public abstract class TransferBase<T1, T2> {
+
+    public abstract ErrlogMapper getErrlogMapper();
 
     public abstract T2 CreateDestination(T1 source, int id);
 //ClubHistoryMapping mapping = new ClubHistoryMapping(team.getId(), club.getId());
@@ -41,6 +47,7 @@ public abstract class TransferBase<T1, T2> {
 
     public Result trans(Class<T1> cls1, Class<T2> cls2, List<T1> list1, List<T2> list2, String tabl1, String table2, String key1, String key2) {
 
+        ErrlogMapper errlog = getErrlogMapper();
         TranslogMapper logger = getTranslogger();
         IMapper reseter = getReseter();
         if (reseter != null) {
@@ -63,7 +70,20 @@ public abstract class TransferBase<T1, T2> {
 
             for (T1 obj1 : same.keySet()) {
                 T2 obj2 = same.get(obj1);
-                AddSameDataMapping(obj1, obj2);
+                try {
+                    AddSameDataMapping(obj1, obj2);
+                } catch (Exception exx) {
+                    Errlog err = new Errlog();
+
+                    err.setKey("");
+                    err.setTable(table2);
+                    err.setTime(new Date());
+                    err.setTitle("相同数据建立映射失败");
+                    JSONObject obj = new JSONObject(obj2);
+                    err.setData(obj.toString());
+                    errlog.insertErrlog(err);
+                }
+
                 mappingCount++;
             }
         } catch (Exception ex) {
@@ -90,7 +110,14 @@ public abstract class TransferBase<T1, T2> {
                     obj2 = CreateDestination(obj1, id);
                     AddDiffDataMapping(obj1, obj2);
                 } catch (Exception ex) {
-                    throw ex;
+                    Errlog err = new Errlog();
+                    err.setKey("");
+                    err.setTable(table2);
+                    err.setTime(new Date());
+                    err.setTitle("导入不同数据插入新值失败");
+                    JSONObject obj = new JSONObject(obj2);
+                    err.setData(obj.toString());
+                    errlog.insertErrlog(err);
                 }
                 mappingCount++;
             }

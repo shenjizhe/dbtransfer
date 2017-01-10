@@ -10,6 +10,7 @@ import com.ninehcom.transfer.entity.UserPlayerRelation;
 import com.ninehcom.transfer.entity.UserRePlayer;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import com.ninehcom.transfer.mapper.UserPlayerRelationMapper;
@@ -27,6 +28,13 @@ import org.springframework.stereotype.Service;
 public class UserPlayerReleationTransfer extends
         TransferBase<UserPlayerRelation, UserRePlayer> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     PlayerMappingMapper playerMappingMapper;
     @Autowired

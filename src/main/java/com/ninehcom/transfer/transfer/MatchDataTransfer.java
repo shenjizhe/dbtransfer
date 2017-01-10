@@ -13,6 +13,7 @@ import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataMatchStatMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.LeaguedataMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
@@ -28,6 +29,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class MatchDataTransfer extends TransferBase<Leaguedata, DataMatchStat> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     LeaguedataMapper leaguedataMapper;
     @Autowired

@@ -12,6 +12,7 @@ import com.ninehcom.transfer.entity.PlayerMapping;
 import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.DataPlayerMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.PlayerMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
@@ -26,6 +27,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PlayerTransfer extends TransferBase<Player, DataPlayer> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     PlayerMapper playerMapper;
     @Autowired

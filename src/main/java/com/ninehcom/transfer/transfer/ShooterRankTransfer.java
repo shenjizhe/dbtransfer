@@ -16,6 +16,7 @@ import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataLeagueRankGoalMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.ShooterMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
@@ -31,6 +32,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ShooterRankTransfer extends TransferBase<Shooter, DataLeagueRankGoal> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     ShooterMapper shooterMapper;
     @Autowired

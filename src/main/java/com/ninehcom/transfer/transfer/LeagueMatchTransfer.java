@@ -16,6 +16,7 @@ import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataLeagueMatchMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.LeaguecalendarMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
@@ -35,7 +36,13 @@ public class LeagueMatchTransfer extends TransferBase<Leaguecalendar, DataLeague
     public final static long[] LEAGUE_TYPE_IDS = new long[]{1, 4, 5, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     public final static int[] LEAGUE_STATUS_IDS = new int[]{3, 2, 1, 4};
     public final static String[] DAY_OF_WEEK_NAMES = new String[]{"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+    @Autowired
+    ErrlogMapper errlogMapper;
 
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     LeaguecalendarMapper leaguecalendarMapper;
     @Autowired

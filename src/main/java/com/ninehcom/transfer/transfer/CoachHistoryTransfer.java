@@ -21,6 +21,7 @@ import com.ninehcom.transfer.mapper.CoachHistoryDataMapper;
 import com.ninehcom.transfer.mapper.CoachHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.CoachMappingMapper;
 import com.ninehcom.transfer.mapper.DataCoachReClubMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CoachHistoryTransfer extends TransferBase<CoachHistoryData, DataCoachReClub> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
+    
     @Autowired
     CoachHistoryDataMapper coachHistoryDataMapper;
     @Autowired

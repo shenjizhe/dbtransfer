@@ -13,6 +13,7 @@ import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataMatchEventMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.LeagueeventMapper;
 import com.ninehcom.transfer.mapper.MatchMappingMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
@@ -30,7 +31,13 @@ public class MatchEventTransfer extends TransferBase<Leagueevent, DataMatchEvent
 
     final int[] LEAGUE_EVENT_TYPE_IDS = new int[]{0, 5, 9, 10, 11, 13, 12, 2, 3, 7, 4, 8, 6};
     final String[] LEAGUE_EVENT_TYPE_NAMES = new String[]{"开始", "换人", "进球+助攻", "进球（入球）", "进球（点球）", "点球未进", "进球（乌龙）", "助攻", "红牌", "双黄牌", "黄牌", "伤", "结束"};
+@Autowired
+    ErrlogMapper errlogMapper;
 
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     LeagueeventMapper leagueeventMapper;
     @Autowired

@@ -13,6 +13,7 @@ import com.ninehcom.transfer.interfaces.IMapper;
 import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataClubMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TeamMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ClubTransfer extends TransferBase<Team, DataClub> implements ITransfer {
+
     @Autowired
     private TeamMapper teamMapper;
     @Autowired
@@ -77,5 +79,12 @@ public class ClubTransfer extends TransferBase<Team, DataClub> implements ITrans
     @Override
     public IMapper getReseter() {
         return null;
+    }
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
     }
 }

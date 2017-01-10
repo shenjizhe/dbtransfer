@@ -19,6 +19,7 @@ import com.ninehcom.transfer.mapper.ClubMappingMapper;
 import com.ninehcom.transfer.mapper.DataLeagueRankAssistantMapper;
 import com.ninehcom.transfer.mapper.PlayerMappingMapper;
 import com.ninehcom.transfer.mapper.AssistMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AssistRankTransfer extends TransferBase<Assist, DataLeagueRankAssistant> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     AssistMapper assistMapper;
     @Autowired

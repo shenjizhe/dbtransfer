@@ -14,6 +14,7 @@ import com.ninehcom.transfer.interfaces.ITransfer;
 import com.ninehcom.transfer.mapper.ClubHistoryMapper;
 import com.ninehcom.transfer.mapper.ClubHistoryMappingMapper;
 import com.ninehcom.transfer.mapper.ClubMappingMapper;
+import com.ninehcom.transfer.mapper.ErrlogMapper;
 import com.ninehcom.transfer.mapper.TeamhistoryMapper;
 import com.ninehcom.transfer.mapper.TranslogMapper;
 import java.util.List;
@@ -27,6 +28,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClubHistoryTransfer extends TransferBase<Teamhistory, ClubHistory> implements ITransfer {
 
+    @Autowired
+    ErrlogMapper errlogMapper;
+
+    @Override
+    public ErrlogMapper getErrlogMapper() {
+        return errlogMapper;
+    }
     @Autowired
     private ClubHistoryMapper clubHistoryMapper;
     @Autowired
