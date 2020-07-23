@@ -1,8 +1,6 @@
 package com.bfec.transfer.entity;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
-import javax.persistence.Id;
 
 import java.util.Date;
 /**
@@ -30,10 +28,8 @@ destination_diff    |Integer   |目的表不同数量
 check               |Boolean   |数量检查
 Err                 |String    |错误
  */
-@Entity
 public class Translog implements Serializable{
 
-    @Id
     private Integer id;
     public  Integer getId() {
         return id;

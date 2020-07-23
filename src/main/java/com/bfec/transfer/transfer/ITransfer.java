@@ -1,6 +1,6 @@
 package com.bfec.transfer.transfer;
 
 public interface ITransfer {
-    void transfer();
-    String type();
+    void transfer(TransferItem item);
+    boolean check(TransferItem item);
 }

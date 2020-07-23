@@ -32,6 +32,10 @@ public enum ErrorCode {
         this.message = message;
     }
 
+    ErrorCode(String message) {
+        this.message = message;
+    }
+
     /**
      * @return the code
      */

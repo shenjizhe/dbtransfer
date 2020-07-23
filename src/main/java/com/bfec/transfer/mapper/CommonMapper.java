@@ -22,6 +22,14 @@ public class CommonMapper {
         return sqlSession.selectList("select", request);
     }
 
+    public List sum(SqlSession sqlSession, Map request) {
+        return sqlSession.selectList("sum", request);
+    }
+
+    public List count(SqlSession sqlSession, Map request) {
+        return sqlSession.selectList("count", request);
+    }
+
     public int insert(SqlSession sqlSession, String table, Map request) {
         Map map = new HashMap();
         ArrayList keys = new ArrayList(request.keySet());

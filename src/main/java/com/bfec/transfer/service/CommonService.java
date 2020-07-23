@@ -6,7 +6,6 @@ import com.bfec.common.util.Result;
 import java.util.ArrayList;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
-import org.aspectj.lang.annotation.After;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -32,6 +31,24 @@ public class CommonService {
             return Result.Fail(ErrorCode.DataSourceNotFound);
         }
         ArrayList array = (ArrayList) commonMapper.select(session, request);
+        return Result.Success(array);
+    }
+
+    public Result sum(String dsName, Map request) {
+        SqlSession session = sqlMap.getSession(dsName);
+        if (session == null) {
+            return Result.Fail(ErrorCode.DataSourceNotFound);
+        }
+        ArrayList array = (ArrayList) commonMapper.sum(session, request);
+        return Result.Success(array);
+    }
+
+    public Result count(String dsName, Map request) {
+        SqlSession session = sqlMap.getSession(dsName);
+        if (session == null) {
+            return Result.Fail(ErrorCode.DataSourceNotFound);
+        }
+        ArrayList array = (ArrayList) commonMapper.count(session, request);
         return Result.Success(array);
     }
 
