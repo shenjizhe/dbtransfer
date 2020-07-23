@@ -2,8 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59060202-3adc-466f-8ee2-f52e086f0e22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/Swagger2Configuration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_15_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mangofactory_swagger_models_1_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mangofactory_swagger_springmvc_1_0_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_wordnik_swagger_annotations_1_3_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_2_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_2_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/EntityBaseStringable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/EntityBaseStringable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/SwaggerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/controller/TranslogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/controller/TranslogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/css/print.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/css/reset.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/css/screen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/css/typography.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/fonts/DroidSans-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/fonts/DroidSans.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/explorer_icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/favicon-16x16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/favicon-32x32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/logo_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/pet_store_api.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/throbber.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/images/wordnik_api.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/es.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/fr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/it.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/ja.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/pt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/ru.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/tr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/translator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lang/zh-cn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/backbone-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/handlebars-2.0.0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/highlight.7.3.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/jquery-1.8.0.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/jquery.ba-bbq.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/jquery.slideto.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/jquery.wiggle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/marked.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/swagger-oauth.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/underscore-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/lib/underscore-min.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/o2c.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/swagger-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/swagger/swagger-ui.min.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/transfer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/transfer.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,7 +184,7 @@
       <workItem from="1595405904351" duration="2626000" />
       <workItem from="1595408719073" duration="3640000" />
       <workItem from="1595468299459" duration="3930000" />
-      <workItem from="1595472506017" duration="9365000" />
+      <workItem from="1595472506017" duration="11490000" />
     </task>
     <task id="LOCAL-00001" summary="first version">
       <created>1595472105025</created>
@@ -154,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595484646785</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="不可用版本，可以编译通过">
+      <created>1595484769992</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1595484769992</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,30 +235,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595473131886" />
-    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595484645286">
+    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595484769339">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484645286" />
+    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484769339" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595483997004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595483997004" />
-    <state width="1877" height="232" key="GridCell.Tab.0.bottom" timestamp="1595484604092">
+    <state width="1877" height="232" key="GridCell.Tab.0.bottom" timestamp="1595486894571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595484604092" />
-    <state width="1877" height="232" key="GridCell.Tab.0.center" timestamp="1595484604092">
+    <state width="1877" height="232" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595486894571" />
+    <state width="1877" height="232" key="GridCell.Tab.0.center" timestamp="1595486894571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595484604092" />
-    <state width="1877" height="232" key="GridCell.Tab.0.left" timestamp="1595484604092">
+    <state width="1877" height="232" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595486894571" />
+    <state width="1877" height="232" key="GridCell.Tab.0.left" timestamp="1595486894571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595484604092" />
-    <state width="1877" height="232" key="GridCell.Tab.0.right" timestamp="1595484604092">
+    <state width="1877" height="232" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595486894571" />
+    <state width="1877" height="232" key="GridCell.Tab.0.right" timestamp="1595486894571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595484604092" />
+    <state width="1877" height="232" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595486894571" />
     <state width="1877" height="232" key="GridCell.Tab.1.bottom" timestamp="1595482174589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -219,10 +279,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595484046942" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595484654602">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595484777553">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484654602" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484777553" />
     <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1595469685291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

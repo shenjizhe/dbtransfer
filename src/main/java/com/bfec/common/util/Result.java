@@ -1,13 +1,14 @@
 package com.bfec.common.util;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import com.bfec.common.enums.ErrorCode;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  * 结果对象 success boolean	是否成功 errCode	int	错误码（0：成功） message	String	消息
@@ -35,26 +36,24 @@ public class Result implements Serializable {
     }
 
     public static Result getResult(String response) throws JSONException {
-        JSONObject obj = new JSONObject(response);
-        return getResult(obj);
+        Object obj = JSON.parse(response);
+        return Result.Success((Serializable) obj);
     }
 
     public static Result getResult(JSONObject obj) throws JSONException {
         HashMap<String, String> map = new HashMap<>();
-        int code = obj.getInt("code");
+        int code = obj.getInteger("code");
         String message;
         try {
             message = obj.getString("msg");
         } catch (JSONException ex) {
             message = "";
         }
-        Iterator keys = obj.keys();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
+        obj.keySet().forEach(key -> {
             if (!key.equals("code") && !key.equals("msg")) {
                 map.put(key, obj.getString(key));
             }
-        }
+        });
 
         return new Result(code, message, map);
     }
