@@ -9,7 +9,7 @@ import com.bfec.common.util.Result;
 
 /**
  *
- * @author Administrator
+ * @author Shenjizhe
  */
 public interface ITransfer {
     Result trans();

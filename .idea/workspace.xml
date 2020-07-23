@@ -2,14 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59060202-3adc-466f-8ee2-f52e086f0e22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/enums/DataSourceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DynamicDataSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DynamicDataSourceContextHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/HikariConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/HikariProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/MybatisPlusConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/ColumnEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/ColumnEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/Condition.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/PageParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/PageParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/TableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/TableEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferDestination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/ListComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/ListComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/util/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DataSourceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DataSourceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/JacksonConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/JacksonConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/exceptions/WhereFormatError.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/exceptions/WhereFormatError.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IMax.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IReset.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/IReset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/ITransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/interfaces/ITransfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback1.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +147,7 @@
       <workItem from="1595405904351" duration="2626000" />
       <workItem from="1595408719073" duration="3640000" />
       <workItem from="1595468299459" duration="3930000" />
-      <workItem from="1595472506017" duration="12309000" />
+      <workItem from="1595472506017" duration="13837000" />
     </task>
     <task id="LOCAL-00001" summary="first version">
       <created>1595472105025</created>
@@ -180,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595487129723</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="不可用版本，可以编译通过">
+      <created>1595487713703</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1595487713703</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,58 +219,58 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595473131886" />
-    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595487128793">
+    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595487712617">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487128793" />
+    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487712617" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595483997004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595483997004" />
-    <state width="1877" height="167" key="GridCell.Tab.0.bottom" timestamp="1595487645044">
+    <state width="1877" height="159" key="GridCell.Tab.0.bottom" timestamp="1595489235512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
-    <state width="1877" height="167" key="GridCell.Tab.0.center" timestamp="1595487645044">
+    <state width="1877" height="159" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595489235512" />
+    <state width="1877" height="159" key="GridCell.Tab.0.center" timestamp="1595489235512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
-    <state width="1877" height="167" key="GridCell.Tab.0.left" timestamp="1595487645044">
+    <state width="1877" height="159" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595489235512" />
+    <state width="1877" height="159" key="GridCell.Tab.0.left" timestamp="1595489235512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
-    <state width="1877" height="167" key="GridCell.Tab.0.right" timestamp="1595487645044">
+    <state width="1877" height="159" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595489235512" />
+    <state width="1877" height="159" key="GridCell.Tab.0.right" timestamp="1595489235512">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="167" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
-    <state width="1877" height="232" key="GridCell.Tab.1.bottom" timestamp="1595482174589">
+    <state width="1877" height="159" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595489235512" />
+    <state width="1877" height="186" key="GridCell.Tab.1.bottom" timestamp="1595488563821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595482174589" />
-    <state width="1877" height="232" key="GridCell.Tab.1.center" timestamp="1595482174589">
+    <state width="1877" height="186" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595488563821" />
+    <state width="1877" height="186" key="GridCell.Tab.1.center" timestamp="1595488563821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595482174589" />
-    <state width="1877" height="232" key="GridCell.Tab.1.left" timestamp="1595482174589">
+    <state width="1877" height="186" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595488563821" />
+    <state width="1877" height="186" key="GridCell.Tab.1.left" timestamp="1595488563821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595482174589" />
-    <state width="1877" height="232" key="GridCell.Tab.1.right" timestamp="1595482174589">
+    <state width="1877" height="186" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595488563821" />
+    <state width="1877" height="186" key="GridCell.Tab.1.right" timestamp="1595488563821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="232" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595482174589" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1595484046942">
+    <state width="1877" height="186" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595488563821" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1595489096580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595484046942" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595487136598">
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595489096580" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595487727315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487136598" />
-    <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1595469685291">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487727315" />
+    <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1595489223779">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="567" y="70" width="786" height="900" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595469685291" />
+    <state x="567" y="70" width="786" height="900" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1595489223779" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1595474121400">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

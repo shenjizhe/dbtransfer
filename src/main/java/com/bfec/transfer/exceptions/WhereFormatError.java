@@ -7,7 +7,7 @@ package com.bfec.transfer.exceptions;
 
 /**
  *
- * @author Administrator
+ * @author Shenjizhe
  */
 public class WhereFormatError extends Exception{
     private String sql;

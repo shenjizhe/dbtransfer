@@ -1,25 +1,33 @@
-logging:
-  path: log/
 server:
     port: 8082
 spring:
   datasource:
+    db1:
+      jdbc-url: jdbc:mysql://192.168.2.110:3301/dpt_e-commerce?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
+      username: dpt_dev
+      password: dev20161111
+      driverClassName: com.mysql.cj.jdbc.Driver
+    db2:
+      jdbc-url: jdbc:mysql://192.168.2.110:3301/sso?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
+      username: dpt_dev
+      password: dev20161111
+      driverClassName: com.mysql.cj.jdbc.Driver
+      enabled: true
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.227.132:3306/test?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
-    username: root
-    password: 123456
     hikari:
-      minimum-idle: 5
-      idle-timeout: 600000
-      maximum-pool-size: 10
-      auto-commit: true
-      pool-name: MyHikariCP
-      max-lifetime: 1800000
-      connection-timeout: 30000
-      connection-test-query: SELECT 1
-mybatis:
-    typeAliasesPackage: com.bfec.transfer
-    mapperLocations: classpath:/sqlxml/*.xml
-    configLocation: classpath:/mybatis-config.xml
+      #      最小空闲链接数
+      minimumIdle: 2
+      #      最大链接数
+      maximumPoolSize: 10
+      #      最大生命周期
+      maxLifetime: 180000
+      #      最长闲置时间
+      idleTimeout: 60000
+      #      等待连接池的最大毫秒数
+      connectionTimeout: 20000
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.bfec.transfer
+logging:
+  config: classpath:logback-spring.xml
 

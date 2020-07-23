@@ -6,6 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.bfec.common.enums.ErrorCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -14,6 +18,10 @@ import java.util.HashMap;
  * 结果对象 success boolean	是否成功 errCode	int	错误码（0：成功） message	String	消息
  */
 @ApiModel(value = "返回值", description = "errCode:错误码 message:错误描述")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Result implements Serializable {
 
     public static final int SuccessCode = 0x00000000;
@@ -58,8 +66,6 @@ public class Result implements Serializable {
         return new Result(code, message, map);
     }
 
-    public Result() {
-    }
 
     public Result(int errCode) {
         this(errCode, "", null);
@@ -69,11 +75,6 @@ public class Result implements Serializable {
         this(errCode, message, null);
     }
 
-    public Result(int errCode, String message, Serializable tag) {
-        this.errCode = errCode;
-        this.message = message;
-        this.tag = tag;
-    }
 
     public Result(ErrorCode code, Serializable tag) {
         this.errCode = code.getCode();
@@ -132,49 +133,6 @@ public class Result implements Serializable {
     @ApiModelProperty(hidden = true)
     public boolean isSuccess() {
         return errCode == SuccessCode;
-    }
-
-    /**
-     * @return the errCode
-     */
-    public int getErrCode() {
-        return errCode;
-    }
-
-    /**
-     * @param errCode the errCode to set
-     */
-    public void setErrCode(int errCode) {
-        this.errCode = errCode;
-    }
-
-    /**
-     * @return the message
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * @param message the message to set
-     */
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    /**
-     * @return the tag
-     */
-    @ApiModelProperty(hidden = true)
-    public Serializable getTag() {
-        return tag;
-    }
-
-    /**
-     * @param tag the tag to set
-     */
-    public void setTag(Serializable tag) {
-        this.tag = tag;
     }
 
     /**

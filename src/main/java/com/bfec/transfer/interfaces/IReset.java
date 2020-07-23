@@ -7,7 +7,7 @@ package com.bfec.transfer.interfaces;
 
 /**
  *
- * @author Administrator
+ * @author Shenjizhe
  */
 public interface IReset {
     public Integer get();

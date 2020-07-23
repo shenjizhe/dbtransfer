@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod="60 seconds" debug="false"> 
-    <property name="APP_Name" value="transfer" />
-    <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>  
-    <contextName>${APP_NAME}</contextName> 
-    <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    <logger name="org.springframework.web" level="DEBUG"/>
-</configuration>

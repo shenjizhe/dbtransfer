@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @author Administrator
+ * @author Shenjizhe
  */
 public interface IMapper {
     void reset(String table,List list);
