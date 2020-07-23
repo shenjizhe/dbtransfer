@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.bfec.transfer.service.CommonService;
 import com.bfec.common.util.Result;
+
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +55,7 @@ public class CommonController {
             @RequestParam(value = "fields", required = false, defaultValue = "") List<String> fields,
             @ApiParam(required = false, name = "orderby", value = "默认为不排序‘-’代表逆序排序,'+'或者''代表正序排序,排序格式:\n-name\nbirthday")
             @RequestParam(value = "orderby", required = false, defaultValue = "") List<String> orderby
-    ) {
+    ) throws SQLException {
         Result result = sqlUtil.checkTable(datasource, resource);
         if (!result.isSuccess()) {
             return result;
@@ -118,8 +120,9 @@ public class CommonController {
 
         // conditions
         request.put("where_text", condition);
+        request.put("db",datasource);
 
-        return commonService.select(datasource, request);
+        return commonService.select(request);
     }
 
     @ApiOperation(value = "添加新的资源", notes = "添加新的资源")
@@ -131,7 +134,7 @@ public class CommonController {
             @ApiParam(required = true, defaultValue = "", name = "resource", value = "资源名称")
             @PathVariable("resource") String resource,
             @ApiParam(required = false, defaultValue = "", name = "request", value = "资源对象")
-            @RequestBody Map request) {
+            @RequestBody Map request) throws SQLException {
         Result result = sqlUtil.checkTable(datasource, resource);
         if (!result.isSuccess()) {
             return result;
@@ -155,7 +158,7 @@ public class CommonController {
             @ApiParam(required = false, name = "condition", value = "默认为无条件,条件格式:（id=1 or name='123'）")
             @RequestParam(value = "condition", required = false, defaultValue = "") String condition,
             @ApiParam(required = false, defaultValue = "", name = "request", value = "资源对象")
-            @RequestBody Map request) {
+            @RequestBody Map request) throws SQLException {
         Result result = sqlUtil.checkTable(datasource, resource);
         if (!result.isSuccess()) {
             return result;
@@ -181,7 +184,7 @@ public class CommonController {
             @ApiParam(required = true, defaultValue = "", name = "resource", value = "资源名称")
             @PathVariable("resource") String resource,
             @ApiParam(required = false, name = "condition", value = "默认为无条件,条件格式:（id=1 or name='123'）")
-            @RequestParam(value = "condition", required = false, defaultValue = "") String condition) {
+            @RequestParam(value = "condition", required = false, defaultValue = "") String condition) throws SQLException {
         Result result = sqlUtil.checkTable(datasource, resource);
         if (!result.isSuccess()) {
             return result;
