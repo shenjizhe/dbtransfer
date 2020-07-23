@@ -3,40 +3,15 @@ logging:
 server:
     port: 8082
 #    contextPath: /group
-spring:
-  redis:
-    host: 123.59.84.71
-    port: 6379
-    password: 9hcom.com
-  http:
-    converters:
-      preferred-json-mapper=gson
-notification:
-  ios:
-    appkey: 55d681b567e58e3881000623
-    appMasterSecret: dvibebrqrobjlzpiruniw8l30zzljnnb
-    productionMode: false
-  android:
-    appkey: 55d681b567e58e3881000623
-    appMasterSecret: dvibebrqrobjlzpiruniw8l30zzljnnb
-    productionMode: false
 # DATASOURCE
 # 联合数据
 jdbc_league_data:
     DriverClass: com.mysql.jdbc.Driver
-    JdbcUrl: jdbc:mysql://120.132.55.103:3308/league_data?useunicode=true&characterencoding=utf8&autoreconnect=true&rewritebatchedstatements=true&zerodatetimebehavior=converttonull
-    User: leauser
-    Password: league12349h
-# 俱乐部聚合库
-jdbc_guoan_new:
-    DriverClass: com.mysql.jdbc.Driver
-    JdbcUrl: jdbc:mysql://120.132.55.103:3314/guoan_new?useunicode=true&characterencoding=utf8&autoreconnect=true&rewritebatchedstatements=true&zerodatetimebehavior=converttonull
-    User: root
-    Password: fji$%#j5@#$jk42
+    JdbcUrl: jdbc:mysql://192.168.2.110:3301/league_data?useunicode=true&characterencoding=utf8&autoreconnect=true&rewritebatchedstatements=true&zerodatetimebehavior=converttonull
+    User: dpt_dev
+    Password: dev20161111
 mybatis:
-    typeAliasesPackage: com.ninehcom.transfer
+    typeAliasesPackage: com.bfec.transfer
     mapperLocations: classpath:/sqlxml/*.xml
     configLocation: classpath:/mybatis-config.xml
-sensitive:
-    checkUrl: http://123.59.84.71:8083/check
 
