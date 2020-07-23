@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="59060202-3adc-466f-8ee2-f52e086f0e22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/dbtransfer/ITransfer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/dbtransfer/TransferDestination.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/dbtransfer/TransferEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/dbtransfer/TransferItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/dbtransfer/TransferSource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/ColumnEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/ColumnEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/Condition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/Condition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/PageParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/PageParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/TableEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/entity/TableEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferDestination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferDestination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +136,7 @@
       <workItem from="1595405904351" duration="2626000" />
       <workItem from="1595408719073" duration="3640000" />
       <workItem from="1595468299459" duration="3930000" />
-      <workItem from="1595472506017" duration="11716000" />
+      <workItem from="1595472506017" duration="12309000" />
     </task>
     <task id="LOCAL-00001" summary="first version">
       <created>1595472105025</created>
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595486993657</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="不可用版本，可以编译通过">
+      <created>1595487129723</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1595487129723</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,30 +201,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595473131886" />
-    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595486992399">
+    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595487128793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595486992399" />
+    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487128793" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595483997004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595483997004" />
-    <state width="1877" height="189" key="GridCell.Tab.0.bottom" timestamp="1595487114079">
+    <state width="1877" height="167" key="GridCell.Tab.0.bottom" timestamp="1595487645044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595487114079" />
-    <state width="1877" height="189" key="GridCell.Tab.0.center" timestamp="1595487114079">
+    <state width="1877" height="167" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
+    <state width="1877" height="167" key="GridCell.Tab.0.center" timestamp="1595487645044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595487114079" />
-    <state width="1877" height="189" key="GridCell.Tab.0.left" timestamp="1595487114079">
+    <state width="1877" height="167" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
+    <state width="1877" height="167" key="GridCell.Tab.0.left" timestamp="1595487645044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595487114079" />
-    <state width="1877" height="189" key="GridCell.Tab.0.right" timestamp="1595487114079">
+    <state width="1877" height="167" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
+    <state width="1877" height="167" key="GridCell.Tab.0.right" timestamp="1595487645044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595487114079" />
+    <state width="1877" height="167" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1595487645044" />
     <state width="1877" height="232" key="GridCell.Tab.1.bottom" timestamp="1595482174589">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -237,10 +245,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595484046942" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595487000800">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595487136598">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487000800" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595487136598" />
     <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1595469685291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
