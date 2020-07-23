@@ -1,18 +1,17 @@
 server:
     port: 8082
+dbs:
+  - name: dpt_e-commerce
+    jdbc-url: jdbc:mysql://192.168.2.110:3301/dpt_e-commerce?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
+    username: dpt_dev
+    password: dev20161111
+  - name: sso
+    jdbc-url: jdbc:mysql://192.168.2.110:3301/sso?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
+    username: dpt_dev
+    password: dev20161111
 spring:
   datasource:
-    db1:
-      jdbc-url: jdbc:mysql://192.168.2.110:3301/dpt_e-commerce?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
-      username: dpt_dev
-      password: dev20161111
-      driverClassName: com.mysql.cj.jdbc.Driver
-    db2:
-      jdbc-url: jdbc:mysql://192.168.2.110:3301/sso?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
-      username: dpt_dev
-      password: dev20161111
-      driverClassName: com.mysql.cj.jdbc.Driver
-      enabled: true
+    driverClassName: com.mysql.cj.jdbc.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       #      最小空闲链接数

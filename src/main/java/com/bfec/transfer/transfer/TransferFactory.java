@@ -31,4 +31,6 @@ public class TransferFactory {
         ITransfer transfer = getTransfer(item.getType());
         transfer.transfer(item);
     }
+
+
 }
