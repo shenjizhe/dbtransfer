@@ -9,13 +9,13 @@ import java.util.List;
 @Getter
 @Setter
 public class TransferItem {
-    public TransferItem(List<TransferSource> sources, List<TransferDestination> desctinations) {
+    public TransferItem(List<TransferSource> sources, List<TransferDestination> destinations) {
         this.sources = sources;
-        this.desctinations = desctinations;
+        this.destinations = destinations;
     }
 
     List<TransferSource> sources;
-    List<TransferDestination> desctinations;
+    List<TransferDestination> destinations;
     OperationType type;
 
 }
