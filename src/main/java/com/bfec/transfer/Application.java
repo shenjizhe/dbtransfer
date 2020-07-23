@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @version 1.0.0
  */
 @SpringBootApplication
-@MapperScan(basePackages = "com.example.hellospring.mapper")
+@MapperScan(basePackages = "com.bfec.transfer.mapper")
 @EnableScheduling
 public class Application {
 
