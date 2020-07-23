@@ -2,163 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59060202-3adc-466f-8ee2-f52e086f0e22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/log/spring.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DataSourceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferDestination.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__c3p0_c3p0_0_9_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_1_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_6_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__joda_time_joda_time_2_8_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_34.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_logging_juli_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_0_28.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_4_0_5_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_4_3_11_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_4_3_11_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_2_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_1_1_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_annotations_1_2_0_Beta1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20090211.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_3_0_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_11_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_9_1_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_2_3_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_16.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_0_b2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/coach.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/coach_history_data.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/coachhistory.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/coachresume.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/leaguecalendar.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/leaguedata.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/leagueevent.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/player.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/playerhistory.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/shooter.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/team.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/teamhistory.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/guoan_new/user_player_relation.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/assist_rank.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_coach_re_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_history.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_history_mapper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_history_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_mapper.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_player_re_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/club_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/coach_history.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/coach_history_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/coach_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/coach_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_coach.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_coach_re_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_judge.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_judge_re_match.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_match.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_match_broadcast.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_outstanding.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_assistant.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_card.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_club_guest.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_club_home.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_goal.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_rank_peace.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_re_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_league_updown.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_match_event.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_match_id_mapped.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_match_line.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_match_player.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_match_stat.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_player.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_player_id_mapped.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/data_player_re_club.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/errlog.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/event_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/judge_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/league_match.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/league_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/match_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/match_position.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/match_video.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/player_history_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/player_line_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/player_mapping.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/player_position_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/rounds.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/shoot_rank.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/state_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/translog.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/updown_type.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books/league_data/user_re_player.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/common/enums/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/common/enums/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/aop/ServiceMonitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DataBaseConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/DataBaseConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/MyBatisConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/conf/MyBatisConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/entity/Translog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/entity/Translog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/mapper/CommonMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/mapper/CommonMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/service/CommonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/service/CommonService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/AggregationTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/AggregationTransfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/ITransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/ITransfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bfec/transfer/transfer/TransferSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sqlxml/CommonMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sqlxml/CommonMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/transfer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/transfer.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +131,7 @@
       <workItem from="1595405904351" duration="2626000" />
       <workItem from="1595408719073" duration="3640000" />
       <workItem from="1595468299459" duration="3930000" />
-      <workItem from="1595472506017" duration="9208000" />
+      <workItem from="1595472506017" duration="9365000" />
     </task>
     <task id="LOCAL-00001" summary="first version">
       <created>1595472105025</created>
@@ -302,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595472340412</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="不可用版本，可以编译通过">
+      <created>1595484646785</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595484646785</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +163,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="first version" />
-    <option name="LAST_COMMIT_MESSAGE" value="first version" />
+    <MESSAGE value="不可用版本，可以编译通过" />
+    <option name="LAST_COMMIT_MESSAGE" value="不可用版本，可以编译通过" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="230" key="#com.intellij.ide.util.MemberChooser" timestamp="1595479687997">
@@ -322,10 +175,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1595473131886" />
-    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595472339037">
+    <state x="461" y="114" key="CommitChangelistDialog2" timestamp="1595484645286">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595472339037" />
+    <state x="461" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484645286" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1595483997004">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -366,10 +219,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1595484046942" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595472365567">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1595484654602">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595472365567" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1595484654602" />
     <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1595469685291">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
