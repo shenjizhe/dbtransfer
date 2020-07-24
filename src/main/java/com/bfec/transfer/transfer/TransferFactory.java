@@ -10,15 +10,25 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class TransferFactory {
-    public List<TransferItem> load(String json) {
-        // TODO: use json to load transfer items
+    public static void saveFile() throws IOException {
+        List<TransferItem> list = new ArrayList<>();
+        list.add(createItem("groupbatch_account", "batch_id", OperationType.Sum, "balance", "groupbatch_copy", "id", "totalBalance"));
+        save(list);
+    }
 
-        List<TransferItem> transferItems = JSON.parseArray(json, TransferItem.class);
-        return transferItems;
+    private static TransferItem createItem(String sourceTable, String sourceID, OperationType ops, String opsColumn,
+                                    String desctTable, String desID, String updateColumn) {
+        List<TransferSource> sources = new ArrayList<>();
+        List<TransferDestination> desctinations = new ArrayList<>();
+        sources.add(new TransferSource(sourceTable, sourceID, ops, opsColumn));
+        desctinations.add(new TransferDestination(desctTable, desID, updateColumn));
+        TransferItem item = new TransferItem(sources, desctinations, OperationType.Sum);
+        return item;
     }
 
     public ITransfer getTransfer(OperationType type) {
@@ -36,10 +46,20 @@ public class TransferFactory {
         transfer.transfer(item);
     }
 
-    public void writeDataToFile(String jsonStr) throws IOException {
+    public static String loadFromFile() throws IOException {
+        Path rootLocation = Paths.get("folder");
+        Path path = rootLocation.resolve("tran.conf");
+
+        byte[] bytes = Files.readAllBytes(path);
+
+        String s = String.valueOf(bytes);
+        return s;
+    }
+
+    public static void writeDataToFile(String jsonStr) throws IOException {
         //文件目录
         Path rootLocation = Paths.get("folder");
-        if(Files.notExists(rootLocation)){
+        if (Files.notExists(rootLocation)) {
             Files.createDirectories(rootLocation);
         }
         Path path = rootLocation.resolve("tran.conf");
@@ -47,12 +67,14 @@ public class TransferFactory {
         Files.write(path, strToBytes);
     }
 
-    public void save(List<TransferItem> list) throws IOException {
+    public static void save(List<TransferItem> list) throws IOException {
         String s = JSON.toJSONString(list);
         writeDataToFile(s);
     }
 
-    public List<TransferItem> load(){
-        return null;
+    public static List<TransferItem> load() throws IOException {
+        String s = loadFromFile();
+        List<TransferItem> items = JSON.parseArray(s, TransferItem.class);
+        return items;
     }
 }

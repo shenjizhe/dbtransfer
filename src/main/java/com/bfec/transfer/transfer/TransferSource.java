@@ -1,11 +1,11 @@
 package com.bfec.transfer.transfer;
 
 import com.bfec.common.enums.OperationType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 public class TransferSource {
     String tableName;
     String idColumn;

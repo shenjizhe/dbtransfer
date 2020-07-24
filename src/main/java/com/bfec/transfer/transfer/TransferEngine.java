@@ -14,7 +14,7 @@ public class TransferEngine {
     private List<TransferItem> list;
 
     public  void  load(String name){
-        factory.load(name);
+
     }
 
     public  void  transferAll(){
