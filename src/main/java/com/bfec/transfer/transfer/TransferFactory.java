@@ -22,7 +22,7 @@ public class TransferFactory {
     }
 
     private static TransferItem createItem(String sourceTable, String sourceID, OperationType ops, String opsColumn,
-                                    String desctTable, String desID, String updateColumn) {
+                                           String desctTable, String desID, String updateColumn) {
         List<TransferSource> sources = new ArrayList<>();
         List<TransferDestination> desctinations = new ArrayList<>();
         sources.add(new TransferSource(sourceTable, sourceID, ops, opsColumn));
@@ -47,11 +47,11 @@ public class TransferFactory {
     }
 
 
-    private static String jsonRead(String file){
+    private static String jsonRead(File file) {
         Scanner scanner = null;
         StringBuilder buffer = new StringBuilder();
         try {
-            scanner = new Scanner(new File(file), "utf-8");
+            scanner = new Scanner(file, "utf-8");
             while (scanner.hasNextLine()) {
                 buffer.append(scanner.nextLine());
             }
@@ -67,7 +67,7 @@ public class TransferFactory {
 
     public static void writeDataToFile(String jsonStr) throws IOException {
         //文件目录
-        Path rootLocation = Paths.get("folder");
+        Path rootLocation = Paths.get("config");
         if (Files.notExists(rootLocation)) {
             Files.createDirectories(rootLocation);
         }
@@ -81,8 +81,8 @@ public class TransferFactory {
         writeDataToFile(s);
     }
 
-    public static List<TransferItem> load() throws IOException {
-        String s = jsonRead("folder/tran.conf");
+    public static List<TransferItem> load(File file) throws IOException {
+        String s = jsonRead(file);
         List<TransferItem> items = JSON.parseArray(s, TransferItem.class);
         return items;
     }

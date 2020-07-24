@@ -27,8 +27,6 @@ import java.util.List;
 public class Application {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws IOException {
-//        saveFile();
-        TransferFactory.load();
         SpringApplication app = new SpringApplication(Application.class);
         app.run(args);
     }

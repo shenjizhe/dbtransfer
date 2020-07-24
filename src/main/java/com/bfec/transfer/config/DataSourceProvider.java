@@ -13,7 +13,7 @@ public class DataSourceProvider {
         hikariConfig.setUsername(sourceInfo.getUsername());
         hikariConfig.setPassword(sourceInfo.getPassword());
         hikariConfig.setJdbcUrl(sourceInfo.getUrl());
-        hikariConfig.setDriverClassName("com.mysql.jdbc.Driver");
+        hikariConfig.setDriverClassName("com.mysql.cj.jdbc.Driver");
         return new HikariDataSource(hikariConfig);
     }
 }
