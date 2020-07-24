@@ -1,17 +1,17 @@
 package com.bfec.transfer.transfer;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.bfec.common.enums.OperationType;
-import org.apache.tomcat.jni.File;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 @Service
 public class TransferFactory {
@@ -46,14 +46,23 @@ public class TransferFactory {
         transfer.transfer(item);
     }
 
-    public static String loadFromFile() throws IOException {
-        Path rootLocation = Paths.get("folder");
-        Path path = rootLocation.resolve("tran.conf");
 
-        byte[] bytes = Files.readAllBytes(path);
+    private static String jsonRead(String file){
+        Scanner scanner = null;
+        StringBuilder buffer = new StringBuilder();
+        try {
+            scanner = new Scanner(new File(file), "utf-8");
+            while (scanner.hasNextLine()) {
+                buffer.append(scanner.nextLine());
+            }
+        } catch (Exception e) {
 
-        String s = String.valueOf(bytes);
-        return s;
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
+        }
+        return buffer.toString();
     }
 
     public static void writeDataToFile(String jsonStr) throws IOException {
@@ -73,7 +82,7 @@ public class TransferFactory {
     }
 
     public static List<TransferItem> load() throws IOException {
-        String s = loadFromFile();
+        String s = jsonRead("folder/tran.conf");
         List<TransferItem> items = JSON.parseArray(s, TransferItem.class);
         return items;
     }
