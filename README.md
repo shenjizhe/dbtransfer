@@ -1,21 +1,50 @@
-#spring-boot-mybatis-sample
+##数据库转换器
+1. 用配置的方式来定义数据库转化逻辑，用于代替手工数据库转换操作
 
-##简介
-此sample主要展示的是在一个用Spring-Boot搭建的工程里，同时用2种方式连接2种关系型数据库：
-1. 用Spring-Data-Jpa连接数据库1(在配置文件中spring.datasource配置)
-2. 用Mybatis连接数据库2(在配置文件中transfer.datasource配置)
+## 1. 技术
+1. spring boot
+2. hikari 动态配置多数据源
 
-由于想利用Spring-Boot的自动根据数据库连接URL判断DriverClass的机制,所以从Spring-Boot中拿出了DatabaseDriver类型(原DatabaseDriver是包内可见)
+## 2. 工作记录
+1. v1.0
+- 2020/7/25
+- 转换子表聚合数据到父表( sum count)
 
-##数据库准备环境：
-1. 2个数据库都要创建一个User表，包含一个字段username即可
-2. 为了完成test，预先分别插入至少一条记录，其中连接transfer.datasource的数据库里必须有一条是username='transfer'的记录：
-3. 脚本如下(2个数据库都执行)：
+## 3. 配置
+- 格式说明
+````
+sources: 数据源
+    "tableName": 数据源表
+    "idColumn": 分组列名
+    "ops": 操作 Sum 或者 Count
+    "opsColumn": 聚合操作的列名
+destinations: 数据目的
+    "tableName": 数据目的表
+    "idColumn": 目的表的ID列名
+    "updateColumn": 要写入聚合列的列名
+````
+- json格式示例
+````
+[
+    {
+        "destinations": [
+            {
+                "idColumn": "id",
+                "tableName": "groupbatch_copy",
+                "updateColumn": "totalBalance"
+            }
+        ],
+        "sources": [
+            {
+                "idColumn": "batch_id",
+                "ops": "Sum",
+                "opsColumn": "balance",
+                "tableName": "groupbatch_account"
+            }
+        ],
+        "type": "Sum"
+    }
+]
+````
 
-create table user(
-	username varchar(10)
-);
-insert into user values('transfer');(
-
-
-联系方式：thirdlucky@126.com shenjizhe
+联系方式：shenjizhe@bfec.cn
