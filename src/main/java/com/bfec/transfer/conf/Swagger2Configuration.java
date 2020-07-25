@@ -32,7 +32,7 @@ public class Swagger2Configuration {
                 .title("数据转换服务")
                 .description("数据转换服务 API 接口文档")
                 .version(VERSION)
-                .termsOfServiceUrl("http://www.baidu.com")
+                .termsOfServiceUrl("http://www.bfec.com.cn/index.jspa")
                 .build();
     }
 }
