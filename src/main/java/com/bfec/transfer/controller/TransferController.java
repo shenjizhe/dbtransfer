@@ -31,4 +31,14 @@ public class TransferController {
     ) throws SQLException, IOException {
         return service.trans();
     }
+
+    public Result check(){
+        //TODO: 检查值是否正确
+        return null;
+    }
+
+    public Result getName(){
+        //TODO: 自动增加触发器( update parent when child is changing)
+        return null;
+    }
 }
