@@ -1,5 +1,6 @@
 package com.bfec.transfer.controller;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.bfec.common.util.Result;
 import com.bfec.transfer.service.TransferService;
 import com.bfec.transfer.transfer.TransferFactory;
@@ -25,6 +26,7 @@ public class TransferController {
     @ApiOperation(value = "执行转换", notes = "执行数据库转换任务")
     @RequestMapping(value = "/excute", method = RequestMethod.POST)
     @ResponseBody
+    @DS("master")
     public Result trans(
     ) throws SQLException, IOException {
         return service.trans();

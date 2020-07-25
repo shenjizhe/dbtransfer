@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 public class TranslogMapper {
 
     @Autowired
-    @Qualifier("jdbc_league_data_template")
     SqlSession sqlSession;
 
     public List<Translog> selectAllTranslog(){

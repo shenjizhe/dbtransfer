@@ -1,33 +1,41 @@
 server:
-    port: 8082
-dbs:
-  - name: dpt_e-commerce
-    jdbc-url: jdbc:mysql://192.168.2.110:3301/dpt_e-commerce?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
-    username: dpt_dev
-    password: dev20161111
-    driverClassName: com.mysql.cj.jdbc.Driver
-  - name: sso
-    jdbc-url: jdbc:mysql://192.168.2.110:3301/sso?useUnicode=true&characterEncoding=utf-88&serverTimezone=Hongkong&useSSL=false
-    username: dpt_dev
-    password: dev20161111
-    driverClassName: com.mysql.cj.jdbc.Driver
+  port: 8082
 spring:
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      #      最小空闲链接数
-      minimumIdle: 2
-      #      最大链接数
-      maximumPoolSize: 10
-      #      最大生命周期
-      maxLifetime: 180000
-      #      最长闲置时间
-      idleTimeout: 60000
-      #      等待连接池的最大毫秒数
-      connectionTimeout: 20000
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: 123456
+          url: jdbc:mysql://192.168.227.135:3306/dpt_e-commerce?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+        slaves:
+          type: com.zaxxer.hikari.HikariDataSource
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: root
+          password: 123456
+          url: jdbc:mysql://192.168.227.135:3306/sso?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+#spring:
+#  datasource:
+#    dynamic:
+#      primary: master
+#      datasource:
+#        master:
+#          type: com.zaxxer.hikari.HikariDataSource
+#          driver-class-name: com.mysql.jdbc.Driver
+#          username: dpt_dev
+#          password: dev20161111
+#          url: jdbc:mysql://192.168.2.110:3301/dpt_e-commerce?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
+#        slaves:
+#          type: com.zaxxer.hikari.HikariDataSource
+#          driver-class-name: com.mysql.jdbc.Driver
+#          username: dpt_dev
+#          password: dev20161111
+#          url: jdbc:mysql://192.168.2.110:3301/sso?useUnicode=true&characterEncoding=utf-8&serverTimezone=Hongkong&useSSL=false
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.bfec.transfer
 logging:
   config: classpath:logback-spring.xml
-

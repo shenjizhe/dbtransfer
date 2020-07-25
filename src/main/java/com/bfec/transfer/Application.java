@@ -9,6 +9,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.IOException;
@@ -24,6 +26,7 @@ import java.util.List;
 @SpringBootApplication
 @MapperScan(basePackages = "com.bfec.transfer.mapper")
 @EnableScheduling
+@EnableConfigurationProperties(DataSourceProperties.class)
 public class Application {
     @SuppressWarnings("unchecked")
     public static void main(String[] args) throws IOException {

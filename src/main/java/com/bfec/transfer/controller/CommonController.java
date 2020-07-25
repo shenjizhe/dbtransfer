@@ -1,6 +1,5 @@
 package com.bfec.transfer.controller;
 
-import com.bfec.transfer.service.SqlUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,8 +31,6 @@ public class CommonController {
 
     @Autowired
     CommonService commonService;
-    @Autowired
-    SqlUtil sqlUtil;
 
     @ApiOperation(value = "获得资源列表", notes = "获得系统内注册的资源列表")
     @RequestMapping(value = "/{datasource}/{resource}", method = RequestMethod.GET)
@@ -56,22 +53,22 @@ public class CommonController {
             @ApiParam(required = false, name = "orderby", value = "默认为不排序‘-’代表逆序排序,'+'或者''代表正序排序,排序格式:\n-name\nbirthday")
             @RequestParam(value = "orderby", required = false, defaultValue = "") List<String> orderby
     ) throws SQLException {
-        Result result = sqlUtil.checkTable(datasource, resource);
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = sqlUtil.checkColumns(datasource, resource, fields);
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = sqlUtil.checkColumns(datasource, resource, orderby);
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = sqlUtil.checkWhere(datasource, resource, condition);
-        if (!result.isSuccess()) {
-            return result;
-        }
+//        Result result = sqlUtil.checkTable(datasource, resource);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//        result = sqlUtil.checkColumns(datasource, resource, fields);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//        result = sqlUtil.checkColumns(datasource, resource, orderby);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//        result = sqlUtil.checkWhere(datasource, resource, condition);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
 
         Map request = new HashMap();
         request.put("table", resource);
@@ -135,15 +132,15 @@ public class CommonController {
             @PathVariable("resource") String resource,
             @ApiParam(required = false, defaultValue = "", name = "request", value = "资源对象")
             @RequestBody Map request) throws SQLException {
-        Result result = sqlUtil.checkTable(datasource, resource);
-        if (!result.isSuccess()) {
-            return result;
-        }
-
-        result = sqlUtil.checkColumns(datasource, resource, request.keySet());
-        if (!result.isSuccess()) {
-            return result;
-        }
+//        Result result = sqlUtil.checkTable(datasource, resource);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//
+//        result = sqlUtil.checkColumns(datasource, resource, request.keySet());
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
         return commonService.add(datasource, resource, request);
     }
 
@@ -159,19 +156,19 @@ public class CommonController {
             @RequestParam(value = "condition", required = false, defaultValue = "") String condition,
             @ApiParam(required = false, defaultValue = "", name = "request", value = "资源对象")
             @RequestBody Map request) throws SQLException {
-        Result result = sqlUtil.checkTable(datasource, resource);
-        if (!result.isSuccess()) {
-            return result;
-        }
-
-        result = sqlUtil.checkColumns(datasource, resource, request.keySet());
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = sqlUtil.checkWhere(datasource, resource, condition);
-        if (!result.isSuccess()) {
-            return result;
-        }
+//        Result result = sqlUtil.checkTable(datasource, resource);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//
+//        result = sqlUtil.checkColumns(datasource, resource, request.keySet());
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//        result = sqlUtil.checkWhere(datasource, resource, condition);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
         return commonService.change(datasource, resource, request, condition);
     }
 
@@ -185,14 +182,14 @@ public class CommonController {
             @PathVariable("resource") String resource,
             @ApiParam(required = false, name = "condition", value = "默认为无条件,条件格式:（id=1 or name='123'）")
             @RequestParam(value = "condition", required = false, defaultValue = "") String condition) throws SQLException {
-        Result result = sqlUtil.checkTable(datasource, resource);
-        if (!result.isSuccess()) {
-            return result;
-        }
-        result = sqlUtil.checkWhere(datasource, resource, condition);
-        if (!result.isSuccess()) {
-            return result;
-        }
+//        Result result = sqlUtil.checkTable(datasource, resource);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
+//        result = sqlUtil.checkWhere(datasource, resource, condition);
+//        if (!result.isSuccess()) {
+//            return result;
+//        }
         return commonService.delete(datasource, resource, condition);
     }
 }
