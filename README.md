@@ -1,5 +1,7 @@
 # 数据库转换器
 用配置的方式来定义数据库转化逻辑，用于代替手工数据库转换操作
+## swagger地址
+http://localhost:8082/swagger-ui.htm
 
 ## 0. 资源
  - config 目录中是两个配置文件的例子
