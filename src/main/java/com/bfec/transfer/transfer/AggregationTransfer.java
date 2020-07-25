@@ -43,7 +43,7 @@ public class AggregationTransfer implements ITransfer {
 
             list.forEach(kv -> {
                 Integer k = (Integer) kv.get("k");
-                Double v = (Double) kv.get("v");
+                Object v =  kv.get("v");
 
                 String condition = destination.idColumn + "=" + k;
                 service.change(destination.tableName, getDestMap(destination, v), condition);
@@ -70,7 +70,7 @@ public class AggregationTransfer implements ITransfer {
         return map;
     }
 
-    Map getDestMap(TransferDestination destination, Double v) {
+    Map getDestMap(TransferDestination destination, Object v) {
         Map map = new HashMap<>();
         map.put(destination.updateColumn, v);
         return map;

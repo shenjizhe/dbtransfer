@@ -1,0 +1,20 @@
+[
+  {
+    "destinations": [
+      {
+        "idColumn": "id",
+        "tableName": "groupbatch_copy",
+        "updateColumn": "count"
+      }
+    ],
+    "sources": [
+      {
+        "idColumn": "batch_id",
+        "ops": "Count",
+        "opsColumn": "balance",
+        "tableName": "groupbatch_account"
+      }
+    ],
+    "type": "Count"
+  }
+]
