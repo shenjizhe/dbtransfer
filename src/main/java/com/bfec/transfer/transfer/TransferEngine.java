@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.nio.file.Path;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,11 @@ public class TransferEngine {
     public void transfer(File file) throws IOException {
         List<TransferItem> items = factory.load(file);
         items.forEach(item -> {
-            factory.transfer(item);
+            try {
+                factory.transfer(item);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         });
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,19 +33,15 @@ public class CommonService {
         return Result.Success(array);
     }
 
-    public Result sum(Map request) throws SQLException {
-        String dbName = (String) request.get("db");
-        ArrayList array = (ArrayList) commonMapper.sum(session, request);
-        return Result.Success(array);
+    public List sum(Map request) {
+        return commonMapper.sum(session, request);
     }
 
-    public Result count(String dsName, Map request) throws SQLException {
-        String dbName = (String) request.get("db");
-        ArrayList array = (ArrayList) commonMapper.count(session, request);
-        return Result.Success(array);
+    public List count(Map request) {
+        return commonMapper.count(session, request);
     }
 
-    public Result add(String dsName, String resource, Map request) throws SQLException {
+    public Result add(String resource, Map request) throws SQLException {
         String dbName = (String) request.get("db");
         int ret = commonMapper.insert(session, resource, request);
         if (ret == 1) {
@@ -54,13 +51,13 @@ public class CommonService {
         }
     }
 
-    public Result change(String dsName, String resource, Map request, String condition) throws SQLException {
+    public Result change(String resource, Map request, String condition) {
         String dbName = (String) request.get("db");
         int ret = commonMapper.update(session, resource, request, condition);
         return Result.Success(ret);
     }
 
-    public Result delete(String dsName, String resource, String condition) throws SQLException {
+    public Result delete(String resource, String condition) {
         int ret = commonMapper.delete(session, resource, condition);
         return Result.Success(ret);
     }

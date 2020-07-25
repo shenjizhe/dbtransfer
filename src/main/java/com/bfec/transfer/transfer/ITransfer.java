@@ -1,10 +1,16 @@
 package com.bfec.transfer.transfer;
 
-import java.util.Map;
+import com.bfec.transfer.service.CommonService;
+import org.apache.ibatis.session.SqlSession;
 
 public interface ITransfer {
+    void serService(CommonService service);
+
+    void switchDataSource(SqlSession session);
+
     void transfer(TransferItem item);
+
     boolean check(TransferItem item);
-    Map getSourceMap(TransferSource source);
-    Map getDestMap(TransferDestination destination);
+
+    boolean checkParam(TransferItem item);
 }

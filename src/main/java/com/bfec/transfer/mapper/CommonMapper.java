@@ -10,7 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 /**
- * CommonMapper，用于Mybatis
+ * TableMapper，用于Mybatis
  *
  * @author shenjizhe
  * @version 1.0.0

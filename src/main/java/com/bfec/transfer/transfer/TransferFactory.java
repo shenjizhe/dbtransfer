@@ -1,7 +1,11 @@
 package com.bfec.transfer.transfer;
 
 import com.alibaba.fastjson.JSON;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.bfec.common.enums.OperationType;
+import com.bfec.transfer.service.CommonService;
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -9,12 +13,20 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 @Service
 public class TransferFactory {
+
+    @Autowired
+    SqlSession session;
+
+    @Autowired
+    CommonService service;
+
     public static void saveFile() throws IOException {
         List<TransferItem> list = new ArrayList<>();
         list.add(createItem("groupbatch_account", "batch_id", OperationType.Sum, "balance", "groupbatch_copy", "id", "totalBalance"));
@@ -41,8 +53,10 @@ public class TransferFactory {
         }
     }
 
-    public void transfer(TransferItem item) {
+    public void transfer(TransferItem item) throws SQLException {
         ITransfer transfer = getTransfer(item.getType());
+        transfer.serService(service);
+        transfer.switchDataSource(session);
         transfer.transfer(item);
     }
 

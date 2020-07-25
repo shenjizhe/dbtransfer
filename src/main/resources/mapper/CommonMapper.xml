@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bfec.transfer.mapper.CommonMapper">
+    <resultMap type="com.bfec.common.entity.TableEntity" id="tableMap">
+        <id column="TABLE_NAME" property="TABLE_NAME"/>
+        <result column="TABLE_SCHEMA" property="TABLE_SCHEMA"/>
+        <result column="TABLE_TYPE" property="TABLE_TYPE"/>
+        <result column="AUTO_INCREMENT" property="AUTO_INCREMENT"/>
+        <result column="TABLE_COMMENT" property="TABLE_COMMENT"/>
+    </resultMap>
+    <resultMap type="com.bfec.common.entity.ColumnEntity" id="columnMap">
+        <id column="COLUMN_NAME" property="COLUMN_NAME"/>
+        <result column="TABLE_NAME" property="TABLE_NAME"/>
+        <result column="TABLE_SCHEMA" property="TABLE_SCHEMA"/>
+        <result column="IS_NULLABLE" property="IS_NULLABLE"/>
+        <result column="DATA_TYPE" property="DATA_TYPE"/>
+        <result column="CHARACTER_MAXIMUM_LENGTH" property="CHARACTER_MAXIMUM_LENGTH"/>
+        <result column="COLUMN_TYPE" property="COLUMN_TYPE"/>
+        <result column="COLUMN_COMMENT" property="COLUMN_COMMENT"/>
+    </resultMap>
+    <select id="select" resultType="Map">
+        SELECT
+        ${field_text}
+        FROM
+        ${table}
+        <if test="where_text!=''">
+            where ${where_text}
+        </if>
+        <if test="order_can">
+            order by ${order_text}
+        </if>
+        <if test="page_can">
+            limit #{offset} , #{size}
+        </if>
+    </select>
+
+    <select id="sum" resultType="Map">
+        SELECT
+        ${group_text} k,
+        sum(${field_text}) v
+        from ${table}
+        GROUP BY ${group_text}
+    </select>
+
+    <select id="count" resultType="Map">
+        SELECT
+        ${group_text} k,
+        count(1) v
+        from ${table}
+        GROUP BY ${group_text}
+    </select>
+
+    <insert id="insert" parameterType="Map">
+        insert into
+        ${table}
+        <foreach collection="keys" item="key" index="index"
+                 open="(" separator="," close=")">${key}
+        </foreach>
+        value
+        <foreach collection="values" item="value" index="index"
+                 open="(" separator="," close=")">#{value}
+        </foreach>
+    </insert>
+    <update id="update" parameterType="Map">
+        update
+        ${table}
+        set
+        <foreach collection="map" item="value" index="key"
+                 open=" " separator="," close=" ">
+            ${key}=#{value}
+        </foreach>
+        where
+        ${condition}
+    </update>
+    <delete id="delete" parameterType="Map">
+        delete from
+        ${table}
+        where
+        ${condition}
+    </delete>
+    <select id="selectAllTables" resultMap="tableMap">
+        SELECT
+        TABLE_NAME,
+        TABLE_SCHEMA,
+        TABLE_TYPE,
+        AUTO_INCREMENT,
+        TABLE_COMMENT
+        FROM
+        INFORMATION_SCHEMA.TABLES
+        WHERE
+        (TABLE_TYPE = "BASE TABLE"
+        OR TABLE_TYPE = "VIEW")
+    </select>
+    <select id="selectAllColumns" resultMap="columnMap">
+        SELECT
+        TABLE_SCHEMA,
+        TABLE_NAME,
+        COLUMN_NAME,
+        IS_NULLABLE,
+        DATA_TYPE,
+        CHARACTER_MAXIMUM_LENGTH,
+        COLUMN_TYPE,
+        COLUMN_COMMENT
+        FROM
+        INFORMATION_SCHEMA. COLUMNS
+        WHERE
+        TABLE_NAME = #{0}
+    </select>
+</mapper>

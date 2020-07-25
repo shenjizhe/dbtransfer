@@ -1,1 +1,20 @@
-[{"destinations":[{"idColumn":"id","tableName":"groupbatch_copy","updateColumn":"totalBalance"}],"sources":[{"idColumn":"batch_id","ops":"Sum","opsColumn":"balance","tableName":"groupbatch_account"}],"type":"Sum"}]
+[
+  {
+    "destinations": [
+      {
+        "idColumn": "id",
+        "tableName": "groupbatch_copy",
+        "updateColumn": "totalBalance"
+      }
+    ],
+    "sources": [
+      {
+        "idColumn": "batch_id",
+        "ops": "Sum",
+        "opsColumn": "balance",
+        "tableName": "groupbatch_account"
+      }
+    ],
+    "type": "Sum"
+  }
+]
