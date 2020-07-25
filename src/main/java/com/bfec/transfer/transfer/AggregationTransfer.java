@@ -41,13 +41,13 @@ public class AggregationTransfer implements ITransfer {
                     break;
             }
 
-           list.forEach(kv->{
-               Integer k = (Integer)kv.get("k");
-               Double v = (Double)kv.get("v");
+            list.forEach(kv -> {
+                Integer k = (Integer) kv.get("k");
+                Double v = (Double) kv.get("v");
 
-               String condition = destination.idColumn + "=" + k;
-               service.change(destination.tableName,getDestMap(destination),condition);
-           });
+                String condition = destination.idColumn + "=" + k;
+                service.change(destination.tableName, getDestMap(destination, v), condition);
+            });
 
         });
     }
@@ -70,18 +70,9 @@ public class AggregationTransfer implements ITransfer {
         return map;
     }
 
-    Map getDestMap(TransferDestination destination) {
-//            <update id="update" parameterType="Map">
-//                update
-//        ${table}
-//        set
-//                <foreach collection="map" item="value" index="key"
-//        open=" " separator="," close=" ">
-//                ${key}=#{value}
-//        </foreach>
-//                where
-//        ${condition}
-//    </update>
-        return null;
+    Map getDestMap(TransferDestination destination, Double v) {
+        Map map = new HashMap<>();
+        map.put(destination.updateColumn, v);
+        return map;
     }
 }
